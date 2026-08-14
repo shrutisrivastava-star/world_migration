@@ -1,0 +1,235 @@
+name,iso3,iso2,m49,entity_type,region
+Afghanistan,AFG,AF,4,country,Southern Asia
+Albania,ALB,AL,8,country,Southern Europe
+Algeria,DZA,DZ,12,country,Northern Africa
+American Samoa,ASM,AS,16,territory,Polynesia
+Andorra,AND,AD,20,country,Southern Europe
+Angola,AGO,AO,24,country,Middle Africa
+Anguilla,AIA,AI,660,territory,Caribbean
+Antigua and Barbuda,ATG,AG,28,country,Caribbean
+Argentina,ARG,AR,32,country,South America
+Armenia,ARM,AM,51,country,Western Asia
+Aruba,ABW,AW,533,territory,Caribbean
+Australia,AUS,AU,36,country,Australia and New Zealand
+Austria,AUT,AT,40,country,Western Europe
+Azerbaijan,AZE,AZ,31,country,Western Asia
+Bahamas,BHS,BS,44,country,Caribbean
+Bahrain,BHR,BH,48,country,Western Asia
+Bangladesh,BGD,BD,50,country,Southern Asia
+Barbados,BRB,BB,52,country,Caribbean
+Belarus,BLR,BY,112,country,Eastern Europe
+Belgium,BEL,BE,56,country,Western Europe
+Belize,BLZ,BZ,84,country,Central America
+Benin,BEN,BJ,204,country,Western Africa
+Bermuda,BMU,BM,60,territory,Northern America
+Bhutan,BTN,BT,64,country,Southern Asia
+Bolivia (Plurinational State of),BOL,BO,68,country,South America
+Bosnia and Herzegovina,BIH,BA,70,country,Southern Europe
+Botswana,BWA,BW,72,country,Southern Africa
+Brazil,BRA,BR,76,country,South America
+British Virgin Islands,VGB,VG,92,territory,Caribbean
+Brunei Darussalam,BRN,BN,96,country,South-Eastern Asia
+Bulgaria,BGR,BG,100,country,Eastern Europe
+Burkina Faso,BFA,BF,854,country,Western Africa
+Burundi,BDI,BI,108,country,Eastern Africa
+Cabo Verde,CPV,CV,132,country,Western Africa
+Cambodia,KHM,KH,116,country,South-Eastern Asia
+Cameroon,CMR,CM,120,country,Middle Africa
+Canada,CAN,CA,124,country,Northern America
+Cayman Islands,CYM,KY,136,territory,Caribbean
+Central African Republic,CAF,CF,140,country,Middle Africa
+Chad,TCD,TD,148,country,Middle Africa
+Chile,CHL,CL,152,country,South America
+China,CHN,CN,156,country,Eastern Asia
+"China, Hong Kong SAR",HKG,HK,344,territory,Eastern Asia
+"China, Macao SAR",MAC,MO,446,territory,Eastern Asia
+Colombia,COL,CO,170,country,South America
+Comoros,COM,KM,174,country,Eastern Africa
+Congo,COG,CG,178,country,Middle Africa
+Cook Islands,COK,CK,184,territory,Polynesia
+Costa Rica,CRI,CR,188,country,Central America
+Côte d'Ivoire,CIV,CI,384,country,Western Africa
+Croatia,HRV,HR,191,country,Southern Europe
+Cuba,CUB,CU,192,country,Caribbean
+Curaçao,CUW,CW,531,territory,Caribbean
+Cyprus,CYP,CY,196,country,Western Asia
+Czechia,CZE,CZ,203,country,Eastern Europe
+Democratic People's Republic of Korea,PRK,KP,408,country,Eastern Asia
+Democratic Republic of the Congo,COD,CD,180,country,Middle Africa
+Denmark,DNK,DK,208,country,Northern Europe
+Djibouti,DJI,DJ,262,country,Eastern Africa
+Dominica,DMA,DM,212,country,Caribbean
+Dominican Republic,DOM,DO,214,country,Caribbean
+Ecuador,ECU,EC,218,country,South America
+Egypt,EGY,EG,818,country,Northern Africa
+El Salvador,SLV,SV,222,country,Central America
+Equatorial Guinea,GNQ,GQ,226,country,Middle Africa
+Eritrea,ERI,ER,232,country,Eastern Africa
+Estonia,EST,EE,233,country,Northern Europe
+Eswatini,SWZ,SZ,748,country,Southern Africa
+Ethiopia,ETH,ET,231,country,Eastern Africa
+Faeroe Islands,FRO,FO,234,territory,Northern Europe
+Falkland Islands (Malvinas),FLK,FK,238,territory,South America
+Fiji,FJI,FJ,242,country,Melanesia
+Finland,FIN,FI,246,country,Northern Europe
+France,FRA,FR,250,country,Western Europe
+French Guiana,GUF,GF,254,territory,South America
+French Polynesia,PYF,PF,258,territory,Polynesia
+Gabon,GAB,GA,266,country,Middle Africa
+Gambia,GMB,GM,270,country,Western Africa
+Georgia,GEO,GE,268,country,Western Asia
+Germany,DEU,DE,276,country,Western Europe
+Ghana,GHA,GH,288,country,Western Africa
+Gibraltar,GIB,GI,292,territory,Southern Europe
+Greece,GRC,GR,300,country,Southern Europe
+Greenland,GRL,GL,304,territory,Northern America
+Grenada,GRD,GD,308,country,Caribbean
+Guadeloupe,GLP,GP,312,territory,Caribbean
+Guam,GUM,GU,316,territory,Micronesia
+Guatemala,GTM,GT,320,country,Central America
+Guinea,GIN,GN,324,country,Western Africa
+Guinea-Bissau,GNB,GW,624,country,Western Africa
+Guyana,GUY,GY,328,country,South America
+Haiti,HTI,HT,332,country,Caribbean
+Holy See,VAT,VA,336,country,Southern Europe
+Honduras,HND,HN,340,country,Central America
+Hungary,HUN,HU,348,country,Eastern Europe
+Iceland,ISL,IS,352,country,Northern Europe
+India,IND,IN,356,country,Southern Asia
+Indonesia,IDN,ID,360,country,South-Eastern Asia
+Iran (Islamic Republic of),IRN,IR,364,country,Southern Asia
+Iraq,IRQ,IQ,368,country,Western Asia
+Ireland,IRL,IE,372,country,Northern Europe
+Isle of Man,IMN,IM,833,territory,Northern Europe
+Israel,ISR,IL,376,country,Western Asia
+Italy,ITA,IT,380,country,Southern Europe
+Jamaica,JAM,JM,388,country,Caribbean
+Japan,JPN,JP,392,country,Eastern Asia
+Jordan,JOR,JO,400,country,Western Asia
+Kazakhstan,KAZ,KZ,398,country,Central Asia
+Kenya,KEN,KE,404,country,Eastern Africa
+Kiribati,KIR,KI,296,country,Micronesia
+Kuwait,KWT,KW,414,country,Western Asia
+Kyrgyzstan,KGZ,KG,417,country,Central Asia
+Lao People's Democratic Republic,LAO,LA,418,country,South-Eastern Asia
+Latvia,LVA,LV,428,country,Northern Europe
+Lebanon,LBN,LB,422,country,Western Asia
+Lesotho,LSO,LS,426,country,Southern Africa
+Liberia,LBR,LR,430,country,Western Africa
+Libya,LBY,LY,434,country,Northern Africa
+Liechtenstein,LIE,LI,438,country,Western Europe
+Lithuania,LTU,LT,440,country,Northern Europe
+Luxembourg,LUX,LU,442,country,Western Europe
+Madagascar,MDG,MG,450,country,Eastern Africa
+Malawi,MWI,MW,454,country,Eastern Africa
+Malaysia,MYS,MY,458,country,South-Eastern Asia
+Maldives,MDV,MV,462,country,Southern Asia
+Mali,MLI,ML,466,country,Western Africa
+Malta,MLT,MT,470,country,Southern Europe
+Marshall Islands,MHL,MH,584,country,Micronesia
+Martinique,MTQ,MQ,474,territory,Caribbean
+Mauritania,MRT,MR,478,country,Western Africa
+Mauritius,MUS,MU,480,country,Eastern Africa
+Mayotte,MYT,YT,175,territory,Eastern Africa
+Mexico,MEX,MX,484,country,Central America
+Micronesia (Fed. States of),FSM,FM,583,country,Micronesia
+Monaco,MCO,MC,492,country,Western Europe
+Mongolia,MNG,MN,496,country,Eastern Asia
+Montenegro,MNE,ME,499,country,Southern Europe
+Montserrat,MSR,MS,500,territory,Caribbean
+Morocco,MAR,MA,504,country,Northern Africa
+Mozambique,MOZ,MZ,508,country,Eastern Africa
+Myanmar,MMR,MM,104,country,South-Eastern Asia
+Namibia,NAM,NA,516,country,Southern Africa
+Nauru,NRU,NR,520,country,Micronesia
+Nepal,NPL,NP,524,country,Southern Asia
+Netherlands,NLD,NL,528,country,Western Europe
+New Caledonia,NCL,NC,540,territory,Melanesia
+New Zealand,NZL,NZ,554,country,Australia and New Zealand
+Nicaragua,NIC,NI,558,country,Central America
+Niger,NER,NE,562,country,Western Africa
+Nigeria,NGA,NG,566,country,Western Africa
+Niue,NIU,NU,570,territory,Polynesia
+North Macedonia,MKD,MK,807,country,Southern Europe
+Northern Mariana Islands,MNP,MP,580,territory,Micronesia
+Norway,NOR,NO,578,country,Northern Europe
+Oman,OMN,OM,512,country,Western Asia
+Pakistan,PAK,PK,586,country,Southern Asia
+Palau,PLW,PW,585,country,Micronesia
+Panama,PAN,PA,591,country,Central America
+Papua New Guinea,PNG,PG,598,country,Melanesia
+Paraguay,PRY,PY,600,country,South America
+Peru,PER,PE,604,country,South America
+Philippines,PHL,PH,608,country,South-Eastern Asia
+Poland,POL,PL,616,country,Eastern Europe
+Portugal,PRT,PT,620,country,Southern Europe
+Puerto Rico,PRI,PR,630,territory,Caribbean
+Qatar,QAT,QA,634,country,Western Asia
+Republic of Korea,KOR,KR,410,country,Eastern Asia
+Republic of Moldova,MDA,MD,498,country,Eastern Europe
+Réunion,REU,RE,638,territory,Eastern Africa
+Romania,ROU,RO,642,country,Eastern Europe
+Russian Federation,RUS,RU,643,country,Eastern Europe
+Rwanda,RWA,RW,646,country,Eastern Africa
+Saint Helena,SHN,SH,654,territory,Western Africa
+Saint Kitts and Nevis,KNA,KN,659,country,Caribbean
+Saint Lucia,LCA,LC,662,country,Caribbean
+Saint Pierre and Miquelon,SPM,PM,666,territory,Northern America
+Saint Vincent and the Grenadines,VCT,VC,670,country,Caribbean
+Samoa,WSM,WS,882,country,Polynesia
+San Marino,SMR,SM,674,country,Southern Europe
+Sao Tome and Principe,STP,ST,678,country,Middle Africa
+Saudi Arabia,SAU,SA,682,country,Western Asia
+Senegal,SEN,SN,686,country,Western Africa
+Serbia,SRB,RS,688,country,Southern Europe
+Seychelles,SYC,SC,690,country,Eastern Africa
+Sierra Leone,SLE,SL,694,country,Western Africa
+Singapore,SGP,SG,702,country,South-Eastern Asia
+Sint Maarten (Dutch part),SXM,SX,534,territory,Caribbean
+Slovakia,SVK,SK,703,country,Eastern Europe
+Slovenia,SVN,SI,705,country,Southern Europe
+Solomon Islands,SLB,SB,90,country,Melanesia
+Somalia,SOM,SO,706,country,Eastern Africa
+South Africa,ZAF,ZA,710,country,Southern Africa
+South Sudan,SSD,SS,728,country,Eastern Africa
+Spain,ESP,ES,724,country,Southern Europe
+Sri Lanka,LKA,LK,144,country,Southern Asia
+State of Palestine,PSE,PS,275,country,Western Asia
+Sudan,SDN,SD,729,country,Northern Africa
+Suriname,SUR,SR,740,country,South America
+Sweden,SWE,SE,752,country,Northern Europe
+Switzerland,CHE,CH,756,country,Western Europe
+Syrian Arab Republic,SYR,SY,760,country,Western Asia
+Tajikistan,TJK,TJ,762,country,Central Asia
+Thailand,THA,TH,764,country,South-Eastern Asia
+Timor-Leste,TLS,TL,626,country,South-Eastern Asia
+Togo,TGO,TG,768,country,Western Africa
+Tokelau,TKL,TK,772,territory,Polynesia
+Tonga,TON,TO,776,country,Polynesia
+Trinidad and Tobago,TTO,TT,780,country,Caribbean
+Tunisia,TUN,TN,788,country,Northern Africa
+Türkiye,TUR,TR,792,country,Western Asia
+Turkmenistan,TKM,TM,795,country,Central Asia
+Turks and Caicos Islands,TCA,TC,796,territory,Caribbean
+Tuvalu,TUV,TV,798,country,Polynesia
+Uganda,UGA,UG,800,country,Eastern Africa
+Ukraine,UKR,UA,804,country,Eastern Europe
+United Arab Emirates,ARE,AE,784,country,Western Asia
+United Kingdom,GBR,GB,826,country,Northern Europe
+United Republic of Tanzania,TZA,TZ,834,country,Eastern Africa
+United States of America,USA,US,840,country,Northern America
+United States Virgin Islands,VIR,VI,850,territory,Caribbean
+Uruguay,URY,UY,858,country,South America
+Uzbekistan,UZB,UZ,860,country,Central Asia
+Vanuatu,VUT,VU,548,country,Melanesia
+Venezuela (Bolivarian Republic of),VEN,VE,862,country,South America
+Viet Nam,VNM,VN,704,country,South-Eastern Asia
+Wallis and Futuna Islands,WLF,WF,876,territory,Polynesia
+"Bonaire, Sint Eustatius and Saba",BES,BQ,535,territory,Caribbean
+Saint Barthélemy,BLM,BL,652,territory,Caribbean
+Saint Martin (French part),MAF,MF,663,territory,Caribbean
+Western Sahara,ESH,EH,732,territory,Northern Africa
+Yemen,YEM,YE,887,country,Western Asia
+Zambia,ZMB,ZM,894,country,Eastern Africa
+Zimbabwe,ZWE,ZW,716,country,Eastern Africa
+Kosovo,XKX,XK,999,territory,Southern Europe

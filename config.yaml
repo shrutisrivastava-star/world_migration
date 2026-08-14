@@ -1,0 +1,88 @@
+# ==============================================================================
+# GLOBAL MIGRATION OBSERVATORY - CONFIGURATION
+# Phase 1: Foundation + Data Ingestion + Cleaning + Validation
+# ==============================================================================
+
+app:
+  name: "Global Migration Observatory"
+  tagline: "Explore where people migrate, how migration patterns change, and how migration relates to socioeconomic factors."
+  phase: "Phase 1: Foundation + Data Ingestion + Cleaning + Validation"
+  version: "1.0.0"
+
+paths:
+  raw_migration: "data/raw/migration"
+  raw_world_bank: "data/raw/world_bank"
+  processed: "data/processed"
+  reports: "data/reports"
+
+migration_data:
+  source: "United Nations Department of Economic and Social Affairs (UN DESA) Population Division"
+  dataset_name: "International Migrant Stock 2020"
+  revision_year: 2020
+  time_horizon: [1990, 1995, 2000, 2005, 2010, 2015, 2020]
+  min_year: 1990
+  max_year: 2020
+  
+  # Note on terminology:
+  data_type_definition: "Migrant Stock (estimated number of foreign-born / foreign citizens residing in a country at mid-year). Migrant stock != annual migration flow."
+  
+  destination_file:
+    filename: "undesa_pd_2020_ims_stock_by_sex_and_destination.xlsx"
+    url: "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_sex_and_destination.xlsx"
+    sheet_name: "Table 1"
+    header_row: 10
+  
+  bilateral_file:
+    filename: "undesa_pd_2020_ims_stock_by_sex_destination_and_origin.xlsx"
+    url: "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2020_ims_stock_by_sex_destination_and_origin.xlsx"
+    sheet_name: "Table 1"
+    header_row: 10
+
+world_bank_data:
+  source: "World Bank World Development Indicators (WDI)"
+  api_base_url: "https://api.worldbank.org/v2"
+  api_timeout_seconds: 30
+  date_range: "1990:2020"
+  per_page: 10000
+  cache_expiry_hours: 168 # 7 days
+  indicators:
+    NY.GDP.MKTP.CD:
+      name: "GDP (current US$)"
+      short_name: "gdp"
+      unit: "current US$"
+      description: "Gross domestic product at purchaser's prices in current U.S. dollars."
+    NY.GDP.PCAP.CD:
+      name: "GDP per capita (current US$)"
+      short_name: "gdp_per_capita"
+      unit: "current US$"
+      description: "Gross domestic product divided by midyear population in current U.S. dollars."
+    SP.POP.TOTL:
+      name: "Population, total"
+      short_name: "population"
+      unit: "number of people"
+      description: "Total midyear population count."
+    SL.UEM.TOTL.ZS:
+      name: "Unemployment, total (% of total labor force)"
+      short_name: "unemployment"
+      unit: "% of total labor force"
+      description: "Share of the labor force that is without work but available for and seeking employment (modeled ILO estimate)."
+
+validation:
+  strict_iso3: true
+  allow_un_aggregates_in_reference: true
+  min_valid_year: 1990
+  max_valid_year: 2020
+  non_negative_fields:
+    - "migrant_stock"
+    - "population"
+    - "gdp_per_capita"
+    - "unemployment"
+
+output_files:
+  migration_destination: "migration_destination_cleaned.csv"
+  migration_bilateral: "migration_bilateral_cleaned.parquet"
+  world_bank: "world_bank_cleaned.csv"
+  merged_country_socioeconomic: "migration_country_socioeconomic.csv"
+  country_reference: "country_reference.csv"
+  quality_report_csv: "data_quality_report.csv"
+  quality_report_summary: "data_quality_summary.md"

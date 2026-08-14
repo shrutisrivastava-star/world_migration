@@ -1,0 +1,1982 @@
+country,country_code,year,migrant_stock,m49_code,data_type,entity_type,is_aggregate,stock_change_5yr,stock_growth_pct_5yr,migrant_stock_global_rank
+   Aruba*,ABW,1990,14444.0,533,B R,territory,False,,,180.0
+   Aruba*,ABW,1995,22274.0,533,B R,territory,False,7830.0,54.21,174.0
+   Aruba*,ABW,2000,30104.0,533,B R,territory,False,7830.0,35.15,165.0
+   Aruba*,ABW,2005,32540.0,533,B R,territory,False,2436.0,8.09,166.0
+   Aruba*,ABW,2010,34328.0,533,B R,territory,False,1788.0,5.49,169.0
+   Aruba*,ABW,2015,36114.0,533,B R,territory,False,1786.0,5.2,173.0
+   Aruba*,ABW,2020,53593.0,533,B R,territory,False,17479.0,48.4,162.0
+   Afghanistan,AFG,1990,57686.0,4,B R,country,False,,,137.0
+   Afghanistan,AFG,1995,71522.0,4,B R,country,False,13836.0,23.99,134.0
+   Afghanistan,AFG,2000,75917.0,4,B R,country,False,4395.0,6.14,136.0
+   Afghanistan,AFG,2005,87314.0,4,B R,country,False,11397.0,15.01,129.0
+   Afghanistan,AFG,2010,102276.0,4,B R,country,False,14962.0,17.14,127.0
+   Afghanistan,AFG,2015,339432.0,4,B R,country,False,237156.0,231.88,89.0
+   Afghanistan,AFG,2020,144098.0,4,B R,country,False,-195334.0,-57.55,124.0
+   Angola,AGO,1990,33517.0,24,B R,country,False,,,159.0
+   Angola,AGO,1995,39813.0,24,B R,country,False,6296.0,18.78,152.0
+   Angola,AGO,2000,46108.0,24,B R,country,False,6295.0,15.81,148.0
+   Angola,AGO,2005,62331.0,24,B R,country,False,16223.0,35.18,141.0
+   Angola,AGO,2010,336367.0,24,B R,country,False,274036.0,439.65,79.0
+   Angola,AGO,2015,632178.0,24,B R,country,False,295811.0,87.94,64.0
+   Angola,AGO,2020,656434.0,24,B R,country,False,24256.0,3.84,71.0
+   Anguilla*,AIA,1990,2570.0,660,B R,territory,False,,,217.0
+   Anguilla*,AIA,1995,3317.0,660,B R,territory,False,747.0,29.07,212.0
+   Anguilla*,AIA,2000,4063.0,660,B R,territory,False,746.0,22.49,209.0
+   Anguilla*,AIA,2005,4684.0,660,B R,territory,False,621.0,15.28,209.0
+   Anguilla*,AIA,2010,5103.0,660,B R,territory,False,419.0,8.95,212.0
+   Anguilla*,AIA,2015,5471.0,660,B R,territory,False,368.0,7.21,210.0
+   Anguilla*,AIA,2020,5715.0,660,B R,territory,False,244.0,4.46,210.0
+   Albania,ALB,1990,66013.0,8,B,country,False,,,131.0
+   Albania,ALB,1995,71354.0,8,B,country,False,5341.0,8.09,135.0
+   Albania,ALB,2000,76695.0,8,B,country,False,5341.0,7.49,133.0
+   Albania,ALB,2005,64739.0,8,B,country,False,-11956.0,-15.59,139.0
+   Albania,ALB,2010,52784.0,8,B,country,False,-11955.0,-18.47,153.0
+   Albania,ALB,2015,52031.0,8,B,country,False,-753.0,-1.43,157.0
+   Albania,ALB,2020,48810.0,8,B,country,False,-3221.0,-6.19,164.0
+   Andorra,AND,1990,38891.0,20,C,country,False,,,150.0
+   Andorra,AND,1995,44206.0,20,C,country,False,5315.0,13.67,148.0
+   Andorra,AND,2000,42147.0,20,C,country,False,-2059.0,-4.66,151.0
+   Andorra,AND,2005,50298.0,20,C,country,False,8151.0,19.34,150.0
+   Andorra,AND,2010,52053.0,20,C,country,False,1755.0,3.49,154.0
+   Andorra,AND,2015,42264.0,20,C,country,False,-9789.0,-18.81,163.0
+   Andorra,AND,2020,45574.0,20,C,country,False,3310.0,7.83,167.0
+   United Arab Emirates,ARE,1990,1306574.0,784,C R,country,False,,,24.0
+   United Arab Emirates,ARE,1995,1824118.0,784,C R,country,False,517544.0,39.61,18.0
+   United Arab Emirates,ARE,2000,2447010.0,784,C R,country,False,622892.0,34.15,17.0
+   United Arab Emirates,ARE,2005,3281115.0,784,C R,country,False,834105.0,34.09,15.0
+   United Arab Emirates,ARE,2010,7316697.0,784,C R,country,False,4035582.0,122.99,6.0
+   United Arab Emirates,ARE,2015,7995126.0,784,C R,country,False,678429.0,9.27,7.0
+   United Arab Emirates,ARE,2020,8716332.0,784,C R,country,False,721206.0,9.02,7.0
+   Argentina,ARG,1990,1649919.0,32,B R,country,False,,,19.0
+   Argentina,ARG,1995,1595069.0,32,B R,country,False,-54850.0,-3.32,22.0
+   Argentina,ARG,2000,1540219.0,32,B R,country,False,-54850.0,-3.44,26.0
+   Argentina,ARG,2005,1674163.0,32,B R,country,False,133944.0,8.7,29.0
+   Argentina,ARG,2010,1805957.0,32,B R,country,False,131794.0,7.87,31.0
+   Argentina,ARG,2015,2086301.0,32,B R,country,False,280344.0,15.52,30.0
+   Argentina,ARG,2020,2281728.0,32,B R,country,False,195427.0,9.37,32.0
+   Armenia,ARM,1990,658789.0,51,B R,country,False,,,47.0
+   Armenia,ARM,1995,693999.0,51,B R,country,False,35210.0,5.34,50.0
+   Armenia,ARM,2000,657900.0,51,B R,country,False,-36099.0,-5.2,52.0
+   Armenia,ARM,2005,469189.0,51,B R,country,False,-188711.0,-28.68,65.0
+   Armenia,ARM,2010,211147.0,51,B R,country,False,-258042.0,-55.0,104.0
+   Armenia,ARM,2015,191199.0,51,B R,country,False,-19948.0,-9.45,113.0
+   Armenia,ARM,2020,190349.0,51,B R,country,False,-850.0,-0.44,117.0
+   American Samoa*,ASM,1990,21283.0,16,B,territory,False,,,171.0
+   American Samoa*,ASM,1995,23098.0,16,B,territory,False,1815.0,8.53,171.0
+   American Samoa*,ASM,2000,24912.0,16,B,territory,False,1814.0,7.85,172.0
+   American Samoa*,ASM,2005,24233.0,16,B,territory,False,-679.0,-2.73,176.0
+   American Samoa*,ASM,2010,23555.0,16,B,territory,False,-678.0,-2.8,184.0
+   American Samoa*,ASM,2015,23513.0,16,B,territory,False,-42.0,-0.18,186.0
+   American Samoa*,ASM,2020,23608.0,16,B,territory,False,95.0,0.4,189.0
+   Antigua and Barbuda,ATG,1990,12029.0,28,B R,country,False,,,184.0
+   Antigua and Barbuda,ATG,1995,17550.0,28,B R,country,False,5521.0,45.9,181.0
+   Antigua and Barbuda,ATG,2000,23071.0,28,B R,country,False,5521.0,31.46,174.0
+   Antigua and Barbuda,ATG,2005,24741.0,28,B R,country,False,1670.0,7.24,173.0
+   Antigua and Barbuda,ATG,2010,26412.0,28,B R,country,False,1671.0,6.75,178.0
+   Antigua and Barbuda,ATG,2015,28082.0,28,B R,country,False,1670.0,6.32,180.0
+   Antigua and Barbuda,ATG,2020,29386.0,28,B R,country,False,1304.0,4.64,180.0
+   Australia*,AUS,1990,3955213.0,36,B,country,False,,,12.0
+   Australia*,AUS,1995,4153330.0,36,B,country,False,198117.0,5.01,11.0
+   Australia*,AUS,2000,4386250.0,36,B,country,False,232920.0,5.61,11.0
+   Australia*,AUS,2005,4878030.0,36,B,country,False,491780.0,11.21,11.0
+   Australia*,AUS,2010,5882980.0,36,B,country,False,1004950.0,20.6,11.0
+   Australia*,AUS,2015,6729730.0,36,B,country,False,846750.0,14.39,10.0
+   Australia*,AUS,2020,7685860.0,36,B,country,False,956130.0,14.21,10.0
+   Austria,AUT,1990,793239.0,40,B,country,False,,,40.0
+   Austria,AUT,1995,894893.0,40,B,country,False,101654.0,12.82,42.0
+   Austria,AUT,2000,996547.0,40,B,country,False,101654.0,11.36,39.0
+   Austria,AUT,2005,1127164.0,40,B,country,False,130617.0,13.11,36.0
+   Austria,AUT,2010,1274901.0,40,B,country,False,147737.0,13.11,40.0
+   Austria,AUT,2015,1483123.0,40,B,country,False,208222.0,16.33,38.0
+   Austria,AUT,2020,1738183.0,40,B,country,False,255060.0,17.2,39.0
+   Azerbaijan*,AZE,1990,360600.0,31,B R,country,False,,,70.0
+   Azerbaijan*,AZE,1995,344070.0,31,B R,country,False,-16530.0,-4.58,72.0
+   Azerbaijan*,AZE,2000,327540.0,31,B R,country,False,-16530.0,-4.8,74.0
+   Azerbaijan*,AZE,2005,301834.0,31,B R,country,False,-25706.0,-7.85,81.0
+   Azerbaijan*,AZE,2010,276901.0,31,B R,country,False,-24933.0,-8.26,91.0
+   Azerbaijan*,AZE,2015,264359.0,31,B R,country,False,-12542.0,-4.53,101.0
+   Azerbaijan*,AZE,2020,252228.0,31,B R,country,False,-12131.0,-4.59,104.0
+   Burundi,BDI,1990,333110.0,108,B R,country,False,,,74.0
+   Burundi,BDI,1995,254853.0,108,B R,country,False,-78257.0,-23.49,83.0
+   Burundi,BDI,2000,125628.0,108,B R,country,False,-129225.0,-50.71,116.0
+   Burundi,BDI,2005,192774.0,108,B R,country,False,67146.0,53.45,104.0
+   Burundi,BDI,2010,247321.0,108,B R,country,False,54547.0,28.3,97.0
+   Burundi,BDI,2015,298299.0,108,B R,country,False,50978.0,20.61,93.0
+   Burundi,BDI,2020,344767.0,108,B R,country,False,46468.0,15.58,95.0
+   Belgium,BEL,1990,1280583.0,56,B,country,False,,,25.0
+   Belgium,BEL,1995,1288003.0,56,B,country,False,7420.0,0.58,28.0
+   Belgium,BEL,2000,1268368.0,56,B,country,False,-19635.0,-1.52,31.0
+   Belgium,BEL,2005,1248733.0,56,B,country,False,-19635.0,-1.55,34.0
+   Belgium,BEL,2010,1503806.0,56,B,country,False,255073.0,20.43,33.0
+   Belgium,BEL,2015,1783488.0,56,B,country,False,279682.0,18.6,35.0
+   Belgium,BEL,2020,2005479.0,56,B,country,False,221991.0,12.45,35.0
+   Benin,BEN,1990,76751.0,204,C B R,country,False,,,124.0
+   Benin,BEN,1995,105703.0,204,C B R,country,False,28952.0,37.72,119.0
+   Benin,BEN,2000,134655.0,204,C B R,country,False,28952.0,27.39,113.0
+   Benin,BEN,2005,248320.0,204,C B R,country,False,113665.0,84.41,93.0
+   Benin,BEN,2010,309225.0,204,C B R,country,False,60905.0,24.53,84.0
+   Benin,BEN,2015,366284.0,204,C B R,country,False,57059.0,18.45,86.0
+   Benin,BEN,2020,394276.0,204,C B R,country,False,27992.0,7.64,88.0
+"   Bonaire, Sint Eustatius and Saba*",BES,1990,13010.0,535,B,territory,False,,,183.0
+"   Bonaire, Sint Eustatius and Saba*",BES,1995,15101.0,535,B,territory,False,2091.0,16.07,183.0
+"   Bonaire, Sint Eustatius and Saba*",BES,2000,14387.0,535,B,territory,False,-714.0,-4.73,187.0
+"   Bonaire, Sint Eustatius and Saba*",BES,2005,14399.0,535,B,territory,False,12.0,0.08,188.0
+"   Bonaire, Sint Eustatius and Saba*",BES,2010,20941.0,535,B,territory,False,6542.0,45.43,188.0
+"   Bonaire, Sint Eustatius and Saba*",BES,2015,24571.0,535,B,territory,False,3630.0,17.33,184.0
+"   Bonaire, Sint Eustatius and Saba*",BES,2020,26221.0,535,B,territory,False,1650.0,6.72,185.0
+   Burkina Faso,BFA,1990,349652.0,854,B R,country,False,,,71.0
+   Burkina Faso,BFA,1995,464104.0,854,B R,country,False,114452.0,32.73,62.0
+   Burkina Faso,BFA,2000,520363.0,854,B R,country,False,56259.0,12.12,61.0
+   Burkina Faso,BFA,2005,597658.0,854,B R,country,False,77295.0,14.85,58.0
+   Burkina Faso,BFA,2010,674438.0,854,B R,country,False,76780.0,12.85,55.0
+   Burkina Faso,BFA,2015,704676.0,854,B R,country,False,30238.0,4.48,62.0
+   Burkina Faso,BFA,2020,723989.0,854,B R,country,False,19313.0,2.74,68.0
+   Bangladesh,BGD,1990,881617.0,50,B R,country,False,,,37.0
+   Bangladesh,BGD,1995,934735.0,50,B R,country,False,53118.0,6.03,40.0
+   Bangladesh,BGD,2000,987853.0,50,B R,country,False,53118.0,5.68,40.0
+   Bangladesh,BGD,2005,1062270.0,50,B R,country,False,74417.0,7.53,40.0
+   Bangladesh,BGD,2010,1345546.0,50,B R,country,False,283276.0,26.67,37.0
+   Bangladesh,BGD,2015,1422179.0,50,B R,country,False,76633.0,5.7,39.0
+   Bangladesh,BGD,2020,2115408.0,50,B R,country,False,693229.0,48.74,34.0
+   Bulgaria,BGR,1990,21510.0,100,B,country,False,,,170.0
+   Bulgaria,BGR,1995,32435.0,100,B,country,False,10925.0,50.79,160.0
+   Bulgaria,BGR,2000,43360.0,100,B,country,False,10925.0,33.68,150.0
+   Bulgaria,BGR,2005,61074.0,100,B,country,False,17714.0,40.85,142.0
+   Bulgaria,BGR,2010,76287.0,100,B,country,False,15213.0,24.91,141.0
+   Bulgaria,BGR,2015,123803.0,100,B,country,False,47516.0,62.29,127.0
+   Bulgaria,BGR,2020,184363.0,100,B,country,False,60560.0,48.92,119.0
+   Bahrain,BHR,1990,173212.0,48,C R,country,False,,,97.0
+   Bahrain,BHR,1995,205979.0,48,C R,country,False,32767.0,18.92,94.0
+   Bahrain,BHR,2000,239361.0,48,C R,country,False,33382.0,16.21,88.0
+   Bahrain,BHR,2005,404018.0,48,C R,country,False,164657.0,68.79,68.0
+   Bahrain,BHR,2010,666406.0,48,C R,country,False,262388.0,64.94,56.0
+   Bahrain,BHR,2015,722487.0,48,C R,country,False,56081.0,8.42,60.0
+   Bahrain,BHR,2020,936094.0,48,C R,country,False,213607.0,29.57,59.0
+   Bahamas,BHS,1990,26855.0,44,B R,country,False,,,163.0
+   Bahamas,BHS,1995,31654.0,44,B R,country,False,4799.0,17.87,162.0
+   Bahamas,BHS,2000,36454.0,44,B R,country,False,4800.0,15.16,158.0
+   Bahamas,BHS,2005,45531.0,44,B R,country,False,9077.0,24.9,152.0
+   Bahamas,BHS,2010,54745.0,44,B R,country,False,9214.0,20.24,151.0
+   Bahamas,BHS,2015,59241.0,44,B R,country,False,4496.0,8.21,151.0
+   Bahamas,BHS,2020,63583.0,44,B R,country,False,4342.0,7.33,154.0
+   Bosnia and Herzegovina,BIH,1990,56000.0,70,I R,country,False,,,140.0
+   Bosnia and Herzegovina,BIH,1995,69476.0,70,I R,country,False,13476.0,24.06,138.0
+   Bosnia and Herzegovina,BIH,2000,82952.0,70,I R,country,False,13476.0,19.4,131.0
+   Bosnia and Herzegovina,BIH,2005,47287.0,70,I R,country,False,-35665.0,-42.99,151.0
+   Bosnia and Herzegovina,BIH,2010,38945.0,70,I R,country,False,-8342.0,-17.64,165.0
+   Bosnia and Herzegovina,BIH,2015,38597.0,70,I R,country,False,-348.0,-0.89,170.0
+   Bosnia and Herzegovina,BIH,2020,36042.0,70,I R,country,False,-2555.0,-6.62,173.0
+   Saint Barthélemy*,BLM,1990,,652,,territory,False,,,
+   Saint Barthélemy*,BLM,1995,,652,,territory,False,,,
+   Saint Barthélemy*,BLM,2000,,652,,territory,False,,,
+   Saint Barthélemy*,BLM,2005,,652,,territory,False,,,
+   Saint Barthélemy*,BLM,2010,,652,,territory,False,,,
+   Saint Barthélemy*,BLM,2015,,652,,territory,False,,,
+   Saint Barthélemy*,BLM,2020,,652,,territory,False,,,
+   Belarus,BLR,1990,1248977.0,112,B,country,False,,,26.0
+   Belarus,BLR,1995,1186282.0,112,B,country,False,-62695.0,-5.02,30.0
+   Belarus,BLR,2000,1123586.0,112,B,country,False,-62696.0,-5.29,34.0
+   Belarus,BLR,2005,1106982.0,112,B,country,False,-16604.0,-1.48,38.0
+   Belarus,BLR,2010,1090378.0,112,B,country,False,-16604.0,-1.5,42.0
+   Belarus,BLR,2015,1082905.0,112,B,country,False,-7473.0,-0.69,47.0
+   Belarus,BLR,2020,1067090.0,112,B,country,False,-15815.0,-1.46,54.0
+   Belize,BLZ,1990,30404.0,84,B R ,country,False,,,160.0
+   Belize,BLZ,1995,33446.0,84,B R ,country,False,3042.0,10.01,159.0
+   Belize,BLZ,2000,36488.0,84,B R ,country,False,3042.0,9.1,157.0
+   Belize,BLZ,2005,41438.0,84,B R ,country,False,4950.0,13.57,156.0
+   Belize,BLZ,2010,46390.0,84,B R ,country,False,4952.0,11.95,158.0
+   Belize,BLZ,2015,54615.0,84,B R ,country,False,8225.0,17.73,155.0
+   Belize,BLZ,2020,62043.0,84,B R ,country,False,7428.0,13.6,155.0
+   Bermuda*,BMU,1990,15683.0,60,B,territory,False,,,176.0
+   Bermuda*,BMU,1995,16676.0,60,B,territory,False,993.0,6.33,182.0
+   Bermuda*,BMU,2000,17684.0,60,B,territory,False,1008.0,6.04,182.0
+   Bermuda*,BMU,2005,18108.0,60,B,territory,False,424.0,2.4,184.0
+   Bermuda*,BMU,2010,18547.0,60,B,territory,False,439.0,2.42,189.0
+   Bermuda*,BMU,2015,19212.0,60,B,territory,False,665.0,3.59,193.0
+   Bermuda*,BMU,2020,19739.0,60,B,territory,False,527.0,2.74,193.0
+   Bolivia (Plurinational State of),BOL,1990,73758.0,68,B R,country,False,,,127.0
+   Bolivia (Plurinational State of),BOL,1995,83598.0,68,B R,country,False,9840.0,13.34,130.0
+   Bolivia (Plurinational State of),BOL,2000,92658.0,68,B R,country,False,9060.0,10.84,127.0
+   Bolivia (Plurinational State of),BOL,2005,107745.0,68,B R,country,False,15087.0,16.28,122.0
+   Bolivia (Plurinational State of),BOL,2010,122846.0,68,B R,country,False,15101.0,14.02,122.0
+   Bolivia (Plurinational State of),BOL,2015,143008.0,68,B R,country,False,20162.0,16.41,121.0
+   Bolivia (Plurinational State of),BOL,2020,164121.0,68,B R,country,False,21113.0,14.76,122.0
+   Brazil,BRA,1990,798517.0,76,B R,country,False,,,39.0
+   Brazil,BRA,1995,741557.0,76,B R,country,False,-56960.0,-7.13,49.0
+   Brazil,BRA,2000,684596.0,76,B R,country,False,-56961.0,-7.68,50.0
+   Brazil,BRA,2005,638582.0,76,B R,country,False,-46014.0,-6.72,55.0
+   Brazil,BRA,2010,592640.0,76,B R,country,False,-45942.0,-7.19,59.0
+   Brazil,BRA,2015,710304.0,76,B R,country,False,117664.0,19.85,61.0
+   Brazil,BRA,2020,1079708.0,76,B R,country,False,369404.0,52.01,53.0
+   Barbados,BRB,1990,24024.0,52,B R,country,False,,,166.0
+   Barbados,BRB,1995,26224.0,52,B R,country,False,2200.0,9.16,168.0
+   Barbados,BRB,2000,28424.0,52,B R,country,False,2200.0,8.39,167.0
+   Barbados,BRB,2005,30624.0,52,B R,country,False,2200.0,7.74,168.0
+   Barbados,BRB,2010,32825.0,52,B R,country,False,2201.0,7.19,172.0
+   Barbados,BRB,2015,34475.0,52,B R,country,False,1650.0,5.03,174.0
+   Barbados,BRB,2020,34869.0,52,B R,country,False,394.0,1.14,175.0
+   Brunei Darussalam,BRN,1990,73200.0,96,B,country,False,,,128.0
+   Brunei Darussalam,BRN,1995,84748.0,96,B,country,False,11548.0,15.78,129.0
+   Brunei Darussalam,BRN,2000,96296.0,96,B,country,False,11548.0,13.63,126.0
+   Brunei Darussalam,BRN,2005,98441.0,96,B,country,False,2145.0,2.23,125.0
+   Brunei Darussalam,BRN,2010,100587.0,96,B,country,False,2146.0,2.18,128.0
+   Brunei Darussalam,BRN,2015,102733.0,96,B,country,False,2146.0,2.13,133.0
+   Brunei Darussalam,BRN,2020,111959.0,96,B,country,False,9226.0,8.98,131.0
+   Bhutan,BTN,1990,23807.0,64,B,country,False,,,168.0
+   Bhutan,BTN,1995,27972.0,64,B,country,False,4165.0,17.49,164.0
+   Bhutan,BTN,2000,32137.0,64,B,country,False,4165.0,14.89,161.0
+   Bhutan,BTN,2005,40279.0,64,B,country,False,8142.0,25.34,157.0
+   Bhutan,BTN,2010,48420.0,64,B,country,False,8141.0,20.21,155.0
+   Bhutan,BTN,2015,51106.0,64,B,country,False,2686.0,5.55,158.0
+   Bhutan,BTN,2020,53612.0,64,B,country,False,2506.0,4.9,161.0
+   Botswana,BWA,1990,27510.0,72,B R,country,False,,,162.0
+   Botswana,BWA,1995,40168.0,72,B R,country,False,12658.0,46.01,151.0
+   Botswana,BWA,2000,74934.0,72,B R,country,False,34766.0,86.55,137.0
+   Botswana,BWA,2005,84661.0,72,B R,country,False,9727.0,12.98,132.0
+   Botswana,BWA,2010,94863.0,72,B R,country,False,10202.0,12.05,132.0
+   Botswana,BWA,2015,103053.0,72,B R,country,False,8190.0,8.63,132.0
+   Botswana,BWA,2020,110268.0,72,B R,country,False,7215.0,7.0,133.0
+   Central African Republic,CAF,1990,67234.0,140,C R,country,False,,,130.0
+   Central African Republic,CAF,1995,99712.0,140,C R,country,False,32478.0,48.31,123.0
+   Central African Republic,CAF,2000,123529.0,140,C R,country,False,23817.0,23.89,117.0
+   Central African Republic,CAF,2005,96409.0,140,C R,country,False,-27120.0,-21.95,126.0
+   Central African Republic,CAF,2010,94685.0,140,C R,country,False,-1724.0,-1.79,133.0
+   Central African Republic,CAF,2015,81568.0,140,C R,country,False,-13117.0,-13.85,138.0
+   Central African Republic,CAF,2020,88546.0,140,C R,country,False,6978.0,8.55,139.0
+   Canada,CAN,1990,4333318.0,124,B,country,False,,,10.0
+   Canada,CAN,1995,4864778.0,124,B,country,False,531460.0,12.26,9.0
+   Canada,CAN,2000,5511914.0,124,B,country,False,647136.0,13.3,8.0
+   Canada,CAN,2005,6078985.0,124,B,country,False,567071.0,10.29,7.0
+   Canada,CAN,2010,6761226.0,124,B,country,False,682241.0,11.22,9.0
+   Canada,CAN,2015,7428657.0,124,B,country,False,667431.0,9.87,9.0
+   Canada,CAN,2020,8049323.0,124,B,country,False,620666.0,8.36,9.0
+   Switzerland,CHE,1990,1392282.0,756,B,country,False,,,23.0
+   Switzerland,CHE,1995,1478829.0,756,B,country,False,86547.0,6.22,25.0
+   Switzerland,CHE,2000,1570756.0,756,B,country,False,91927.0,6.22,24.0
+   Switzerland,CHE,2005,1805437.0,756,B,country,False,234681.0,14.94,26.0
+   Switzerland,CHE,2010,2075182.0,756,B,country,False,269745.0,14.94,27.0
+   Switzerland,CHE,2015,2258196.0,756,B,country,False,183014.0,8.82,28.0
+   Switzerland,CHE,2020,2491249.0,756,B,country,False,233053.0,10.32,29.0
+   Chile,CHL,1990,107501.0,152,B,country,False,,,115.0
+   Chile,CHL,1995,142417.0,152,B,country,False,34916.0,32.48,109.0
+   Chile,CHL,2000,177332.0,152,B,country,False,34915.0,24.52,103.0
+   Chile,CHL,2005,276360.0,152,B,country,False,99028.0,55.84,86.0
+   Chile,CHL,2010,375388.0,152,B,country,False,99028.0,35.83,75.0
+   Chile,CHL,2015,639724.0,152,B,country,False,264336.0,70.42,63.0
+   Chile,CHL,2020,1645015.0,152,B,country,False,1005291.0,157.14,43.0
+   China*,CHN,1990,376361.0,156,C,country,False,,,69.0
+   China*,CHN,1995,442198.0,156,C,country,False,65837.0,17.49,65.0
+   China*,CHN,2000,508034.0,156,C,country,False,65836.0,14.89,62.0
+   China*,CHN,2005,678947.0,156,C,country,False,170913.0,33.64,52.0
+   China*,CHN,2010,849861.0,156,C,country,False,170914.0,25.17,48.0
+   China*,CHN,2015,978046.0,156,C,country,False,128185.0,15.08,50.0
+   China*,CHN,2020,1039675.0,156,C,country,False,61629.0,6.3,56.0
+   Côte d'Ivoire,CIV,1990,1816426.0,384,C B R,country,False,,,17.0
+   Côte d'Ivoire,CIV,1995,2076394.0,384,C B R,country,False,259968.0,14.31,17.0
+   Côte d'Ivoire,CIV,2000,2163644.0,384,C B R,country,False,87250.0,4.2,18.0
+   Côte d'Ivoire,CIV,2005,2265090.0,384,C B R,country,False,101446.0,4.69,20.0
+   Côte d'Ivoire,CIV,2010,2366537.0,384,C B R,country,False,101447.0,4.48,23.0
+   Côte d'Ivoire,CIV,2015,2470613.0,384,C B R,country,False,104076.0,4.4,27.0
+   Côte d'Ivoire,CIV,2020,2564857.0,384,C B R,country,False,94244.0,3.81,27.0
+   Cameroon,CMR,1990,265967.0,120,B R,country,False,,,87.0
+   Cameroon,CMR,1995,244791.0,120,B R,country,False,-21176.0,-7.96,85.0
+   Cameroon,CMR,2000,227242.0,120,B R,country,False,-17549.0,-7.17,91.0
+   Cameroon,CMR,2005,265503.0,120,B R,country,False,38261.0,16.84,89.0
+   Cameroon,CMR,2010,291474.0,120,B R,country,False,25971.0,9.78,88.0
+   Cameroon,CMR,2015,508346.0,120,B R,country,False,216872.0,74.41,72.0
+   Cameroon,CMR,2020,579209.0,120,B R,country,False,70863.0,13.94,74.0
+   Democratic Republic of the Congo,COD,1990,754194.0,180,B R,country,False,,,42.0
+   Democratic Republic of the Congo,COD,1995,1816963.0,180,B R,country,False,1062769.0,140.91,19.0
+   Democratic Republic of the Congo,COD,2000,744387.0,180,B R,country,False,-1072576.0,-59.03,46.0
+   Democratic Republic of the Congo,COD,2005,623009.0,180,B R,country,False,-121378.0,-16.31,57.0
+   Democratic Republic of the Congo,COD,2010,589882.0,180,B R,country,False,-33127.0,-5.32,60.0
+   Democratic Republic of the Congo,COD,2015,810018.0,180,B R,country,False,220136.0,37.32,55.0
+   Democratic Republic of the Congo,COD,2020,952871.0,180,B R,country,False,142853.0,17.64,58.0
+   Congo,COG,1990,129391.0,178,B R,country,False,,,104.0
+   Congo,COG,1995,191635.0,178,B R,country,False,62244.0,48.11,96.0
+   Congo,COG,2000,305880.0,178,B R,country,False,114245.0,59.62,77.0
+   Congo,COG,2005,318724.0,178,B R,country,False,12844.0,4.2,78.0
+   Congo,COG,2010,425173.0,178,B R,country,False,106449.0,33.4,69.0
+   Congo,COG,2015,390142.0,178,B R,country,False,-35031.0,-8.24,80.0
+   Congo,COG,2020,387606.0,178,B R,country,False,-2536.0,-0.65,89.0
+   Cook Islands*,COK,1990,2587.0,184,B R,territory,False,,,216.0
+   Cook Islands*,COK,1995,2686.0,184,B R,territory,False,99.0,3.83,217.0
+   Cook Islands*,COK,2000,2785.0,184,B R,territory,False,99.0,3.69,217.0
+   Cook Islands*,COK,2005,3277.0,184,B R,territory,False,492.0,17.67,216.0
+   Cook Islands*,COK,2010,3769.0,184,B R,territory,False,492.0,15.01,218.0
+   Cook Islands*,COK,2015,4168.0,184,B R,territory,False,399.0,10.59,217.0
+   Cook Islands*,COK,2020,4579.0,184,B R,territory,False,411.0,9.86,215.0
+   Colombia,COL,1990,104277.0,170,B,country,False,,,116.0
+   Colombia,COL,1995,106943.0,170,B,country,False,2666.0,2.56,118.0
+   Colombia,COL,2000,109609.0,170,B,country,False,2666.0,2.49,120.0
+   Colombia,COL,2005,106523.0,170,B,country,False,-3086.0,-2.82,124.0
+   Colombia,COL,2010,130309.0,170,B,country,False,23786.0,22.33,117.0
+   Colombia,COL,2015,159407.0,170,B,country,False,29098.0,22.33,118.0
+   Colombia,COL,2020,1905393.0,170,B,country,False,1745986.0,1095.3,38.0
+   Comoros,COM,1990,14079.0,174,B,country,False,,,181.0
+   Comoros,COM,1995,13939.0,174,B,country,False,-140.0,-0.99,184.0
+   Comoros,COM,2000,13799.0,174,B,country,False,-140.0,-1.0,188.0
+   Comoros,COM,2005,13209.0,174,B,country,False,-590.0,-4.28,189.0
+   Comoros,COM,2010,12618.0,174,B,country,False,-591.0,-4.47,197.0
+   Comoros,COM,2015,12555.0,174,B,country,False,-63.0,-0.5,199.0
+   Comoros,COM,2020,12496.0,174,B,country,False,-59.0,-0.47,200.0
+   Cabo Verde,CPV,1990,8931.0,132,B R,country,False,,,191.0
+   Cabo Verde,CPV,1995,9979.0,132,B R,country,False,1048.0,11.73,191.0
+   Cabo Verde,CPV,2000,11027.0,132,B R,country,False,1048.0,10.5,192.0
+   Cabo Verde,CPV,2005,12700.0,132,B R,country,False,1673.0,15.17,192.0
+   Cabo Verde,CPV,2010,14373.0,132,B R,country,False,1673.0,13.17,195.0
+   Cabo Verde,CPV,2015,14924.0,132,B R,country,False,551.0,3.83,196.0
+   Cabo Verde,CPV,2020,15788.0,132,B R,country,False,864.0,5.79,196.0
+   Costa Rica,CRI,1990,417628.0,188,B R,country,False,,,66.0
+   Costa Rica,CRI,1995,364287.0,188,B R,country,False,-53341.0,-12.77,69.0
+   Costa Rica,CRI,2000,310946.0,188,B R,country,False,-53341.0,-14.64,76.0
+   Costa Rica,CRI,2005,358398.0,188,B R,country,False,47452.0,15.26,74.0
+   Costa Rica,CRI,2010,405779.0,188,B R,country,False,47381.0,13.22,71.0
+   Costa Rica,CRI,2015,411697.0,188,B R,country,False,5918.0,1.46,78.0
+   Costa Rica,CRI,2020,520729.0,188,B R,country,False,109032.0,26.48,79.0
+   Cuba,CUB,1990,34555.0,192,B,country,False,,,156.0
+   Cuba,CUB,1995,26187.0,192,B,country,False,-8368.0,-24.22,169.0
+   Cuba,CUB,2000,18545.0,192,B,country,False,-7642.0,-29.18,181.0
+   Cuba,CUB,2005,11693.0,192,B,country,False,-6852.0,-36.95,194.0
+   Cuba,CUB,2010,7373.0,192,B,country,False,-4320.0,-36.95,205.0
+   Cuba,CUB,2015,4649.0,192,B,country,False,-2724.0,-36.95,214.0
+   Cuba,CUB,2020,3024.0,192,B,country,False,-1625.0,-34.95,221.0
+   Curaçao*,CUW,1990,,531,B R,territory,False,,,
+   Curaçao*,CUW,1995,,531,B R,territory,False,,,
+   Curaçao*,CUW,2000,,531,B R,territory,False,,,
+   Curaçao*,CUW,2005,,531,B R,territory,False,,,
+   Curaçao*,CUW,2010,34630.0,531,B R,territory,False,,,168.0
+   Curaçao*,CUW,2015,37611.0,531,B R,territory,False,2981.0,8.61,172.0
+   Curaçao*,CUW,2020,57210.0,531,B R,territory,False,19599.0,52.11,158.0
+   Cayman Islands*,CYM,1990,9315.0,136,C R,territory,False,,,188.0
+   Cayman Islands*,CYM,1995,12666.0,136,C R,territory,False,3351.0,35.97,188.0
+   Cayman Islands*,CYM,2000,19176.0,136,C R,territory,False,6510.0,51.4,180.0
+   Cayman Islands*,CYM,2005,20679.0,136,C R,territory,False,1503.0,7.84,180.0
+   Cayman Islands*,CYM,2010,24062.0,136,C R,territory,False,3383.0,16.36,182.0
+   Cayman Islands*,CYM,2015,26193.0,136,C R,territory,False,2131.0,8.86,182.0
+   Cayman Islands*,CYM,2020,29242.0,136,C R,territory,False,3049.0,11.64,181.0
+   Cyprus*,CYP,1990,43805.0,196,B,country,False,,,145.0
+   Cyprus*,CYP,1995,61941.0,196,B,country,False,18136.0,41.4,140.0
+   Cyprus*,CYP,2000,80076.0,196,B,country,False,18135.0,29.28,132.0
+   Cyprus*,CYP,2005,122849.0,196,B,country,False,42773.0,53.42,118.0
+   Cyprus*,CYP,2010,188472.0,196,B,country,False,65623.0,53.42,107.0
+   Cyprus*,CYP,2015,176693.0,196,B,country,False,-11779.0,-6.25,116.0
+   Cyprus*,CYP,2020,190366.0,196,B,country,False,13673.0,7.74,116.0
+   Czechia,CZE,1990,110394.0,203,C,country,False,,,114.0
+   Czechia,CZE,1995,165592.0,203,C,country,False,55198.0,50.0,103.0
+   Czechia,CZE,2000,220789.0,203,C,country,False,55197.0,33.33,92.0
+   Czechia,CZE,2005,322540.0,203,C,country,False,101751.0,46.09,77.0
+   Czechia,CZE,2010,398493.0,203,C,country,False,75953.0,23.55,72.0
+   Czechia,CZE,2015,416454.0,203,C,country,False,17961.0,4.51,76.0
+   Czechia,CZE,2020,540921.0,203,C,country,False,124467.0,29.89,77.0
+   Germany,DEU,1990,5936181.0,276,B,country,False,,,7.0
+   Germany,DEU,1995,7464406.0,276,B,country,False,1528225.0,25.74,4.0
+   Germany,DEU,2000,8992631.0,276,B,country,False,1528225.0,20.47,4.0
+   Germany,DEU,2005,9402447.0,276,B,country,False,409816.0,4.56,4.0
+   Germany,DEU,2010,9812263.0,276,B,country,False,409816.0,4.36,4.0
+   Germany,DEU,2015,10220418.0,276,B,country,False,408155.0,4.16,5.0
+   Germany,DEU,2020,15762457.0,276,B,country,False,5542039.0,54.23,2.0
+   Djibouti,DJI,1990,122221.0,262,B R,country,False,,,107.0
+   Djibouti,DJI,1995,99774.0,262,B R,country,False,-22447.0,-18.37,121.0
+   Djibouti,DJI,2000,100507.0,262,B R,country,False,733.0,0.73,123.0
+   Djibouti,DJI,2005,92110.0,262,B R,country,False,-8397.0,-8.35,127.0
+   Djibouti,DJI,2010,102307.0,262,B R,country,False,10197.0,11.07,126.0
+   Djibouti,DJI,2015,112351.0,262,B R,country,False,10044.0,9.82,128.0
+   Djibouti,DJI,2020,119738.0,262,B R,country,False,7387.0,6.57,128.0
+   Dominica,DMA,1990,2519.0,212,B,country,False,,,218.0
+   Dominica,DMA,1995,3121.0,212,B,country,False,602.0,23.9,214.0
+   Dominica,DMA,2000,3723.0,212,B,country,False,602.0,19.29,212.0
+   Dominica,DMA,2005,4744.0,212,B,country,False,1021.0,27.42,208.0
+   Dominica,DMA,2010,8110.0,212,B,country,False,3366.0,70.95,204.0
+   Dominica,DMA,2015,8093.0,212,B,country,False,-17.0,-0.21,205.0
+   Dominica,DMA,2020,8284.0,212,B,country,False,191.0,2.36,205.0
+   Denmark*,DNK,1990,235189.0,208,B,country,False,,,89.0
+   Denmark*,DNK,1995,303108.0,208,B,country,False,67919.0,28.88,77.0
+   Denmark*,DNK,2000,371026.0,208,B,country,False,67918.0,22.41,67.0
+   Denmark*,DNK,2005,440383.0,208,B,country,False,69357.0,18.69,66.0
+   Denmark*,DNK,2010,500772.0,208,B,country,False,60389.0,13.71,65.0
+   Denmark*,DNK,2015,595876.0,208,B,country,False,95104.0,18.99,67.0
+   Denmark*,DNK,2020,717574.0,208,B,country,False,121698.0,20.42,69.0
+   Dominican Republic,DOM,1990,291151.0,214,B R,country,False,,,81.0
+   Dominican Republic,DOM,1995,323381.0,214,B R,country,False,32230.0,11.07,74.0
+   Dominican Republic,DOM,2000,355611.0,214,B R,country,False,32230.0,9.97,69.0
+   Dominican Republic,DOM,2005,375417.0,214,B R,country,False,19806.0,5.57,71.0
+   Dominican Republic,DOM,2010,395479.0,214,B R,country,False,20062.0,5.34,74.0
+   Dominican Republic,DOM,2015,549289.0,214,B R,country,False,153810.0,38.89,69.0
+   Dominican Republic,DOM,2020,603794.0,214,B R,country,False,54505.0,9.92,72.0
+   Algeria,DZA,1990,273954.0,12,B R,country,False,,,84.0
+   Algeria,DZA,1995,262032.0,12,B R,country,False,-11922.0,-4.35,82.0
+   Algeria,DZA,2000,250110.0,12,B R,country,False,-11922.0,-4.55,83.0
+   Algeria,DZA,2005,197728.0,12,B R,country,False,-52382.0,-20.94,103.0
+   Algeria,DZA,2010,217268.0,12,B R,country,False,19540.0,9.88,103.0
+   Algeria,DZA,2015,239473.0,12,B R,country,False,22205.0,10.22,104.0
+   Algeria,DZA,2020,250378.0,12,B R,country,False,10905.0,4.55,105.0
+   Ecuador,ECU,1990,78663.0,218,B R,country,False,,,123.0
+   Ecuador,ECU,1995,115093.0,218,B R,country,False,36430.0,46.31,115.0
+   Ecuador,ECU,2000,151523.0,218,B R,country,False,36430.0,31.65,106.0
+   Ecuador,ECU,2005,189893.0,218,B R,country,False,38370.0,25.32,106.0
+   Ecuador,ECU,2010,375253.0,218,B R,country,False,185360.0,97.61,76.0
+   Ecuador,ECU,2015,387513.0,218,B R,country,False,12260.0,3.27,81.0
+   Ecuador,ECU,2020,784787.0,218,B R,country,False,397274.0,102.52,67.0
+   Egypt,EGY,1990,173833.0,818,B R,country,False,,,96.0
+   Egypt,EGY,1995,166955.0,818,B R,country,False,-6878.0,-3.96,102.0
+   Egypt,EGY,2000,184774.0,818,B R,country,False,17819.0,10.67,101.0
+   Egypt,EGY,2005,285006.0,818,B R,country,False,100232.0,54.25,83.0
+   Egypt,EGY,2010,310017.0,818,B R,country,False,25011.0,8.78,82.0
+   Egypt,EGY,2015,353641.0,818,B R,country,False,43624.0,14.07,88.0
+   Egypt,EGY,2020,543937.0,818,B R,country,False,190296.0,53.81,76.0
+   Eritrea,ERI,1990,11848.0,232,I R,country,False,,,185.0
+   Eritrea,ERI,1995,12400.0,232,I R,country,False,552.0,4.66,189.0
+   Eritrea,ERI,2000,12952.0,232,I R,country,False,552.0,4.45,190.0
+   Eritrea,ERI,2005,15905.0,232,I R,country,False,2953.0,22.8,186.0
+   Eritrea,ERI,2010,15813.0,232,I R,country,False,-92.0,-0.58,194.0
+   Eritrea,ERI,2015,15941.0,232,I R,country,False,128.0,0.81,195.0
+   Eritrea,ERI,2020,13934.0,232,I R,country,False,-2007.0,-12.59,198.0
+   Western Sahara,ESH,1990,2688.0,732,I,territory,False,,,215.0
+   Western Sahara,ESH,1995,2989.0,732,I,territory,False,301.0,11.2,215.0
+   Western Sahara,ESH,2000,3289.0,732,I,territory,False,300.0,10.04,215.0
+   Western Sahara,ESH,2005,3891.0,732,I,territory,False,602.0,18.3,214.0
+   Western Sahara,ESH,2010,4493.0,732,I,territory,False,602.0,15.47,217.0
+   Western Sahara,ESH,2015,5179.0,732,I,territory,False,686.0,15.27,212.0
+   Western Sahara,ESH,2020,5424.0,732,I,territory,False,245.0,4.73,212.0
+   Spain*,ESP,1990,821605.0,724,B,country,False,,,38.0
+   Spain*,ESP,1995,1020067.0,724,B,country,False,198462.0,24.16,33.0
+   Spain*,ESP,2000,1657285.0,724,B,country,False,637218.0,62.47,23.0
+   Spain*,ESP,2005,4107226.0,724,B,country,False,2449941.0,147.83,12.0
+   Spain*,ESP,2010,6280062.0,724,B,country,False,2172836.0,52.9,10.0
+   Spain*,ESP,2015,5891208.0,724,B,country,False,-388854.0,-6.19,11.0
+   Spain*,ESP,2020,6842202.0,724,B,country,False,950994.0,16.14,11.0
+   Estonia,EST,1990,381997.0,233,B,country,False,,,68.0
+   Estonia,EST,1995,315755.0,233,B,country,False,-66242.0,-17.34,76.0
+   Estonia,EST,2000,249512.0,233,B,country,False,-66243.0,-20.98,84.0
+   Estonia,EST,2005,233701.0,233,B,country,False,-15811.0,-6.34,96.0
+   Estonia,EST,2010,217890.0,233,B,country,False,-15811.0,-6.77,101.0
+   Estonia,EST,2015,194664.0,233,B,country,False,-23226.0,-10.66,111.0
+   Estonia,EST,2020,199277.0,233,B,country,False,4613.0,2.37,111.0
+   Ethiopia,ETH,1990,1155390.0,231,B R,country,False,,,30.0
+   Ethiopia,ETH,1995,806904.0,231,B R,country,False,-348486.0,-30.16,47.0
+   Ethiopia,ETH,2000,611384.0,231,B R,country,False,-195520.0,-24.23,55.0
+   Ethiopia,ETH,2005,514451.0,231,B R,country,False,-96933.0,-15.85,63.0
+   Ethiopia,ETH,2010,568748.0,231,B R,country,False,54297.0,10.55,63.0
+   Ethiopia,ETH,2015,1161642.0,231,B R,country,False,592894.0,104.25,45.0
+   Ethiopia,ETH,2020,1085517.0,231,B R,country,False,-76125.0,-6.55,52.0
+   Finland*,FIN,1990,63255.0,246,B,country,False,,,134.0
+   Finland*,FIN,1995,99729.0,246,B,country,False,36474.0,57.66,122.0
+   Finland*,FIN,2000,136203.0,246,B,country,False,36474.0,36.57,111.0
+   Finland*,FIN,2005,192169.0,246,B,country,False,55966.0,41.09,105.0
+   Finland*,FIN,2010,228481.0,246,B,country,False,36312.0,18.9,100.0
+   Finland*,FIN,2015,314856.0,246,B,country,False,86375.0,37.8,92.0
+   Finland*,FIN,2020,386052.0,246,B,country,False,71196.0,22.61,91.0
+   Fiji,FJI,1990,13283.0,242,B R,country,False,,,182.0
+   Fiji,FJI,1995,13001.0,242,B R,country,False,-282.0,-2.12,186.0
+   Fiji,FJI,2000,12719.0,242,B R,country,False,-282.0,-2.17,191.0
+   Fiji,FJI,2005,12434.0,242,B R,country,False,-285.0,-2.24,193.0
+   Fiji,FJI,2010,13357.0,242,B R,country,False,923.0,7.42,196.0
+   Fiji,FJI,2015,13751.0,242,B R,country,False,394.0,2.95,197.0
+   Fiji,FJI,2020,14087.0,242,B R,country,False,336.0,2.44,197.0
+   Falkland Islands (Malvinas)*,FLK,1990,855.0,238,B,territory,False,,,225.0
+   Falkland Islands (Malvinas)*,FLK,1995,868.0,238,B,territory,False,13.0,1.52,225.0
+   Falkland Islands (Malvinas)*,FLK,2000,1067.0,238,B,territory,False,199.0,22.93,225.0
+   Falkland Islands (Malvinas)*,FLK,2005,1166.0,238,B,territory,False,99.0,9.28,225.0
+   Falkland Islands (Malvinas)*,FLK,2010,1436.0,238,B,territory,False,270.0,23.16,226.0
+   Falkland Islands (Malvinas)*,FLK,2015,1571.0,238,B,territory,False,135.0,9.4,227.0
+   Falkland Islands (Malvinas)*,FLK,2020,1957.0,238,B,territory,False,386.0,24.57,227.0
+   France*,FRA,1990,5897267.0,250,B,country,False,,,8.0
+   France*,FRA,1995,6087993.0,250,B,country,False,190726.0,3.23,7.0
+   France*,FRA,2000,6278718.0,250,B,country,False,190725.0,3.13,6.0
+   France*,FRA,2005,6737600.0,250,B,country,False,458882.0,7.31,5.0
+   France*,FRA,2010,7309986.0,250,B,country,False,572386.0,8.5,7.0
+   France*,FRA,2015,7878338.0,250,B,country,False,568352.0,7.78,8.0
+   France*,FRA,2020,8524876.0,250,B,country,False,646538.0,8.21,8.0
+   Faroe Islands*,FRO,1990,4285.0,234,B,territory,False,,,200.0
+   Faroe Islands*,FRO,1995,2900.0,234,B,territory,False,-1385.0,-32.32,216.0
+   Faroe Islands*,FRO,2000,3593.0,234,B,territory,False,693.0,23.9,214.0
+   Faroe Islands*,FRO,2005,4583.0,234,B,territory,False,990.0,27.55,210.0
+   Faroe Islands*,FRO,2010,5096.0,234,B,territory,False,513.0,11.19,213.0
+   Faroe Islands*,FRO,2015,5485.0,234,B,territory,False,389.0,7.63,209.0
+   Faroe Islands*,FRO,2020,6812.0,234,B,territory,False,1327.0,24.19,208.0
+   Micronesia (Fed. States of),FSM,1990,3685.0,583,B,country,False,,,206.0
+   Micronesia (Fed. States of),FSM,1995,3342.0,583,B,country,False,-343.0,-9.31,211.0
+   Micronesia (Fed. States of),FSM,2000,3116.0,583,B,country,False,-226.0,-6.76,216.0
+   Micronesia (Fed. States of),FSM,2005,2905.0,583,B,country,False,-211.0,-6.77,218.0
+   Micronesia (Fed. States of),FSM,2010,2806.0,583,B,country,False,-99.0,-3.41,222.0
+   Micronesia (Fed. States of),FSM,2015,2756.0,583,B,country,False,-50.0,-1.78,222.0
+   Micronesia (Fed. States of),FSM,2020,2832.0,583,B,country,False,76.0,2.76,222.0
+   Gabon,GAB,1990,128188.0,266,C R,country,False,,,105.0
+   Gabon,GAB,1995,171427.0,266,C R,country,False,43239.0,33.73,100.0
+   Gabon,GAB,2000,214431.0,266,C R,country,False,43004.0,25.09,95.0
+   Gabon,GAB,2005,233824.0,266,C R,country,False,19393.0,9.04,95.0
+   Gabon,GAB,2010,270829.0,266,C R,country,False,37005.0,15.83,93.0
+   Gabon,GAB,2015,378686.0,266,C R,country,False,107857.0,39.82,84.0
+   Gabon,GAB,2020,416651.0,266,C R,country,False,37965.0,10.03,85.0
+   United Kingdom*,GBR,1990,3650286.0,826,B,country,False,,,13.0
+   United Kingdom*,GBR,1995,4155293.0,826,B,country,False,505007.0,13.83,10.0
+   United Kingdom*,GBR,2000,4730165.0,826,B,country,False,574872.0,13.83,10.0
+   United Kingdom*,GBR,2005,5926156.0,826,B,country,False,1195991.0,25.28,9.0
+   United Kingdom*,GBR,2010,7119664.0,826,B,country,False,1193508.0,20.14,8.0
+   United Kingdom*,GBR,2015,8406996.0,826,B,country,False,1287332.0,18.08,6.0
+   United Kingdom*,GBR,2020,9359587.0,826,B,country,False,952591.0,11.33,6.0
+   Georgia*,GEO,1990,304470.0,268,B R,country,False,,,78.0
+   Georgia*,GEO,1995,152235.0,268,B R,country,False,-152235.0,-50.0,105.0
+   Georgia*,GEO,2000,76117.0,268,B R,country,False,-76118.0,-50.0,135.0
+   Georgia*,GEO,2005,71296.0,268,B R,country,False,-4821.0,-6.33,137.0
+   Georgia*,GEO,2010,73078.0,268,B R,country,False,1782.0,2.5,143.0
+   Georgia*,GEO,2015,76685.0,268,B R,country,False,3607.0,4.94,141.0
+   Georgia*,GEO,2020,79368.0,268,B R,country,False,2683.0,3.5,144.0
+   Ghana,GHA,1990,164851.0,288,B R,country,False,,,98.0
+   Ghana,GHA,1995,252879.0,288,B R,country,False,88028.0,53.4,84.0
+   Ghana,GHA,2000,191601.0,288,B R,country,False,-61278.0,-24.23,99.0
+   Ghana,GHA,2005,309932.0,288,B R,country,False,118331.0,61.76,79.0
+   Ghana,GHA,2010,337766.0,288,B R,country,False,27834.0,8.98,78.0
+   Ghana,GHA,2015,414744.0,288,B R,country,False,76978.0,22.79,77.0
+   Ghana,GHA,2020,476412.0,288,B R,country,False,61668.0,14.87,83.0
+   Gibraltar*,GIB,1990,8709.0,292,B,territory,False,,,192.0
+   Gibraltar*,GIB,1995,8381.0,292,B,territory,False,-328.0,-3.77,193.0
+   Gibraltar*,GIB,2000,8054.0,292,B,territory,False,-327.0,-3.9,198.0
+   Gibraltar*,GIB,2005,9211.0,292,B,territory,False,1157.0,14.37,199.0
+   Gibraltar*,GIB,2010,10369.0,292,B,territory,False,1158.0,12.57,200.0
+   Gibraltar*,GIB,2015,11065.0,292,B,territory,False,696.0,6.71,200.0
+   Gibraltar*,GIB,2020,11190.0,292,B,territory,False,125.0,1.13,202.0
+   Guinea,GIN,1990,403621.0,324,C B R,country,False,,,67.0
+   Guinea,GIN,1995,774505.0,324,C B R,country,False,370884.0,91.89,48.0
+   Guinea,GIN,2000,560075.0,324,C B R,country,False,-214430.0,-27.69,59.0
+   Guinea,GIN,2005,233419.0,324,C B R,country,False,-326656.0,-58.32,97.0
+   Guinea,GIN,2010,178762.0,324,C B R,country,False,-54657.0,-23.42,109.0
+   Guinea,GIN,2015,126657.0,324,C B R,country,False,-52105.0,-29.15,126.0
+   Guinea,GIN,2020,121437.0,324,C B R,country,False,-5220.0,-4.12,127.0
+   Guadeloupe*,GLP,1990,65944.0,312,B,territory,False,,,132.0
+   Guadeloupe*,GLP,1995,74566.0,312,B,territory,False,8622.0,13.07,132.0
+   Guadeloupe*,GLP,2000,83188.0,312,B,territory,False,8622.0,11.56,130.0
+   Guadeloupe*,GLP,2005,89065.0,312,B,territory,False,5877.0,7.06,128.0
+   Guadeloupe*,GLP,2010,94942.0,312,B,territory,False,5877.0,6.6,131.0
+   Guadeloupe*,GLP,2015,90956.0,312,B,territory,False,-3986.0,-4.2,136.0
+   Guadeloupe*,GLP,2020,90206.0,312,B,territory,False,-750.0,-0.82,138.0
+   Gambia,GMB,1990,118123.0,270,B R,country,False,,,110.0
+   Gambia,GMB,1995,150890.0,270,B R,country,False,32767.0,27.74,106.0
+   Gambia,GMB,2000,182514.0,270,B R,country,False,31624.0,20.96,102.0
+   Gambia,GMB,2005,181839.0,270,B R,country,False,-675.0,-0.37,107.0
+   Gambia,GMB,2010,185837.0,270,B R,country,False,3998.0,2.2,108.0
+   Gambia,GMB,2015,192540.0,270,B R,country,False,6703.0,3.61,112.0
+   Gambia,GMB,2020,215659.0,270,B R,country,False,23119.0,12.01,110.0
+   Guinea-Bissau,GNB,1990,15368.0,624,B R,country,False,,,177.0
+   Guinea-Bissau,GNB,1995,27961.0,624,B R,country,False,12593.0,81.94,165.0
+   Guinea-Bissau,GNB,2000,20450.0,624,B R,country,False,-7511.0,-26.86,178.0
+   Guinea-Bissau,GNB,2005,20902.0,624,B R,country,False,452.0,2.21,178.0
+   Guinea-Bissau,GNB,2010,21391.0,624,B R,country,False,489.0,2.34,186.0
+   Guinea-Bissau,GNB,2015,22333.0,624,B R,country,False,942.0,4.4,189.0
+   Guinea-Bissau,GNB,2020,17945.0,624,B R,country,False,-4388.0,-19.65,195.0
+   Equatorial Guinea,GNQ,1990,2740.0,226,C,country,False,,,214.0
+   Equatorial Guinea,GNQ,1995,3629.0,226,C,country,False,889.0,32.45,210.0
+   Equatorial Guinea,GNQ,2000,4517.0,226,C,country,False,888.0,24.47,206.0
+   Equatorial Guinea,GNQ,2005,6588.0,226,C,country,False,2071.0,45.85,203.0
+   Equatorial Guinea,GNQ,2010,8658.0,226,C,country,False,2070.0,31.42,202.0
+   Equatorial Guinea,GNQ,2015,209611.0,226,C,country,False,200953.0,2321.01,107.0
+   Equatorial Guinea,GNQ,2020,230618.0,226,C,country,False,21007.0,10.02,108.0
+   Greece,GRC,1990,618139.0,300,B,country,False,,,51.0
+   Greece,GRC,1995,857850.0,300,B,country,False,239711.0,38.78,44.0
+   Greece,GRC,2000,1111665.0,300,B,country,False,253815.0,29.59,35.0
+   Greece,GRC,2005,1190707.0,300,B,country,False,79042.0,7.11,35.0
+   Greece,GRC,2010,1321149.0,300,B,country,False,130442.0,10.96,39.0
+   Greece,GRC,2015,1242924.0,300,B,country,False,-78225.0,-5.92,42.0
+   Greece,GRC,2020,1340456.0,300,B,country,False,97532.0,7.85,46.0
+   Grenada,GRD,1990,4263.0,308,B,country,False,,,201.0
+   Grenada,GRD,1995,5544.0,308,B,country,False,1281.0,30.05,201.0
+   Grenada,GRD,2000,6825.0,308,B,country,False,1281.0,23.11,199.0
+   Grenada,GRD,2005,6902.0,308,B,country,False,77.0,1.13,201.0
+   Grenada,GRD,2010,6980.0,308,B,country,False,78.0,1.13,207.0
+   Grenada,GRD,2015,7057.0,308,B,country,False,77.0,1.1,207.0
+   Grenada,GRD,2020,7213.0,308,B,country,False,156.0,2.21,207.0
+   Greenland*,GRL,1990,9282.0,304,B,territory,False,,,189.0
+   Greenland*,GRL,1995,7121.0,304,B,territory,False,-2161.0,-23.28,198.0
+   Greenland*,GRL,2000,6601.0,304,B,territory,False,-520.0,-7.3,200.0
+   Greenland*,GRL,2005,6556.0,304,B,territory,False,-45.0,-0.68,204.0
+   Greenland*,GRL,2010,6091.0,304,B,territory,False,-465.0,-7.09,209.0
+   Greenland*,GRL,2015,6009.0,304,B,territory,False,-82.0,-1.35,208.0
+   Greenland*,GRL,2020,5899.0,304,B,territory,False,-110.0,-1.83,209.0
+   Guatemala,GTM,1990,264257.0,320,B R,country,False,,,88.0
+   Guatemala,GTM,1995,156188.0,320,B R,country,False,-108069.0,-40.9,104.0
+   Guatemala,GTM,2000,48119.0,320,B R,country,False,-108069.0,-69.19,147.0
+   Guatemala,GTM,2005,57214.0,320,B R,country,False,9095.0,18.9,144.0
+   Guatemala,GTM,2010,66386.0,320,B R,country,False,9172.0,16.03,146.0
+   Guatemala,GTM,2015,74852.0,320,B R,country,False,8466.0,12.75,143.0
+   Guatemala,GTM,2020,84311.0,320,B R,country,False,9459.0,12.64,141.0
+   French Guiana*,GUF,1990,63612.0,254,B R,territory,False,,,133.0
+   French Guiana*,GUF,1995,70131.0,254,B R,territory,False,6519.0,10.25,137.0
+   French Guiana*,GUF,2000,76649.0,254,B R,territory,False,6518.0,9.29,134.0
+   French Guiana*,GUF,2005,86468.0,254,B R,territory,False,9819.0,12.81,131.0
+   French Guiana*,GUF,2010,96288.0,254,B R,territory,False,9820.0,11.36,130.0
+   French Guiana*,GUF,2015,106108.0,254,B R,territory,False,9820.0,10.2,131.0
+   French Guiana*,GUF,2020,119249.0,254,B R,territory,False,13141.0,12.38,129.0
+   Guam*,GUM,1990,69755.0,316,B,territory,False,,,129.0
+   Guam*,GUM,1995,71912.0,316,B,territory,False,2157.0,3.09,133.0
+   Guam*,GUM,2000,74070.0,316,B,territory,False,2158.0,3.0,138.0
+   Guam*,GUM,2005,74743.0,316,B,territory,False,673.0,0.91,136.0
+   Guam*,GUM,2010,75416.0,316,B,territory,False,673.0,0.9,142.0
+   Guam*,GUM,2015,76089.0,316,B,territory,False,673.0,0.89,142.0
+   Guam*,GUM,2020,80472.0,316,B,territory,False,4383.0,5.76,143.0
+   Guyana,GUY,1990,4095.0,328,B R,country,False,,,203.0
+   Guyana,GUY,1995,6352.0,328,B R,country,False,2257.0,55.12,200.0
+   Guyana,GUY,2000,8610.0,328,B R,country,False,2258.0,35.55,196.0
+   Guyana,GUY,2005,10868.0,328,B R,country,False,2258.0,26.23,197.0
+   Guyana,GUY,2010,8182.0,328,B R,country,False,-2686.0,-24.71,203.0
+   Guyana,GUY,2015,8661.0,328,B R,country,False,479.0,5.85,203.0
+   Guyana,GUY,2020,31169.0,328,B R,country,False,22508.0,259.88,177.0
+"   China, Hong Kong SAR*",HKG,1990,2218473.0,344,B R,territory,False,,,16.0
+"   China, Hong Kong SAR*",HKG,1995,2443798.0,344,B R,territory,False,225325.0,10.16,16.0
+"   China, Hong Kong SAR*",HKG,2000,2669122.0,344,B R,territory,False,225324.0,9.22,15.0
+"   China, Hong Kong SAR*",HKG,2005,2721235.0,344,B R,territory,False,52113.0,1.95,18.0
+"   China, Hong Kong SAR*",HKG,2010,2779950.0,344,B R,territory,False,58715.0,2.16,20.0
+"   China, Hong Kong SAR*",HKG,2015,2841113.0,344,B R,territory,False,61163.0,2.2,24.0
+"   China, Hong Kong SAR*",HKG,2020,2962492.0,344,B R,territory,False,121379.0,4.27,23.0
+   Honduras,HND,1990,270423.0,340,B R,country,False,,,85.0
+   Honduras,HND,1995,149442.0,340,B R,country,False,-120981.0,-44.74,107.0
+   Honduras,HND,2000,28461.0,340,B R,country,False,-120981.0,-80.96,166.0
+   Honduras,HND,2005,27934.0,340,B R,country,False,-527.0,-1.85,170.0
+   Honduras,HND,2010,27288.0,340,B R,country,False,-646.0,-2.31,177.0
+   Honduras,HND,2015,38330.0,340,B R,country,False,11042.0,40.46,171.0
+   Honduras,HND,2020,39195.0,340,B R,country,False,865.0,2.26,172.0
+   Croatia,HRV,1990,475438.0,191,B,country,False,,,59.0
+   Croatia,HRV,1995,674085.0,191,B,country,False,198647.0,41.78,52.0
+   Croatia,HRV,2000,585298.0,191,B,country,False,-88787.0,-13.17,56.0
+   Croatia,HRV,2005,579273.0,191,B,country,False,-6025.0,-1.03,61.0
+   Croatia,HRV,2010,573248.0,191,B,country,False,-6025.0,-1.04,62.0
+   Croatia,HRV,2015,561093.0,191,B,country,False,-12155.0,-2.12,68.0
+   Croatia,HRV,2020,528056.0,191,B,country,False,-33037.0,-5.89,78.0
+   Haiti,HTI,1990,19084.0,332,B R,country,False,,,174.0
+   Haiti,HTI,1995,18129.0,332,B R,country,False,-955.0,-5.0,179.0
+   Haiti,HTI,2000,17222.0,332,B R,country,False,-907.0,-5.0,183.0
+   Haiti,HTI,2005,16360.0,332,B R,country,False,-862.0,-5.01,185.0
+   Haiti,HTI,2010,17182.0,332,B R,country,False,822.0,5.02,191.0
+   Haiti,HTI,2015,18047.0,332,B R,country,False,865.0,5.03,194.0
+   Haiti,HTI,2020,18884.0,332,B R,country,False,837.0,4.64,194.0
+   Hungary,HUN,1990,347510.0,348,B,country,False,,,73.0
+   Hungary,HUN,1995,322234.0,348,B,country,False,-25276.0,-7.27,75.0
+   Hungary,HUN,2000,296957.0,348,B,country,False,-25277.0,-7.84,79.0
+   Hungary,HUN,2005,366787.0,348,B,country,False,69830.0,23.52,72.0
+   Hungary,HUN,2010,436616.0,348,B,country,False,69829.0,19.04,67.0
+   Hungary,HUN,2015,475508.0,348,B,country,False,38892.0,8.91,73.0
+   Hungary,HUN,2020,584567.0,348,B,country,False,109059.0,22.94,73.0
+   Indonesia,IDN,1990,465612.0,360,B R,country,False,,,60.0
+   Indonesia,IDN,1995,378960.0,360,B R,country,False,-86652.0,-18.61,67.0
+   Indonesia,IDN,2000,292307.0,360,B R,country,False,-86653.0,-22.87,81.0
+   Indonesia,IDN,2005,289310.0,360,B R,country,False,-2997.0,-1.03,82.0
+   Indonesia,IDN,2010,307487.0,360,B R,country,False,18177.0,6.28,85.0
+   Indonesia,IDN,2015,338124.0,360,B R,country,False,30637.0,9.96,90.0
+   Indonesia,IDN,2020,355505.0,360,B R,country,False,17381.0,5.14,93.0
+   Isle of Man*,IMN,1990,34769.0,833,B,territory,False,,,155.0
+   Isle of Man*,IMN,1995,36886.0,833,B,territory,False,2117.0,6.09,155.0
+   Isle of Man*,IMN,2000,39002.0,833,B,territory,False,2116.0,5.74,155.0
+   Isle of Man*,IMN,2005,41475.0,833,B,territory,False,2473.0,6.34,155.0
+   Isle of Man*,IMN,2010,43447.0,833,B,territory,False,1972.0,4.75,160.0
+   Isle of Man*,IMN,2015,42238.0,833,B,territory,False,-1209.0,-2.78,164.0
+   Isle of Man*,IMN,2020,43040.0,833,B,territory,False,802.0,1.9,168.0
+   India,IND,1990,7594801.0,356,B R,country,False,,,4.0
+   India,IND,1995,6952238.0,356,B R,country,False,-642563.0,-8.46,5.0
+   India,IND,2000,6411331.0,356,B R,country,False,-540907.0,-7.78,5.0
+   India,IND,2005,5936740.0,356,B R,country,False,-474591.0,-7.4,8.0
+   India,IND,2010,5574018.0,356,B R,country,False,-362722.0,-6.11,13.0
+   India,IND,2015,5210847.0,356,B R,country,False,-363171.0,-6.52,14.0
+   India,IND,2020,4878704.0,356,B R,country,False,-332143.0,-6.37,16.0
+   Ireland,IRL,1990,227961.0,372,B,country,False,,,90.0
+   Ireland,IRL,1995,226892.0,372,B,country,False,-1069.0,-0.47,89.0
+   Ireland,IRL,2000,350552.0,372,B,country,False,123660.0,54.5,71.0
+   Ireland,IRL,2005,589046.0,372,B,country,False,238494.0,68.03,60.0
+   Ireland,IRL,2010,730542.0,372,B,country,False,141496.0,24.02,53.0
+   Ireland,IRL,2015,759256.0,372,B,country,False,28714.0,3.93,58.0
+   Ireland,IRL,2020,871256.0,372,B,country,False,112000.0,14.75,61.0
+   Iran (Islamic Republic of),IRN,1990,4291601.0,364,C R,country,False,,,11.0
+   Iran (Islamic Republic of),IRN,1995,2937668.0,364,C R,country,False,-1353933.0,-31.55,14.0
+   Iran (Islamic Republic of),IRN,2000,2476469.0,364,C R,country,False,-461199.0,-15.7,16.0
+   Iran (Islamic Republic of),IRN,2005,2552206.0,364,C R,country,False,75737.0,3.06,19.0
+   Iran (Islamic Republic of),IRN,2010,2722397.0,364,C R,country,False,170191.0,6.67,21.0
+   Iran (Islamic Republic of),IRN,2015,2729939.0,364,C R,country,False,7542.0,0.28,25.0
+   Iran (Islamic Republic of),IRN,2020,2797235.0,364,C R,country,False,67296.0,2.47,25.0
+   Iraq,IRQ,1990,83638.0,368,C R,country,False,,,122.0
+   Iraq,IRQ,1995,199460.0,368,C R,country,False,115822.0,138.48,95.0
+   Iraq,IRQ,2000,210525.0,368,C R,country,False,11065.0,5.55,97.0
+   Iraq,IRQ,2005,134863.0,368,C R,country,False,-75662.0,-35.94,114.0
+   Iraq,IRQ,2010,120466.0,368,C R,country,False,-14397.0,-10.68,123.0
+   Iraq,IRQ,2015,359352.0,368,C R,country,False,238886.0,198.3,87.0
+   Iraq,IRQ,2020,365766.0,368,C R,country,False,6414.0,1.78,92.0
+   Iceland,ISL,1990,9584.0,352,B,country,False,,,187.0
+   Iceland,ISL,1995,12738.0,352,B,country,False,3154.0,32.91,187.0
+   Iceland,ISL,2000,15892.0,352,B,country,False,3154.0,24.76,184.0
+   Iceland,ISL,2005,25492.0,352,B,country,False,9600.0,60.41,172.0
+   Iceland,ISL,2010,35091.0,352,B,country,False,9599.0,37.65,167.0
+   Iceland,ISL,2015,39072.0,352,B,country,False,3981.0,11.34,169.0
+   Iceland,ISL,2020,65424.0,352,B,country,False,26352.0,67.44,153.0
+   Israel,ISR,1990,1632704.0,376,B R,country,False,,,20.0
+   Israel,ISR,1995,1792185.0,376,B R,country,False,159481.0,9.77,20.0
+   Israel,ISR,2000,1851309.0,376,B R,country,False,59124.0,3.3,21.0
+   Israel,ISR,2005,1889503.0,376,B R,country,False,38194.0,2.06,25.0
+   Israel,ISR,2010,1956190.0,376,B R,country,False,66687.0,3.53,28.0
+   Israel,ISR,2015,2011727.0,376,B R,country,False,55537.0,2.84,31.0
+   Israel,ISR,2020,1953575.0,376,B R,country,False,-58152.0,-2.89,37.0
+   Italy,ITA,1990,1428219.0,380,B,country,False,,,21.0
+   Italy,ITA,1995,1774954.0,380,B,country,False,346735.0,24.28,21.0
+   Italy,ITA,2000,2121688.0,380,B,country,False,346734.0,19.53,19.0
+   Italy,ITA,2005,3954790.0,380,B,country,False,1833102.0,86.4,13.0
+   Italy,ITA,2010,5787893.0,380,B,country,False,1833103.0,46.35,12.0
+   Italy,ITA,2015,5805328.0,380,B,country,False,17435.0,0.3,12.0
+   Italy,ITA,2020,6386998.0,380,B,country,False,581670.0,10.02,12.0
+   Jamaica,JAM,1990,20475.0,388,B R,country,False,,,172.0
+   Jamaica,JAM,1995,22713.0,388,B R,country,False,2238.0,10.93,172.0
+   Jamaica,JAM,2000,24952.0,388,B R,country,False,2239.0,9.86,171.0
+   Jamaica,JAM,2005,24284.0,388,B R,country,False,-668.0,-2.68,175.0
+   Jamaica,JAM,2010,23677.0,388,B R,country,False,-607.0,-2.5,183.0
+   Jamaica,JAM,2015,23165.0,388,B R,country,False,-512.0,-2.16,187.0
+   Jamaica,JAM,2020,23629.0,388,B R,country,False,464.0,2.0,188.0
+   Jordan,JOR,1990,1146349.0,400,C R,country,False,,,31.0
+   Jordan,JOR,1995,1537097.0,400,C R,country,False,390748.0,34.09,23.0
+   Jordan,JOR,2000,1927845.0,400,C R,country,False,390748.0,25.42,20.0
+   Jordan,JOR,2005,2198740.0,400,C R,country,False,270895.0,14.05,21.0
+   Jordan,JOR,2010,2786853.0,400,C R,country,False,588113.0,26.75,19.0
+   Jordan,JOR,2015,3166961.0,400,C R,country,False,380108.0,13.64,22.0
+   Jordan,JOR,2020,3457691.0,400,C R,country,False,290730.0,9.18,20.0
+   Japan,JPN,1990,1075317.0,392,C,country,False,,,34.0
+   Japan,JPN,1995,1362371.0,392,C,country,False,287054.0,26.69,26.0
+   Japan,JPN,2000,1686444.0,392,C,country,False,324073.0,23.79,22.0
+   Japan,JPN,2005,2011555.0,392,C,country,False,325111.0,19.28,23.0
+   Japan,JPN,2010,2134151.0,392,C,country,False,122596.0,6.09,25.0
+   Japan,JPN,2015,2232189.0,392,C,country,False,98038.0,4.59,29.0
+   Japan,JPN,2020,2770996.0,392,C,country,False,538807.0,24.14,26.0
+   Kazakhstan,KAZ,1990,3619200.0,398,B R,country,False,,,14.0
+   Kazakhstan,KAZ,1995,3251968.0,398,B R,country,False,-367232.0,-10.15,13.0
+   Kazakhstan,KAZ,2000,2874194.0,398,B R,country,False,-377774.0,-11.62,14.0
+   Kazakhstan,KAZ,2005,3103027.0,398,B R,country,False,228833.0,7.96,17.0
+   Kazakhstan,KAZ,2010,3334937.0,398,B R,country,False,231910.0,7.47,17.0
+   Kazakhstan,KAZ,2015,3546060.0,398,B R,country,False,211123.0,6.33,17.0
+   Kazakhstan,KAZ,2020,3732073.0,398,B R,country,False,186013.0,5.25,17.0
+   Kenya,KEN,1990,298089.0,404,B R,country,False,,,80.0
+   Kenya,KEN,1995,618745.0,404,B R,country,False,320656.0,107.57,53.0
+   Kenya,KEN,2000,707852.0,404,B R,country,False,89107.0,14.4,48.0
+   Kenya,KEN,2005,773354.0,404,B R,country,False,65502.0,9.25,45.0
+   Kenya,KEN,2010,954925.0,404,B R,country,False,181571.0,23.48,45.0
+   Kenya,KEN,2015,1126886.0,404,B R,country,False,171961.0,18.01,46.0
+   Kenya,KEN,2020,1050147.0,404,B R,country,False,-76739.0,-6.81,55.0
+   Kyrgyzstan,KGZ,1990,623083.0,417,B R,country,False,,,50.0
+   Kyrgyzstan,KGZ,1995,518338.0,417,B R,country,False,-104745.0,-16.81,60.0
+   Kyrgyzstan,KGZ,2000,389824.0,417,B R,country,False,-128514.0,-24.79,66.0
+   Kyrgyzstan,KGZ,2005,309399.0,417,B R,country,False,-80425.0,-20.63,80.0
+   Kyrgyzstan,KGZ,2010,232065.0,417,B R,country,False,-77334.0,-24.99,98.0
+   Kyrgyzstan,KGZ,2015,204382.0,417,B R,country,False,-27683.0,-11.93,108.0
+   Kyrgyzstan,KGZ,2020,199011.0,417,B R,country,False,-5371.0,-2.63,112.0
+   Cambodia,KHM,1990,38375.0,116,B R,country,False,,,152.0
+   Cambodia,KHM,1995,92230.0,116,B R,country,False,53855.0,140.34,126.0
+   Cambodia,KHM,2000,146085.0,116,B R,country,False,53855.0,58.39,107.0
+   Cambodia,KHM,2005,114096.0,116,B R,country,False,-31989.0,-21.9,120.0
+   Cambodia,KHM,2010,82028.0,116,B R,country,False,-32068.0,-28.11,135.0
+   Cambodia,KHM,2015,73962.0,116,B R,country,False,-8066.0,-9.83,144.0
+   Cambodia,KHM,2020,79341.0,116,B R,country,False,5379.0,7.27,145.0
+   Kiribati,KIR,1990,2162.0,296,B,country,False,,,220.0
+   Kiribati,KIR,1995,2223.0,296,B,country,False,61.0,2.82,220.0
+   Kiribati,KIR,2000,2283.0,296,B,country,False,60.0,2.7,220.0
+   Kiribati,KIR,2005,2487.0,296,B,country,False,204.0,8.94,220.0
+   Kiribati,KIR,2010,2868.0,296,B,country,False,381.0,15.32,221.0
+   Kiribati,KIR,2015,2919.0,296,B,country,False,51.0,1.78,221.0
+   Kiribati,KIR,2020,3126.0,296,B,country,False,207.0,7.09,220.0
+   Saint Kitts and Nevis,KNA,1990,3210.0,659,B R,country,False,,,210.0
+   Saint Kitts and Nevis,KNA,1995,4248.0,659,B R,country,False,1038.0,32.34,206.0
+   Saint Kitts and Nevis,KNA,2000,5871.0,659,B R,country,False,1623.0,38.21,205.0
+   Saint Kitts and Nevis,KNA,2005,6682.0,659,B R,country,False,811.0,13.81,202.0
+   Saint Kitts and Nevis,KNA,2010,7245.0,659,B R,country,False,563.0,8.43,206.0
+   Saint Kitts and Nevis,KNA,2015,7443.0,659,B R,country,False,198.0,2.73,206.0
+   Saint Kitts and Nevis,KNA,2020,7725.0,659,B R,country,False,282.0,3.79,206.0
+   Republic of Korea,KOR,1990,43247.0,410,C R,country,False,,,146.0
+   Republic of Korea,KOR,1995,123886.0,410,C R,country,False,80639.0,186.46,113.0
+   Republic of Korea,KOR,2000,244224.0,410,C R,country,False,120338.0,97.14,86.0
+   Republic of Korea,KOR,2005,486065.0,410,C R,country,False,241841.0,99.02,64.0
+   Republic of Korea,KOR,2010,919987.0,410,C R,country,False,433922.0,89.27,47.0
+   Republic of Korea,KOR,2015,1370905.0,410,C R,country,False,450918.0,49.01,41.0
+   Republic of Korea,KOR,2020,1728182.0,410,C R,country,False,357277.0,26.06,40.0
+   Kuwait,KWT,1990,1074391.0,414,C R,country,False,,,35.0
+   Kuwait,KWT,1995,921954.0,414,C R,country,False,-152437.0,-14.19,41.0
+   Kuwait,KWT,2000,1127640.0,414,C R,country,False,205686.0,22.31,33.0
+   Kuwait,KWT,2005,1333530.0,414,C R,country,False,205890.0,18.26,31.0
+   Kuwait,KWT,2010,1874812.0,414,C R,country,False,541282.0,40.59,29.0
+   Kuwait,KWT,2015,2866136.0,414,C R,country,False,991324.0,52.88,23.0
+   Kuwait,KWT,2020,3110159.0,414,C R,country,False,244023.0,8.51,22.0
+   Lao People's Democratic Republic,LAO,1990,22866.0,418,C R,country,False,,,169.0
+   Lao People's Democratic Republic,LAO,1995,23526.0,418,C R,country,False,660.0,2.89,170.0
+   Lao People's Democratic Republic,LAO,2000,21948.0,418,C R,country,False,-1578.0,-6.71,175.0
+   Lao People's Democratic Republic,LAO,2005,20371.0,418,C R,country,False,-1577.0,-7.19,181.0
+   Lao People's Democratic Republic,LAO,2010,32955.0,418,C R,country,False,12584.0,61.77,171.0
+   Lao People's Democratic Republic,LAO,2015,45538.0,418,C R,country,False,12583.0,38.18,161.0
+   Lao People's Democratic Republic,LAO,2020,48731.0,418,C R,country,False,3193.0,7.01,165.0
+   Lebanon,LBN,1990,523693.0,422,B R,country,False,,,56.0
+   Lebanon,LBN,1995,608303.0,422,B R,country,False,84610.0,16.16,54.0
+   Lebanon,LBN,2000,692913.0,422,B R,country,False,84610.0,13.91,49.0
+   Lebanon,LBN,2005,742243.0,422,B R,country,False,49330.0,7.12,48.0
+   Lebanon,LBN,2010,793191.0,422,B R,country,False,50948.0,6.86,51.0
+   Lebanon,LBN,2015,1916259.0,422,B R,country,False,1123068.0,141.59,33.0
+   Lebanon,LBN,2020,1712762.0,422,B R,country,False,-203497.0,-10.62,42.0
+   Liberia,LBR,1990,94964.0,430,B R,country,False,,,120.0
+   Liberia,LBR,1995,208563.0,430,B R,country,False,113599.0,119.62,92.0
+   Liberia,LBR,2000,151868.0,430,B R,country,False,-56695.0,-27.18,105.0
+   Liberia,LBR,2005,87217.0,430,B R,country,False,-64651.0,-42.57,130.0
+   Liberia,LBR,2010,99165.0,430,B R,country,False,11948.0,13.7,129.0
+   Liberia,LBR,2015,112111.0,430,B R,country,False,12946.0,13.06,129.0
+   Liberia,LBR,2020,87947.0,430,B R,country,False,-24164.0,-21.55,140.0
+   Libya,LBY,1990,457075.0,434,C R,country,False,,,61.0
+   Libya,LBY,1995,508041.0,434,C R,country,False,50966.0,11.15,61.0
+   Libya,LBY,2000,567436.0,434,C R,country,False,59395.0,11.69,58.0
+   Libya,LBY,2005,625412.0,434,C R,country,False,57976.0,10.22,56.0
+   Libya,LBY,2010,687192.0,434,C R,country,False,61780.0,9.88,54.0
+   Libya,LBY,2015,771146.0,434,C R,country,False,83954.0,12.22,57.0
+   Libya,LBY,2020,826537.0,434,C R,country,False,55391.0,7.18,64.0
+   Saint Lucia,LCA,1990,5305.0,662,B R,country,False,,,198.0
+   Saint Lucia,LCA,1995,7155.0,662,B R,country,False,1850.0,34.87,197.0
+   Saint Lucia,LCA,2000,9871.0,662,B R,country,False,2716.0,37.96,194.0
+   Saint Lucia,LCA,2005,9839.0,662,B R,country,False,-32.0,-0.32,198.0
+   Saint Lucia,LCA,2010,9050.0,662,B R,country,False,-789.0,-8.02,201.0
+   Saint Lucia,LCA,2015,8673.0,662,B R,country,False,-377.0,-4.17,202.0
+   Saint Lucia,LCA,2020,8338.0,662,B R,country,False,-335.0,-3.86,204.0
+   Liechtenstein,LIE,1990,10906.0,438,B,country,False,,,186.0
+   Liechtenstein,LIE,1995,13311.0,438,B,country,False,2405.0,22.05,185.0
+   Liechtenstein,LIE,2000,15483.0,438,B,country,False,2172.0,16.32,186.0
+   Liechtenstein,LIE,2005,18898.0,438,B,country,False,3415.0,22.06,183.0
+   Liechtenstein,LIE,2010,22342.0,438,B,country,False,3444.0,18.22,185.0
+   Liechtenstein,LIE,2015,23799.0,438,B,country,False,1457.0,6.52,185.0
+   Liechtenstein,LIE,2020,25877.0,438,B,country,False,2078.0,8.73,186.0
+   Sri Lanka,LKA,1990,41561.0,144,B R,country,False,,,147.0
+   Sri Lanka,LKA,1995,40841.0,144,B R,country,False,-720.0,-1.73,150.0
+   Sri Lanka,LKA,2000,40132.0,144,B R,country,False,-709.0,-1.74,153.0
+   Sri Lanka,LKA,2005,39526.0,144,B R,country,False,-606.0,-1.51,159.0
+   Sri Lanka,LKA,2010,38959.0,144,B R,country,False,-567.0,-1.43,164.0
+   Sri Lanka,LKA,2015,39706.0,144,B R,country,False,747.0,1.92,168.0
+   Sri Lanka,LKA,2020,40254.0,144,B R,country,False,548.0,1.38,171.0
+   Lesotho,LSO,1990,8240.0,426,C R,country,False,,,194.0
+   Lesotho,LSO,1995,7204.0,426,C R,country,False,-1036.0,-12.57,196.0
+   Lesotho,LSO,2000,6167.0,426,C R,country,False,-1037.0,-14.39,203.0
+   Lesotho,LSO,2005,6290.0,426,C R,country,False,123.0,1.99,205.0
+   Lesotho,LSO,2010,6414.0,426,C R,country,False,124.0,1.97,208.0
+   Lesotho,LSO,2015,9152.0,426,C R,country,False,2738.0,42.69,201.0
+   Lesotho,LSO,2020,12060.0,426,C R,country,False,2908.0,31.77,201.0
+   Lithuania,LTU,1990,349258.0,440,B,country,False,,,72.0
+   Lithuania,LTU,1995,273587.0,440,B,country,False,-75671.0,-21.67,80.0
+   Lithuania,LTU,2000,214311.0,440,B,country,False,-59276.0,-21.67,96.0
+   Lithuania,LTU,2005,201209.0,440,B,country,False,-13102.0,-6.11,102.0
+   Lithuania,LTU,2010,160772.0,440,B,country,False,-40437.0,-20.1,112.0
+   Lithuania,LTU,2015,136021.0,440,B,country,False,-24751.0,-15.4,122.0
+   Lithuania,LTU,2020,145184.0,440,B,country,False,9163.0,6.74,123.0
+   Luxembourg,LUX,1990,113795.0,442,B,country,False,,,112.0
+   Luxembourg,LUX,1995,126106.0,442,B,country,False,12311.0,10.82,112.0
+   Luxembourg,LUX,2000,139750.0,442,B,country,False,13644.0,10.82,109.0
+   Luxembourg,LUX,2005,150618.0,442,B,country,False,10868.0,7.78,111.0
+   Luxembourg,LUX,2010,163142.0,442,B,country,False,12524.0,8.32,111.0
+   Luxembourg,LUX,2015,248888.0,442,B,country,False,85746.0,52.56,103.0
+   Luxembourg,LUX,2020,298062.0,442,B,country,False,49174.0,19.76,98.0
+   Latvia,LVA,1990,646007.0,428,B,country,False,,,48.0
+   Latvia,LVA,1995,538093.0,428,B,country,False,-107914.0,-16.7,58.0
+   Latvia,LVA,2000,430178.0,428,B,country,False,-107915.0,-20.06,64.0
+   Latvia,LVA,2005,376725.0,428,B,country,False,-53453.0,-12.43,70.0
+   Latvia,LVA,2010,313786.0,428,B,country,False,-62939.0,-16.71,81.0
+   Latvia,LVA,2015,265418.0,428,B,country,False,-48368.0,-15.41,100.0
+   Latvia,LVA,2020,239422.0,428,B,country,False,-25996.0,-9.79,107.0
+"   China, Macao SAR*",MAC,1990,205047.0,446,B,territory,False,,,92.0
+"   China, Macao SAR*",MAC,1995,224929.0,446,B,territory,False,19882.0,9.7,90.0
+"   China, Macao SAR*",MAC,2000,240791.0,446,B,territory,False,15862.0,7.05,87.0
+"   China, Macao SAR*",MAC,2005,279308.0,446,B,territory,False,38517.0,16.0,85.0
+"   China, Macao SAR*",MAC,2010,318506.0,446,B,territory,False,39198.0,14.03,80.0
+"   China, Macao SAR*",MAC,2015,376066.0,446,B,territory,False,57560.0,18.07,85.0
+"   China, Macao SAR*",MAC,2020,403490.0,446,B,territory,False,27424.0,7.29,87.0
+   Saint Martin (French part)*,MAF,1990,,663,,territory,False,,,
+   Saint Martin (French part)*,MAF,1995,,663,,territory,False,,,
+   Saint Martin (French part)*,MAF,2000,,663,,territory,False,,,
+   Saint Martin (French part)*,MAF,2005,,663,,territory,False,,,
+   Saint Martin (French part)*,MAF,2010,,663,,territory,False,,,
+   Saint Martin (French part)*,MAF,2015,,663,,territory,False,,,
+   Saint Martin (French part)*,MAF,2020,,663,,territory,False,,,
+   Morocco,MAR,1990,54895.0,504,C R,country,False,,,141.0
+   Morocco,MAR,1995,50360.0,504,C R,country,False,-4535.0,-8.26,145.0
+   Morocco,MAR,2000,53034.0,504,C R,country,False,2674.0,5.31,145.0
+   Morocco,MAR,2005,56222.0,504,C R,country,False,3188.0,6.01,147.0
+   Morocco,MAR,2010,71189.0,504,C R,country,False,14967.0,26.62,145.0
+   Morocco,MAR,2015,92424.0,504,C R,country,False,21235.0,29.83,135.0
+   Morocco,MAR,2020,102358.0,504,C R,country,False,9934.0,10.75,137.0
+   Monaco,MCO,1990,20359.0,492,B,country,False,,,173.0
+   Monaco,MCO,1995,21060.0,492,B,country,False,701.0,3.44,176.0
+   Monaco,MCO,2000,21787.0,492,B,country,False,727.0,3.45,176.0
+   Monaco,MCO,2005,21312.0,492,B,country,False,-475.0,-2.18,177.0
+   Monaco,MCO,2010,21132.0,492,B,country,False,-180.0,-0.84,187.0
+   Monaco,MCO,2015,25983.0,492,B,country,False,4851.0,22.96,183.0
+   Monaco,MCO,2020,26601.0,492,B,country,False,618.0,2.38,184.0
+   Republic of Moldova*,MDA,1990,544162.0,498,B,country,False,,,54.0
+   Republic of Moldova*,MDA,1995,367231.0,498,B,country,False,-176931.0,-32.51,68.0
+   Republic of Moldova*,MDA,2000,247828.0,498,B,country,False,-119403.0,-32.51,85.0
+   Republic of Moldova*,MDA,2005,171122.0,498,B,country,False,-76706.0,-30.95,109.0
+   Republic of Moldova*,MDA,2010,129488.0,498,B,country,False,-41634.0,-24.33,119.0
+   Republic of Moldova*,MDA,2015,106374.0,498,B,country,False,-23114.0,-17.85,130.0
+   Republic of Moldova*,MDA,2020,104438.0,498,B,country,False,-1936.0,-1.82,136.0
+   Madagascar,MDG,1990,23917.0,450,C R,country,False,,,167.0
+   Madagascar,MDG,1995,21177.0,450,C R,country,False,-2740.0,-11.46,175.0
+   Madagascar,MDG,2000,23541.0,450,C R,country,False,2364.0,11.16,173.0
+   Madagascar,MDG,2005,26058.0,450,C R,country,False,2517.0,10.69,171.0
+   Madagascar,MDG,2010,28905.0,450,C R,country,False,2847.0,10.93,176.0
+   Madagascar,MDG,2015,32075.0,450,C R,country,False,3170.0,10.97,176.0
+   Madagascar,MDG,2020,35563.0,450,C R,country,False,3488.0,10.87,174.0
+   Maldives,MDV,1990,8689.0,462,C,country,False,,,193.0
+   Maldives,MDV,1995,18510.0,462,C,country,False,9821.0,113.03,178.0
+   Maldives,MDV,2000,27092.0,462,C,country,False,8582.0,46.36,169.0
+   Maldives,MDV,2005,45045.0,462,C,country,False,17953.0,66.27,153.0
+   Maldives,MDV,2010,54659.0,462,C,country,False,9614.0,21.34,152.0
+   Maldives,MDV,2015,64273.0,462,C,country,False,9614.0,17.59,150.0
+   Maldives,MDV,2020,70079.0,462,C,country,False,5806.0,9.03,151.0
+   Mexico,MEX,1990,695674.0,484,B R,country,False,,,46.0
+   Mexico,MEX,1995,458549.0,484,B R,country,False,-237125.0,-34.09,64.0
+   Mexico,MEX,2000,538051.0,484,B R,country,False,79502.0,17.34,60.0
+   Mexico,MEX,2005,712648.0,484,B R,country,False,174597.0,32.45,50.0
+   Mexico,MEX,2010,969710.0,484,B R,country,False,257062.0,36.07,44.0
+   Mexico,MEX,2015,1013691.0,484,B R,country,False,43981.0,4.54,49.0
+   Mexico,MEX,2020,1197624.0,484,B R,country,False,183933.0,18.14,50.0
+   Marshall Islands,MHL,1990,1158.0,584,B,country,False,,,223.0
+   Marshall Islands,MHL,1995,1480.0,584,B,country,False,322.0,27.81,223.0
+   Marshall Islands,MHL,2000,1891.0,584,B,country,False,411.0,27.77,222.0
+   Marshall Islands,MHL,2005,2417.0,584,B,country,False,526.0,27.82,221.0
+   Marshall Islands,MHL,2010,3089.0,584,B,country,False,672.0,27.8,219.0
+   Marshall Islands,MHL,2015,3284.0,584,B,country,False,195.0,6.31,219.0
+   Marshall Islands,MHL,2020,3298.0,584,B,country,False,14.0,0.43,218.0
+   North Macedonia,MKD,1990,95142.0,807,B,country,False,,,119.0
+   North Macedonia,MKD,1995,109343.0,807,B,country,False,14201.0,14.93,117.0
+   North Macedonia,MKD,2000,125665.0,807,B,country,False,16322.0,14.93,115.0
+   North Macedonia,MKD,2005,127667.0,807,B,country,False,2002.0,1.59,116.0
+   North Macedonia,MKD,2010,129701.0,807,B,country,False,2034.0,1.59,118.0
+   North Macedonia,MKD,2015,130730.0,807,B,country,False,1029.0,0.79,124.0
+   North Macedonia,MKD,2020,131311.0,807,B,country,False,581.0,0.44,126.0
+   Mali,MLI,1990,160736.0,466,B R,country,False,,,99.0
+   Mali,MLI,1995,176187.0,466,B R,country,False,15451.0,9.61,98.0
+   Mali,MLI,2000,189475.0,466,B R,country,False,13288.0,7.54,100.0
+   Mali,MLI,2005,258630.0,466,B R,country,False,69155.0,36.5,90.0
+   Mali,MLI,2010,341078.0,466,B R,country,False,82448.0,31.88,77.0
+   Mali,MLI,2015,420504.0,466,B R,country,False,79426.0,23.29,75.0
+   Mali,MLI,2020,485829.0,466,B R,country,False,65325.0,15.53,82.0
+   Malta,MLT,1990,15077.0,470,B,country,False,,,179.0
+   Malta,MLT,1995,17740.0,470,B,country,False,2663.0,17.66,180.0
+   Malta,MLT,2000,21521.0,470,B,country,False,3781.0,21.31,177.0
+   Malta,MLT,2005,24560.0,470,B,country,False,3039.0,14.12,174.0
+   Malta,MLT,2010,33008.0,470,B,country,False,8448.0,34.4,170.0
+   Malta,MLT,2015,52642.0,470,B,country,False,19634.0,59.48,156.0
+   Malta,MLT,2020,114760.0,470,B,country,False,62118.0,118.0,130.0
+   Myanmar,MMR,1990,133545.0,104,C,country,False,,,103.0
+   Myanmar,MMR,1995,113663.0,104,C,country,False,-19882.0,-14.89,116.0
+   Myanmar,MMR,2000,98011.0,104,C,country,False,-15652.0,-13.77,124.0
+   Myanmar,MMR,2005,83025.0,104,C,country,False,-14986.0,-15.29,133.0
+   Myanmar,MMR,2010,76414.0,104,C,country,False,-6611.0,-7.96,139.0
+   Myanmar,MMR,2015,73309.0,104,C,country,False,-3105.0,-4.06,145.0
+   Myanmar,MMR,2020,76446.0,104,C,country,False,3137.0,4.28,148.0
+   Montenegro,MNE,1990,,499,B,country,False,,,
+   Montenegro,MNE,1995,,499,B,country,False,,,
+   Montenegro,MNE,2000,,499,B,country,False,,,
+   Montenegro,MNE,2005,,499,B,country,False,,,
+   Montenegro,MNE,2010,78512.0,499,B,country,False,,,137.0
+   Montenegro,MNE,2015,71719.0,499,B,country,False,-6793.0,-8.65,147.0
+   Montenegro,MNE,2020,70999.0,499,B,country,False,-720.0,-1.0,150.0
+   Mongolia,MNG,1990,6718.0,496,C R,country,False,,,196.0
+   Mongolia,MNG,1995,7424.0,496,C R,country,False,706.0,10.51,195.0
+   Mongolia,MNG,2000,8206.0,496,C R,country,False,782.0,10.53,197.0
+   Mongolia,MNG,2005,11477.0,496,C R,country,False,3271.0,39.86,195.0
+   Mongolia,MNG,2010,16062.0,496,C R,country,False,4585.0,39.95,193.0
+   Mongolia,MNG,2015,19886.0,496,C R,country,False,3824.0,23.81,191.0
+   Mongolia,MNG,2020,21345.0,496,C R,country,False,1459.0,7.34,192.0
+   Northern Mariana Islands*,MNP,1990,26593.0,580,B,territory,False,,,164.0
+   Northern Mariana Islands*,MNP,1995,32376.0,580,B,territory,False,5783.0,21.75,161.0
+   Northern Mariana Islands*,MNP,2000,40122.0,580,B,territory,False,7746.0,23.93,154.0
+   Northern Mariana Islands*,MNP,2005,37542.0,580,B,territory,False,-2580.0,-6.43,160.0
+   Northern Mariana Islands*,MNP,2010,24168.0,580,B,territory,False,-13374.0,-35.62,181.0
+   Northern Mariana Islands*,MNP,2015,21648.0,580,B,territory,False,-2520.0,-10.43,190.0
+   Northern Mariana Islands*,MNP,2020,21843.0,580,B,territory,False,195.0,0.9,191.0
+   Mozambique,MOZ,1990,122332.0,508,B R,country,False,,,106.0
+   Mozambique,MOZ,1995,168256.0,508,B R,country,False,45924.0,37.54,101.0
+   Mozambique,MOZ,2000,195702.0,508,B R,country,False,27446.0,16.31,98.0
+   Mozambique,MOZ,2005,268694.0,508,B R,country,False,72992.0,37.3,88.0
+   Mozambique,MOZ,2010,306471.0,508,B R,country,False,37777.0,14.06,86.0
+   Mozambique,MOZ,2015,321794.0,508,B R,country,False,15323.0,5.0,91.0
+   Mozambique,MOZ,2020,338850.0,508,B R,country,False,17056.0,5.3,96.0
+   Mauritania,MRT,1990,111650.0,478,C R,country,False,,,113.0
+   Mauritania,MRT,1995,89562.0,478,C R,country,False,-22088.0,-19.78,128.0
+   Mauritania,MRT,2000,57366.0,478,C R,country,False,-32196.0,-35.95,141.0
+   Mauritania,MRT,2005,58211.0,478,C R,country,False,845.0,1.47,143.0
+   Mauritania,MRT,2010,84920.0,478,C R,country,False,26709.0,45.88,134.0
+   Mauritania,MRT,2015,166552.0,478,C R,country,False,81632.0,96.13,117.0
+   Mauritania,MRT,2020,182286.0,478,C R,country,False,15734.0,9.45,120.0
+   Montserrat*,MSR,1990,2013.0,500,B,territory,False,,,221.0
+   Montserrat*,MSR,1995,1612.0,500,B,territory,False,-401.0,-19.92,222.0
+   Montserrat*,MSR,2000,1211.0,500,B,territory,False,-401.0,-24.88,224.0
+   Montserrat*,MSR,2005,1244.0,500,B,territory,False,33.0,2.73,224.0
+   Montserrat*,MSR,2010,1291.0,500,B,territory,False,47.0,3.78,227.0
+   Montserrat*,MSR,2015,1351.0,500,B,territory,False,60.0,4.65,228.0
+   Montserrat*,MSR,2020,1379.0,500,B,territory,False,28.0,2.07,228.0
+   Martinique*,MTQ,1990,38705.0,474,B R,territory,False,,,151.0
+   Martinique*,MTQ,1995,46599.0,474,B R,territory,False,7894.0,20.4,146.0
+   Martinique*,MTQ,2000,54492.0,474,B R,territory,False,7893.0,16.94,144.0
+   Martinique*,MTQ,2005,57034.0,474,B R,territory,False,2542.0,4.66,145.0
+   Martinique*,MTQ,2010,59575.0,474,B R,territory,False,2541.0,4.46,149.0
+   Martinique*,MTQ,2015,69174.0,474,B R,territory,False,9599.0,16.11,148.0
+   Martinique*,MTQ,2020,68624.0,474,B R,territory,False,-550.0,-0.8,152.0
+   Mauritius*,MUS,1990,3613.0,480,C,country,False,,,207.0
+   Mauritius*,MUS,1995,7493.0,480,C,country,False,3880.0,107.39,194.0
+   Mauritius*,MUS,2000,15543.0,480,C,country,False,8050.0,107.43,185.0
+   Mauritius*,MUS,2005,19647.0,480,C,country,False,4104.0,26.4,182.0
+   Mauritius*,MUS,2010,24836.0,480,C,country,False,5189.0,26.41,180.0
+   Mauritius*,MUS,2015,28585.0,480,C,country,False,3749.0,15.1,179.0
+   Mauritius*,MUS,2020,28893.0,480,C,country,False,308.0,1.08,182.0
+   Malawi,MWI,1990,1127724.0,454,B R,country,False,,,33.0
+   Malawi,MWI,1995,241624.0,454,B R,country,False,-886100.0,-78.57,87.0
+   Malawi,MWI,2000,232620.0,454,B R,country,False,-9004.0,-3.73,89.0
+   Malawi,MWI,2005,221661.0,454,B R,country,False,-10959.0,-4.71,98.0
+   Malawi,MWI,2010,217722.0,454,B R,country,False,-3939.0,-1.78,102.0
+   Malawi,MWI,2015,197328.0,454,B R,country,False,-20394.0,-9.37,109.0
+   Malawi,MWI,2020,191362.0,454,B R,country,False,-5966.0,-3.02,115.0
+   Malaysia*,MYS,1990,695920.0,458,C R,country,False,,,45.0
+   Malaysia*,MYS,1995,937368.0,458,C R,country,False,241448.0,34.69,38.0
+   Malaysia*,MYS,2000,1463598.0,458,C R,country,False,526230.0,56.14,27.0
+   Malaysia*,MYS,2005,1918504.0,458,C R,country,False,454906.0,31.08,24.0
+   Malaysia*,MYS,2010,2417395.0,458,C R,country,False,498891.0,26.0,22.0
+   Malaysia*,MYS,2015,3280681.0,458,C R,country,False,863286.0,35.71,20.0
+   Malaysia*,MYS,2020,3476560.0,458,C R,country,False,195879.0,5.97,19.0
+   Mayotte*,MYT,1990,15229.0,175,B R,territory,False,,,178.0
+   Mayotte*,MYT,1995,26316.0,175,B R,territory,False,11087.0,72.8,167.0
+   Mayotte*,MYT,2000,45474.0,175,B R,territory,False,19158.0,72.8,149.0
+   Mayotte*,MYT,2005,63176.0,175,B R,territory,False,17702.0,38.93,140.0
+   Mayotte*,MYT,2010,72757.0,175,B R,territory,False,9581.0,15.17,144.0
+   Mayotte*,MYT,2015,81386.0,175,B R,territory,False,8629.0,11.86,139.0
+   Mayotte*,MYT,2020,111540.0,175,B R,territory,False,30154.0,37.05,132.0
+   Namibia,NAM,1990,120641.0,516,B R,country,False,,,108.0
+   Namibia,NAM,1995,115372.0,516,B R,country,False,-5269.0,-4.37,114.0
+   Namibia,NAM,2000,135547.0,516,B R,country,False,20175.0,17.49,112.0
+   Namibia,NAM,2005,107347.0,516,B R,country,False,-28200.0,-20.8,123.0
+   Namibia,NAM,2010,103826.0,516,B R,country,False,-3521.0,-3.28,125.0
+   Namibia,NAM,2015,101618.0,516,B R,country,False,-2208.0,-2.13,134.0
+   Namibia,NAM,2020,109391.0,516,B R,country,False,7773.0,7.65,134.0
+   New Caledonia*,NCL,1990,37673.0,540,B,territory,False,,,154.0
+   New Caledonia*,NCL,1995,43662.0,540,B,territory,False,5989.0,15.9,149.0
+   New Caledonia*,NCL,2000,49651.0,540,B,territory,False,5989.0,13.72,146.0
+   New Caledonia*,NCL,2005,55405.0,540,B,territory,False,5754.0,11.59,148.0
+   New Caledonia*,NCL,2010,61158.0,540,B,territory,False,5753.0,10.38,148.0
+   New Caledonia*,NCL,2015,68881.0,540,B,territory,False,7723.0,12.63,149.0
+   New Caledonia*,NCL,2020,73141.0,540,B,territory,False,4260.0,6.18,149.0
+   Niger,NER,1990,115464.0,562,B R,country,False,,,111.0
+   Niger,NER,1995,145999.0,562,B R,country,False,30535.0,26.45,108.0
+   Niger,NER,2000,122260.0,562,B R,country,False,-23739.0,-16.26,118.0
+   Niger,NER,2005,124509.0,562,B R,country,False,2249.0,1.84,117.0
+   Niger,NER,2010,126482.0,562,B R,country,False,1973.0,1.58,120.0
+   Niger,NER,2015,252998.0,562,B R,country,False,126516.0,100.03,102.0
+   Niger,NER,2020,348056.0,562,B R,country,False,95058.0,37.57,94.0
+   Nigeria,NGA,1990,456621.0,566,C R,country,False,,,62.0
+   Nigeria,NGA,1995,462999.0,566,C R,country,False,6378.0,1.4,63.0
+   Nigeria,NGA,2000,487882.0,566,C R,country,False,24883.0,5.37,63.0
+   Nigeria,NGA,2005,969714.0,566,C R,country,False,481832.0,98.76,41.0
+   Nigeria,NGA,2010,990494.0,566,C R,country,False,20780.0,2.14,43.0
+   Nigeria,NGA,2015,1199115.0,566,C R,country,False,208621.0,21.06,43.0
+   Nigeria,NGA,2020,1308568.0,566,C R,country,False,109453.0,9.13,48.0
+   Nicaragua,NIC,1990,41421.0,558,B R,country,False,,,148.0
+   Nicaragua,NIC,1995,26619.0,558,B R,country,False,-14802.0,-35.74,166.0
+   Nicaragua,NIC,2000,30389.0,558,B R,country,False,3770.0,14.16,163.0
+   Nicaragua,NIC,2005,34919.0,558,B R,country,False,4530.0,14.91,163.0
+   Nicaragua,NIC,2010,37345.0,558,B R,country,False,2426.0,6.95,166.0
+   Nicaragua,NIC,2015,40261.0,558,B R,country,False,2916.0,7.81,167.0
+   Nicaragua,NIC,2020,42167.0,558,B R,country,False,1906.0,4.73,170.0
+   Niue*,NIU,1990,461.0,570,B,territory,False,,,227.0
+   Niue*,NIU,1995,480.0,570,B,territory,False,19.0,4.12,228.0
+   Niue*,NIU,2000,498.0,570,B,territory,False,18.0,3.75,228.0
+   Niue*,NIU,2005,522.0,570,B,territory,False,24.0,4.82,229.0
+   Niue*,NIU,2010,589.0,570,B,territory,False,67.0,12.84,232.0
+   Niue*,NIU,2015,588.0,570,B,territory,False,-1.0,-0.17,232.0
+   Niue*,NIU,2020,588.0,570,B,territory,False,0.0,0.0,232.0
+   Netherlands*,NLD,1990,1182263.0,528,B,country,False,,,27.0
+   Netherlands*,NLD,1995,1346164.0,528,B,country,False,163901.0,13.86,27.0
+   Netherlands*,NLD,2000,1556337.0,528,B,country,False,210173.0,15.61,25.0
+   Netherlands*,NLD,2005,1736127.0,528,B,country,False,179790.0,11.55,27.0
+   Netherlands*,NLD,2010,1832510.0,528,B,country,False,96383.0,5.55,30.0
+   Netherlands*,NLD,2015,1996318.0,528,B,country,False,163808.0,8.94,32.0
+   Netherlands*,NLD,2020,2358333.0,528,B,country,False,362015.0,18.13,31.0
+   Norway*,NOR,1990,192587.0,578,B,country,False,,,94.0
+   Norway*,NOR,1995,233302.0,578,B,country,False,40715.0,21.14,88.0
+   Norway*,NOR,2000,292440.0,578,B,country,False,59138.0,25.35,80.0
+   Norway*,NOR,2005,361144.0,578,B,country,False,68704.0,23.49,73.0
+   Norway*,NOR,2010,524601.0,578,B,country,False,163457.0,45.26,64.0
+   Norway*,NOR,2015,746375.0,578,B,country,False,221774.0,42.27,59.0
+   Norway*,NOR,2020,852238.0,578,B,country,False,105863.0,14.18,63.0
+   Nepal,NPL,1990,429974.0,524,B R,country,False,,,64.0
+   Nepal,NPL,1995,690225.0,524,B R,country,False,260251.0,60.53,51.0
+   Nepal,NPL,2000,717900.0,524,B R,country,False,27675.0,4.01,47.0
+   Nepal,NPL,2005,680729.0,524,B R,country,False,-37171.0,-5.18,51.0
+   Nepal,NPL,2010,581889.0,524,B R,country,False,-98840.0,-14.52,61.0
+   Nepal,NPL,2015,509471.0,524,B R,country,False,-72418.0,-12.45,71.0
+   Nepal,NPL,2020,487564.0,524,B R,country,False,-21907.0,-4.3,81.0
+   Nauru,NRU,1990,2815.0,520,C R,country,False,,,212.0
+   Nauru,NRU,1995,2605.0,520,C R,country,False,-210.0,-7.46,218.0
+   Nauru,NRU,2000,2394.0,520,C R,country,False,-211.0,-8.1,219.0
+   Nauru,NRU,2005,2253.0,520,C R,country,False,-141.0,-5.89,222.0
+   Nauru,NRU,2010,906.0,520,C R,country,False,-1347.0,-59.79,230.0
+   Nauru,NRU,2015,1833.0,520,C R,country,False,927.0,102.32,226.0
+   Nauru,NRU,2020,2201.0,520,C R,country,False,368.0,20.08,224.0
+   New Zealand*,NZL,1990,518047.0,554,B,country,False,,,57.0
+   New Zealand*,NZL,1995,588617.0,554,B,country,False,70570.0,13.62,56.0
+   New Zealand*,NZL,2000,678813.0,554,B,country,False,90196.0,15.32,51.0
+   New Zealand*,NZL,2005,839952.0,554,B,country,False,161139.0,23.74,44.0
+   New Zealand*,NZL,2010,947443.0,554,B,country,False,107491.0,12.8,46.0
+   New Zealand*,NZL,2015,1039736.0,554,B,country,False,92293.0,9.74,48.0
+   New Zealand*,NZL,2020,1381724.0,554,B,country,False,341988.0,32.89,44.0
+   Oman,OMN,1990,304000.0,512,C R,country,False,,,79.0
+   Oman,OMN,1995,539643.0,512,C R,country,False,235643.0,77.51,57.0
+   Oman,OMN,2000,623608.0,512,C R,country,False,83965.0,15.56,54.0
+   Oman,OMN,2005,666164.0,512,C R,country,False,42556.0,6.82,53.0
+   Oman,OMN,2010,816234.0,512,C R,country,False,150070.0,22.53,50.0
+   Oman,OMN,2015,1856226.0,512,C R,country,False,1039992.0,127.41,34.0
+   Oman,OMN,2020,2372836.0,512,C R,country,False,516610.0,27.83,30.0
+   Pakistan,PAK,1990,6208204.0,586,B R,country,False,,,6.0
+   Pakistan,PAK,1995,3669308.0,586,B R,country,False,-2538896.0,-40.9,12.0
+   Pakistan,PAK,2000,4181912.0,586,B R,country,False,512604.0,13.97,12.0
+   Pakistan,PAK,2005,3174558.0,586,B R,country,False,-1007354.0,-24.09,16.0
+   Pakistan,PAK,2010,3943681.0,586,B R,country,False,769123.0,24.23,16.0
+   Pakistan,PAK,2015,3506520.0,586,B R,country,False,-437161.0,-11.09,18.0
+   Pakistan,PAK,2020,3276580.0,586,B R,country,False,-229940.0,-6.56,21.0
+   Panama,PAN,1990,62744.0,591,B R,country,False,,,135.0
+   Panama,PAN,1995,70848.0,591,B R,country,False,8104.0,12.92,136.0
+   Panama,PAN,2000,83410.0,591,B R,country,False,12562.0,17.73,129.0
+   Panama,PAN,2005,109461.0,591,B R,country,False,26051.0,31.23,121.0
+   Panama,PAN,2010,157788.0,591,B R,country,False,48327.0,44.15,114.0
+   Panama,PAN,2015,184710.0,591,B R,country,False,26922.0,17.06,114.0
+   Panama,PAN,2020,313165.0,591,B R,country,False,128455.0,69.54,97.0
+   Peru,PER,1990,56688.0,604,B R,country,False,,,139.0
+   Peru,PER,1995,56732.0,604,B R,country,False,44.0,0.08,142.0
+   Peru,PER,2000,66300.0,604,B R,country,False,9568.0,16.87,139.0
+   Peru,PER,2005,77877.0,604,B R,country,False,11577.0,17.46,135.0
+   Peru,PER,2010,104706.0,604,B R,country,False,26829.0,34.45,124.0
+   Peru,PER,2015,154774.0,604,B R,country,False,50068.0,47.82,120.0
+   Peru,PER,2020,1224519.0,604,B R,country,False,1069745.0,691.17,49.0
+   Philippines,PHL,1990,154071.0,608,C R,country,False,,,101.0
+   Philippines,PHL,1995,207345.0,608,C R,country,False,53274.0,34.58,93.0
+   Philippines,PHL,2000,318095.0,608,C R,country,False,110750.0,53.41,75.0
+   Philippines,PHL,2005,257468.0,608,C R,country,False,-60627.0,-19.06,91.0
+   Philippines,PHL,2010,208599.0,608,C R,country,False,-48869.0,-18.98,105.0
+   Philippines,PHL,2015,211862.0,608,C R,country,False,3263.0,1.56,106.0
+   Philippines,PHL,2020,225525.0,608,C R,country,False,13663.0,6.45,109.0
+   Palau,PLW,1990,2801.0,585,B,country,False,,,213.0
+   Palau,PLW,1995,4749.0,585,B,country,False,1948.0,69.55,204.0
+   Palau,PLW,2000,6310.0,585,B,country,False,1561.0,32.87,202.0
+   Palau,PLW,2005,6043.0,585,B,country,False,-267.0,-4.23,206.0
+   Palau,PLW,2010,5490.0,585,B,country,False,-553.0,-9.15,210.0
+   Palau,PLW,2015,4937.0,585,B,country,False,-553.0,-10.07,213.0
+   Palau,PLW,2020,5088.0,585,B,country,False,151.0,3.06,213.0
+   Papua New Guinea,PNG,1990,33710.0,598,C R,country,False,,,158.0
+   Papua New Guinea,PNG,1995,33526.0,598,C R,country,False,-184.0,-0.55,158.0
+   Papua New Guinea,PNG,2000,26304.0,598,C R,country,False,-7222.0,-21.54,170.0
+   Papua New Guinea,PNG,2005,29971.0,598,C R,country,False,3667.0,13.94,169.0
+   Papua New Guinea,PNG,2010,30425.0,598,C R,country,False,454.0,1.51,175.0
+   Papua New Guinea,PNG,2015,30940.0,598,C R,country,False,515.0,1.69,177.0
+   Papua New Guinea,PNG,2020,31068.0,598,C R,country,False,128.0,0.41,178.0
+   Poland,POL,1990,1127771.0,616,B,country,False,,,32.0
+   Poland,POL,1995,964725.0,616,B,country,False,-163046.0,-14.46,37.0
+   Poland,POL,2000,825251.0,616,B,country,False,-139474.0,-14.46,44.0
+   Poland,POL,2005,722509.0,616,B,country,False,-102742.0,-12.45,49.0
+   Poland,POL,2010,642417.0,616,B,country,False,-80092.0,-11.09,57.0
+   Poland,POL,2015,611855.0,616,B,country,False,-30562.0,-4.76,66.0
+   Poland,POL,2020,817254.0,616,B,country,False,205399.0,33.57,66.0
+   Puerto Rico*,PRI,1990,321909.0,630,B,territory,False,,,75.0
+   Puerto Rico*,PRI,1995,338067.0,630,B,territory,False,16158.0,5.02,73.0
+   Puerto Rico*,PRI,2000,355038.0,630,B,territory,False,16971.0,5.02,70.0
+   Puerto Rico*,PRI,2005,352144.0,630,B,territory,False,-2894.0,-0.82,75.0
+   Puerto Rico*,PRI,2010,304969.0,630,B,territory,False,-47175.0,-13.4,87.0
+   Puerto Rico*,PRI,2015,280494.0,630,B,territory,False,-24475.0,-8.03,95.0
+   Puerto Rico*,PRI,2020,247132.0,630,B,territory,False,-33362.0,-11.89,106.0
+   Dem. People's Republic of Korea,PRK,1990,34103.0,408,I,country,False,,,157.0
+   Dem. People's Republic of Korea,PRK,1995,35143.0,408,I,country,False,1040.0,3.05,157.0
+   Dem. People's Republic of Korea,PRK,2000,36183.0,408,I,country,False,1040.0,2.96,159.0
+   Dem. People's Republic of Korea,PRK,2005,40097.0,408,I,country,False,3914.0,10.82,158.0
+   Dem. People's Republic of Korea,PRK,2010,44010.0,408,I,country,False,3913.0,9.76,159.0
+   Dem. People's Republic of Korea,PRK,2015,48458.0,408,I,country,False,4448.0,10.11,160.0
+   Dem. People's Republic of Korea,PRK,2020,49549.0,408,I,country,False,1091.0,2.25,163.0
+   Portugal,PRT,1990,435782.0,620,B,country,False,,,63.0
+   Portugal,PRT,1995,532822.0,620,B,country,False,97040.0,22.27,59.0
+   Portugal,PRT,2000,651472.0,620,B,country,False,118650.0,22.27,53.0
+   Portugal,PRT,2005,771184.0,620,B,country,False,119712.0,18.38,46.0
+   Portugal,PRT,2010,762825.0,620,B,country,False,-8359.0,-1.08,52.0
+   Portugal,PRT,2015,864814.0,620,B,country,False,101989.0,13.37,51.0
+   Portugal,PRT,2020,1001963.0,620,B,country,False,137149.0,15.86,57.0
+   Paraguay,PRY,1990,195884.0,600,B R,country,False,,,93.0
+   Paraguay,PRY,1995,186570.0,600,B R,country,False,-9314.0,-4.75,97.0
+   Paraguay,PRY,2000,176608.0,600,B R,country,False,-9962.0,-5.34,104.0
+   Paraguay,PRY,2005,168243.0,600,B R,country,False,-8365.0,-4.74,110.0
+   Paraguay,PRY,2010,160299.0,600,B R,country,False,-7944.0,-4.72,113.0
+   Paraguay,PRY,2015,156462.0,600,B R,country,False,-3837.0,-2.39,119.0
+   Paraguay,PRY,2020,169567.0,600,B R,country,False,13105.0,8.38,121.0
+   State of Palestine*,PSE,1990,288332.0,275,B,country,False,,,82.0
+   State of Palestine*,PSE,1995,281767.0,275,B,country,False,-6565.0,-2.28,79.0
+   State of Palestine*,PSE,2000,275202.0,275,B,country,False,-6565.0,-2.33,82.0
+   State of Palestine*,PSE,2005,274520.0,275,B,country,False,-682.0,-0.25,87.0
+   State of Palestine*,PSE,2010,273840.0,275,B,country,False,-680.0,-0.25,92.0
+   State of Palestine*,PSE,2015,273163.0,275,B,country,False,-677.0,-0.25,98.0
+   State of Palestine*,PSE,2020,272784.0,275,B,country,False,-379.0,-0.14,103.0
+   French Polynesia*,PYF,1990,25830.0,258,B R,territory,False,,,165.0
+   French Polynesia*,PYF,1995,28360.0,258,B R,territory,False,2530.0,9.79,163.0
+   French Polynesia*,PYF,2000,30329.0,258,B R,territory,False,1969.0,6.94,164.0
+   French Polynesia*,PYF,2005,32286.0,258,B R,territory,False,1957.0,6.45,167.0
+   French Polynesia*,PYF,2010,31640.0,258,B R,territory,False,-646.0,-2.0,174.0
+   French Polynesia*,PYF,2015,30058.0,258,B R,territory,False,-1582.0,-5.0,178.0
+   French Polynesia*,PYF,2020,30081.0,258,B R,territory,False,23.0,0.08,179.0
+   Qatar,QAT,1990,309753.0,634,C,country,False,,,76.0
+   Qatar,QAT,1995,361673.0,634,C,country,False,51920.0,16.76,70.0
+   Qatar,QAT,2000,359697.0,634,C,country,False,-1976.0,-0.55,68.0
+   Qatar,QAT,2005,646026.0,634,C,country,False,286329.0,79.6,54.0
+   Qatar,QAT,2010,1456413.0,634,C,country,False,810387.0,125.44,34.0
+   Qatar,QAT,2015,1687640.0,634,C,country,False,231227.0,15.88,36.0
+   Qatar,QAT,2020,2226192.0,634,C,country,False,538552.0,31.91,33.0
+   Réunion*,REU,1990,57210.0,638,B,territory,False,,,138.0
+   Réunion*,REU,1995,77159.0,638,B,territory,False,19949.0,34.87,131.0
+   Réunion*,REU,2000,100678.0,638,B,territory,False,23519.0,30.48,122.0
+   Réunion*,REU,2005,115076.0,638,B,territory,False,14398.0,14.3,119.0
+   Réunion*,REU,2010,123029.0,638,B,territory,False,7953.0,6.91,121.0
+   Réunion*,REU,2015,127209.0,638,B,territory,False,4180.0,3.4,125.0
+   Réunion*,REU,2020,131769.0,638,B,territory,False,4560.0,3.58,125.0
+   Romania,ROU,1990,135825.0,642,B,country,False,,,102.0
+   Romania,ROU,1995,135037.0,642,B,country,False,-788.0,-0.58,111.0
+   Romania,ROU,2000,134254.0,642,B,country,False,-783.0,-0.58,114.0
+   Romania,ROU,2005,145162.0,642,B,country,False,10908.0,8.12,113.0
+   Romania,ROU,2010,177211.0,642,B,country,False,32049.0,22.08,110.0
+   Romania,ROU,2015,281048.0,642,B,country,False,103837.0,58.6,94.0
+   Romania,ROU,2020,705310.0,642,B,country,False,424262.0,150.96,70.0
+   Russian Federation,RUS,1990,11524948.0,643,B,country,False,,,3.0
+   Russian Federation,RUS,1995,11928927.0,643,B,country,False,403979.0,3.51,3.0
+   Russian Federation,RUS,2000,11900297.0,643,B,country,False,-28630.0,-0.24,2.0
+   Russian Federation,RUS,2005,11667588.0,643,B,country,False,-232709.0,-1.96,2.0
+   Russian Federation,RUS,2010,11194710.0,643,B,country,False,-472878.0,-4.05,3.0
+   Russian Federation,RUS,2015,11643276.0,643,B,country,False,448566.0,4.01,3.0
+   Russian Federation,RUS,2020,11636911.0,643,B,country,False,-6365.0,-0.05,5.0
+   Rwanda,RWA,1990,160024.0,646,B R,country,False,,,100.0
+   Rwanda,RWA,1995,215735.0,646,B R,country,False,55711.0,34.81,91.0
+   Rwanda,RWA,2000,347076.0,646,B R,country,False,131341.0,60.88,72.0
+   Rwanda,RWA,2005,423187.0,646,B R,country,False,76111.0,21.93,67.0
+   Rwanda,RWA,2010,426901.0,646,B R,country,False,3714.0,0.88,68.0
+   Rwanda,RWA,2015,514647.0,646,B R,country,False,87746.0,20.55,70.0
+   Rwanda,RWA,2020,513907.0,646,B R,country,False,-740.0,-0.14,80.0
+   Saudi Arabia,SAU,1990,4998445.0,682,C R,country,False,,,9.0
+   Saudi Arabia,SAU,1995,5122702.0,682,C R,country,False,124257.0,2.49,8.0
+   Saudi Arabia,SAU,2000,5263387.0,682,C R,country,False,140685.0,2.75,9.0
+   Saudi Arabia,SAU,2005,6501819.0,682,C R,country,False,1238432.0,23.53,6.0
+   Saudi Arabia,SAU,2010,8429956.0,682,C R,country,False,1928137.0,29.66,5.0
+   Saudi Arabia,SAU,2015,10771366.0,682,C R,country,False,2341410.0,27.77,4.0
+   Saudi Arabia,SAU,2020,13454842.0,682,C R,country,False,2683476.0,24.91,4.0
+   Sudan,SDN,1990,1402896.0,729,B R,country,False,,,22.0
+   Sudan,SDN,1995,1053396.0,729,B R,country,False,-349500.0,-24.91,32.0
+   Sudan,SDN,2000,805086.0,729,B R,country,False,-248310.0,-23.57,45.0
+   Sudan,SDN,2005,546419.0,729,B R,country,False,-258667.0,-32.13,62.0
+   Sudan,SDN,2010,618709.0,729,B R,country,False,72290.0,13.23,58.0
+   Sudan,SDN,2015,620523.0,729,B R,country,False,1814.0,0.29,65.0
+   Sudan,SDN,2020,1379147.0,729,B R,country,False,758624.0,122.26,45.0
+   Senegal,SEN,1990,270410.0,686,B R,country,False,,,86.0
+   Senegal,SEN,1995,287654.0,686,B R,country,False,17244.0,6.38,78.0
+   Senegal,SEN,2000,231901.0,686,B R,country,False,-55753.0,-19.38,90.0
+   Senegal,SEN,2005,238298.0,686,B R,country,False,6397.0,2.76,94.0
+   Senegal,SEN,2010,256092.0,686,B R,country,False,17794.0,7.47,94.0
+   Senegal,SEN,2015,266496.0,686,B R,country,False,10404.0,4.06,99.0
+   Senegal,SEN,2020,274929.0,686,B R,country,False,8433.0,3.16,102.0
+   Singapore,SGP,1990,727262.0,702,B,country,False,,,43.0
+   Singapore,SGP,1995,991492.0,702,B,country,False,264230.0,36.33,36.0
+   Singapore,SGP,2000,1351691.0,702,B,country,False,360199.0,36.33,29.0
+   Singapore,SGP,2005,1710594.0,702,B,country,False,358903.0,26.55,28.0
+   Singapore,SGP,2010,2164794.0,702,B,country,False,454200.0,26.55,24.0
+   Singapore,SGP,2015,2483405.0,702,B,country,False,318611.0,14.72,26.0
+   Singapore,SGP,2020,2523648.0,702,B,country,False,40243.0,1.62,28.0
+   Saint Helena*,SHN,1990,178.0,654,C,territory,False,,,230.0
+   Saint Helena*,SHN,1995,117.0,654,C,territory,False,-61.0,-34.27,230.0
+   Saint Helena*,SHN,2000,108.0,654,C,territory,False,-9.0,-7.69,230.0
+   Saint Helena*,SHN,2005,163.0,654,C,territory,False,55.0,50.93,231.0
+   Saint Helena*,SHN,2010,248.0,654,C,territory,False,85.0,52.15,233.0
+   Saint Helena*,SHN,2015,377.0,654,C,territory,False,129.0,52.02,233.0
+   Saint Helena*,SHN,2020,437.0,654,C,territory,False,60.0,15.92,233.0
+   Solomon Islands,SLB,1990,4226.0,90,B R,country,False,,,202.0
+   Solomon Islands,SLB,1995,4178.0,90,B R,country,False,-48.0,-1.14,207.0
+   Solomon Islands,SLB,2000,3981.0,90,B R,country,False,-197.0,-4.72,211.0
+   Solomon Islands,SLB,2005,3271.0,90,B R,country,False,-710.0,-17.83,217.0
+   Solomon Islands,SLB,2010,2760.0,90,B R,country,False,-511.0,-15.62,223.0
+   Solomon Islands,SLB,2015,2585.0,90,B R,country,False,-175.0,-6.34,223.0
+   Solomon Islands,SLB,2020,2520.0,90,B R,country,False,-65.0,-2.51,223.0
+   Sierra Leone,SLE,1990,222148.0,694,B R,country,False,,,91.0
+   Sierra Leone,SLE,1995,98516.0,694,B R,country,False,-123632.0,-55.65,124.0
+   Sierra Leone,SLE,2000,97974.0,694,B R,country,False,-542.0,-0.55,125.0
+   Sierra Leone,SLE,2005,146227.0,694,B R,country,False,48253.0,49.25,112.0
+   Sierra Leone,SLE,2010,79265.0,694,B R,country,False,-66962.0,-45.79,136.0
+   Sierra Leone,SLE,2015,58830.0,694,B R,country,False,-20435.0,-25.78,152.0
+   Sierra Leone,SLE,2020,53746.0,694,B R,country,False,-5084.0,-8.64,160.0
+   El Salvador,SLV,1990,47360.0,222,B R,country,False,,,144.0
+   El Salvador,SLV,1995,39537.0,222,B R,country,False,-7823.0,-16.52,153.0
+   El Salvador,SLV,2000,31713.0,222,B R,country,False,-7824.0,-19.79,162.0
+   El Salvador,SLV,2005,36029.0,222,B R,country,False,4316.0,13.61,161.0
+   El Salvador,SLV,2010,40342.0,222,B R,country,False,4313.0,11.97,162.0
+   El Salvador,SLV,2015,42059.0,222,B R,country,False,1717.0,4.26,165.0
+   El Salvador,SLV,2020,42767.0,222,B R,country,False,708.0,1.68,169.0
+   San Marino,SMR,1990,3310.0,674,C,country,False,,,209.0
+   San Marino,SMR,1995,3659.0,674,C,country,False,349.0,10.54,209.0
+   San Marino,SMR,2000,4045.0,674,C,country,False,386.0,10.55,210.0
+   San Marino,SMR,2005,4218.0,674,C,country,False,173.0,4.28,213.0
+   San Marino,SMR,2010,4880.0,674,C,country,False,662.0,15.69,214.0
+   San Marino,SMR,2015,5195.0,674,C,country,False,315.0,6.45,211.0
+   San Marino,SMR,2020,5543.0,674,C,country,False,348.0,6.7,211.0
+   Somalia,SOM,1990,478294.0,706,I R,country,False,,,58.0
+   Somalia,SOM,1995,19527.0,706,I R,country,False,-458767.0,-95.92,177.0
+   Somalia,SOM,2000,20097.0,706,I R,country,False,570.0,2.92,179.0
+   Somalia,SOM,2005,20768.0,706,I R,country,False,671.0,3.34,179.0
+   Somalia,SOM,2010,48106.0,706,I R,country,False,27338.0,131.64,157.0
+   Somalia,SOM,2015,40990.0,706,I R,country,False,-7116.0,-14.79,166.0
+   Somalia,SOM,2020,58590.0,706,I R,country,False,17600.0,42.94,157.0
+   Saint Pierre and Miquelon*,SPM,1990,1099.0,666,B,territory,False,,,224.0
+   Saint Pierre and Miquelon*,SPM,1995,1320.0,666,B,territory,False,221.0,20.11,224.0
+   Saint Pierre and Miquelon*,SPM,2000,1458.0,666,B,territory,False,138.0,10.45,223.0
+   Saint Pierre and Miquelon*,SPM,2005,1147.0,666,B,territory,False,-311.0,-21.33,226.0
+   Saint Pierre and Miquelon*,SPM,2010,1017.0,666,B,territory,False,-130.0,-11.33,229.0
+   Saint Pierre and Miquelon*,SPM,2015,986.0,666,B,territory,False,-31.0,-3.05,230.0
+   Saint Pierre and Miquelon*,SPM,2020,998.0,666,B,territory,False,12.0,1.22,230.0
+   Serbia*,SRB,1990,99269.0,688,B,country,False,,,117.0
+   Serbia*,SRB,1995,870980.0,688,B,country,False,771711.0,777.39,43.0
+   Serbia*,SRB,2000,977873.0,688,B,country,False,106893.0,12.27,41.0
+   Serbia*,SRB,2005,854848.0,688,B,country,False,-123025.0,-12.58,43.0
+   Serbia*,SRB,2010,826275.0,688,B,country,False,-28573.0,-3.34,49.0
+   Serbia*,SRB,2015,807441.0,688,B,country,False,-18834.0,-2.28,56.0
+   Serbia*,SRB,2020,823011.0,688,B,country,False,15570.0,1.93,65.0
+   South Sudan,SSD,1990,,728,B R,country,False,,,
+   South Sudan,SSD,1995,,728,B R,country,False,,,
+   South Sudan,SSD,2000,,728,B R,country,False,,,
+   South Sudan,SSD,2005,,728,B R,country,False,,,
+   South Sudan,SSD,2010,230732.0,728,B R,country,False,,,99.0
+   South Sudan,SSD,2015,844112.0,728,B R,country,False,613380.0,265.84,53.0
+   South Sudan,SSD,2020,882252.0,728,B R,country,False,38140.0,4.52,60.0
+   Sao Tome and Principe,STP,1990,5582.0,678,C,country,False,,,197.0
+   Sao Tome and Principe,STP,1995,4936.0,678,C,country,False,-646.0,-11.57,203.0
+   Sao Tome and Principe,STP,2000,4365.0,678,C,country,False,-571.0,-11.57,207.0
+   Sao Tome and Principe,STP,2005,3433.0,678,C,country,False,-932.0,-21.35,215.0
+   Sao Tome and Principe,STP,2010,2700.0,678,C,country,False,-733.0,-21.35,224.0
+   Sao Tome and Principe,STP,2015,2394.0,678,C,country,False,-306.0,-11.33,224.0
+   Sao Tome and Principe,STP,2020,2139.0,678,C,country,False,-255.0,-10.65,225.0
+   Suriname,SUR,1990,18083.0,740,C R,country,False,,,175.0
+   Suriname,SUR,1995,22320.0,740,C R,country,False,4237.0,23.43,173.0
+   Suriname,SUR,2000,27506.0,740,C R,country,False,5186.0,23.23,168.0
+   Suriname,SUR,2005,33662.0,740,C R,country,False,6156.0,22.38,164.0
+   Suriname,SUR,2010,39713.0,740,C R,country,False,6051.0,17.98,163.0
+   Suriname,SUR,2015,43127.0,740,C R,country,False,3414.0,8.6,162.0
+   Suriname,SUR,2020,47801.0,740,C R,country,False,4674.0,10.84,166.0
+   Slovakia,SVK,1990,41295.0,703,B,country,False,,,149.0
+   Slovakia,SVK,1995,69323.0,703,B,country,False,28028.0,67.87,139.0
+   Slovakia,SVK,2000,116376.0,703,B,country,False,47053.0,67.88,119.0
+   Slovakia,SVK,2005,130491.0,703,B,country,False,14115.0,12.13,115.0
+   Slovakia,SVK,2010,146319.0,703,B,country,False,15828.0,12.13,116.0
+   Slovakia,SVK,2015,177624.0,703,B,country,False,31305.0,21.4,115.0
+   Slovakia,SVK,2020,197161.0,703,B,country,False,19537.0,11.0,113.0
+   Slovenia,SVN,1990,178077.0,705,B,country,False,,,95.0
+   Slovenia,SVN,1995,174419.0,705,B,country,False,-3658.0,-2.05,99.0
+   Slovenia,SVN,2000,214508.0,705,B,country,False,40089.0,22.98,94.0
+   Slovenia,SVN,2005,217218.0,705,B,country,False,2710.0,1.26,99.0
+   Slovenia,SVN,2010,253786.0,705,B,country,False,36568.0,16.83,96.0
+   Slovenia,SVN,2015,237616.0,705,B,country,False,-16170.0,-6.37,105.0
+   Slovenia,SVN,2020,277964.0,705,B,country,False,40348.0,16.98,100.0
+   Sweden,SWE,1990,788767.0,752,B,country,False,,,41.0
+   Sweden,SWE,1995,936022.0,752,B,country,False,147255.0,18.67,39.0
+   Sweden,SWE,2000,1003798.0,752,B,country,False,67776.0,7.24,38.0
+   Sweden,SWE,2005,1125790.0,752,B,country,False,121992.0,12.15,37.0
+   Sweden,SWE,2010,1337214.0,752,B,country,False,211424.0,18.78,38.0
+   Sweden,SWE,2015,1602522.0,752,B,country,False,265308.0,19.84,37.0
+   Sweden,SWE,2020,2003908.0,752,B,country,False,401386.0,25.05,36.0
+   Eswatini,SWZ,1990,74991.0,748,B R,country,False,,,125.0
+   Eswatini,SWZ,1995,35157.0,748,B R,country,False,-39834.0,-53.12,156.0
+   Eswatini,SWZ,2000,34084.0,748,B R,country,False,-1073.0,-3.05,160.0
+   Eswatini,SWZ,2005,33392.0,748,B R,country,False,-692.0,-2.03,165.0
+   Eswatini,SWZ,2010,32637.0,748,B R,country,False,-755.0,-2.26,173.0
+   Eswatini,SWZ,2015,32352.0,748,B R,country,False,-285.0,-0.87,175.0
+   Eswatini,SWZ,2020,32858.0,748,B R,country,False,506.0,1.56,176.0
+   Sint Maarten (Dutch part)*,SXM,1990,,534,B R,territory,False,,,
+   Sint Maarten (Dutch part)*,SXM,1995,,534,B R,territory,False,,,
+   Sint Maarten (Dutch part)*,SXM,2000,,534,B R,territory,False,,,
+   Sint Maarten (Dutch part)*,SXM,2005,13099.0,534,B R,territory,False,,,191.0
+   Sint Maarten (Dutch part)*,SXM,2010,26203.0,534,B R,territory,False,13104.0,100.04,179.0
+   Sint Maarten (Dutch part)*,SXM,2015,27295.0,534,B R,territory,False,1092.0,4.17,181.0
+   Sint Maarten (Dutch part)*,SXM,2020,28845.0,534,B R,territory,False,1550.0,5.68,183.0
+   Seychelles,SYC,1990,3721.0,690,B,country,False,,,205.0
+   Seychelles,SYC,1995,5148.0,690,B,country,False,1427.0,38.35,202.0
+   Seychelles,SYC,2000,6574.0,690,B,country,False,1426.0,27.7,201.0
+   Seychelles,SYC,2005,8997.0,690,B,country,False,2423.0,36.86,200.0
+   Seychelles,SYC,2010,11420.0,690,B,country,False,2423.0,26.93,199.0
+   Seychelles,SYC,2015,12791.0,690,B,country,False,1371.0,12.01,198.0
+   Seychelles,SYC,2020,13050.0,690,B,country,False,259.0,2.02,199.0
+   Syrian Arab Republic,SYR,1990,714140.0,760,C R,country,False,,,44.0
+   Syrian Arab Republic,SYR,1995,830610.0,760,C R,country,False,116470.0,16.31,45.0
+   Syrian Arab Republic,SYR,2000,834916.0,760,C R,country,False,4306.0,0.52,43.0
+   Syrian Arab Republic,SYR,2005,882398.0,760,C R,country,False,47482.0,5.69,42.0
+   Syrian Arab Republic,SYR,2010,1783595.0,760,C R,country,False,901197.0,102.13,32.0
+   Syrian Arab Republic,SYR,2015,835716.0,760,C R,country,False,-947879.0,-53.14,54.0
+   Syrian Arab Republic,SYR,2020,868711.0,760,C R,country,False,32995.0,3.95,62.0
+   Turks and Caicos Islands*,TCA,1990,5062.0,796,B R,territory,False,,,199.0
+   Turks and Caicos Islands*,TCA,1995,7039.0,796,B R,territory,False,1977.0,39.06,199.0
+   Turks and Caicos Islands*,TCA,2000,9015.0,796,B R,territory,False,1976.0,28.07,195.0
+   Turks and Caicos Islands*,TCA,2005,13115.0,796,B R,territory,False,4100.0,45.48,190.0
+   Turks and Caicos Islands*,TCA,2010,17216.0,796,B R,territory,False,4101.0,31.27,190.0
+   Turks and Caicos Islands*,TCA,2015,22723.0,796,B R,territory,False,5507.0,31.99,188.0
+   Turks and Caicos Islands*,TCA,2020,25748.0,796,B R,territory,False,3025.0,13.31,187.0
+   Chad,TCD,1990,74342.0,148,B R,country,False,,,126.0
+   Chad,TCD,1995,89584.0,148,B R,country,False,15242.0,20.5,127.0
+   Chad,TCD,2000,104825.0,148,B R,country,False,15241.0,17.01,121.0
+   Chad,TCD,2005,352130.0,148,B R,country,False,247305.0,235.92,76.0
+   Chad,TCD,2010,417034.0,148,B R,country,False,64904.0,18.43,70.0
+   Chad,TCD,2015,466968.0,148,B R,country,False,49934.0,11.97,74.0
+   Chad,TCD,2020,547494.0,148,B R,country,False,80526.0,17.24,75.0
+   Togo,TGO,1990,84844.0,768,C R,country,False,,,121.0
+   Togo,TGO,1995,101583.0,768,C R,country,False,16739.0,19.73,120.0
+   Togo,TGO,2000,137968.0,768,C R,country,False,36385.0,35.82,110.0
+   Togo,TGO,2005,204219.0,768,C R,country,False,66251.0,48.02,101.0
+   Togo,TGO,2010,255564.0,768,C R,country,False,51345.0,25.14,95.0
+   Togo,TGO,2015,277384.0,768,C R,country,False,21820.0,8.54,96.0
+   Togo,TGO,2020,279936.0,768,C R,country,False,2552.0,0.92,99.0
+   Thailand,THA,1990,528693.0,764,B R,country,False,,,55.0
+   Thailand,THA,1995,809720.0,764,B R,country,False,281027.0,53.16,46.0
+   Thailand,THA,2000,1257821.0,764,B R,country,False,448101.0,55.34,32.0
+   Thailand,THA,2005,2195610.0,764,B R,country,False,937789.0,74.56,22.0
+   Thailand,THA,2010,3234381.0,764,B R,country,False,1038771.0,47.31,18.0
+   Thailand,THA,2015,3470220.0,764,B R,country,False,235839.0,7.29,19.0
+   Thailand,THA,2020,3632496.0,764,B R,country,False,162276.0,4.68,18.0
+   Tajikistan,TJK,1990,428900.0,762,B R,country,False,,,65.0
+   Tajikistan,TJK,1995,348347.0,762,B R,country,False,-80553.0,-18.78,71.0
+   Tajikistan,TJK,2000,299499.0,762,B R,country,False,-48848.0,-14.02,78.0
+   Tajikistan,TJK,2005,280466.0,762,B R,country,False,-19033.0,-6.35,84.0
+   Tajikistan,TJK,2010,279808.0,762,B R,country,False,-658.0,-0.23,90.0
+   Tajikistan,TJK,2015,275101.0,762,B R,country,False,-4707.0,-1.68,97.0
+   Tajikistan,TJK,2020,276031.0,762,B R,country,False,930.0,0.34,101.0
+   Tokelau*,TKL,1990,360.0,772,B R,territory,False,,,228.0
+   Tokelau*,TKL,1995,506.0,772,B R,territory,False,146.0,40.56,227.0
+   Tokelau*,TKL,2000,712.0,772,B R,territory,False,206.0,40.71,227.0
+   Tokelau*,TKL,2005,1003.0,772,B R,territory,False,291.0,40.87,227.0
+   Tokelau*,TKL,2010,1128.0,772,B R,territory,False,125.0,12.46,228.0
+   Tokelau*,TKL,2015,1185.0,772,B R,territory,False,57.0,5.05,229.0
+   Tokelau*,TKL,2020,1238.0,772,B R,territory,False,53.0,4.47,229.0
+   Turkmenistan,TKM,1990,306500.0,795,B R,country,False,,,77.0
+   Turkmenistan,TKM,1995,273565.0,795,B R,country,False,-32935.0,-10.75,81.0
+   Turkmenistan,TKM,2000,219067.0,795,B R,country,False,-54498.0,-19.92,93.0
+   Turkmenistan,TKM,2005,213053.0,795,B R,country,False,-6014.0,-2.75,100.0
+   Turkmenistan,TKM,2010,197979.0,795,B R,country,False,-15074.0,-7.08,106.0
+   Turkmenistan,TKM,2015,196376.0,795,B R,country,False,-1603.0,-0.81,110.0
+   Turkmenistan,TKM,2020,194920.0,795,B R,country,False,-1456.0,-0.74,114.0
+   Timor-Leste,TLS,1990,8954.0,626,B R,country,False,,,190.0
+   Timor-Leste,TLS,1995,9743.0,626,B R,country,False,789.0,8.81,192.0
+   Timor-Leste,TLS,2000,10602.0,626,B R,country,False,859.0,8.82,193.0
+   Timor-Leste,TLS,2005,11286.0,626,B R,country,False,684.0,6.45,196.0
+   Timor-Leste,TLS,2010,11540.0,626,B R,country,False,254.0,2.25,198.0
+   Timor-Leste,TLS,2015,8520.0,626,B R,country,False,-3020.0,-26.17,204.0
+   Timor-Leste,TLS,2020,8399.0,626,B R,country,False,-121.0,-1.42,203.0
+   Tonga,TON,1990,2911.0,776,B R,country,False,,,211.0
+   Tonga,TON,1995,3274.0,776,B R,country,False,363.0,12.47,213.0
+   Tonga,TON,2000,3684.0,776,B R,country,False,410.0,12.52,213.0
+   Tonga,TON,2005,4301.0,776,B R,country,False,617.0,16.75,212.0
+   Tonga,TON,2010,4607.0,776,B R,country,False,306.0,7.11,215.0
+   Tonga,TON,2015,3954.0,776,B R,country,False,-653.0,-14.17,218.0
+   Tonga,TON,2020,3742.0,776,B R,country,False,-212.0,-5.36,217.0
+   Trinidad and Tobago,TTO,1990,50666.0,780,B R,country,False,,,143.0
+   Trinidad and Tobago,TTO,1995,45994.0,780,B R,country,False,-4672.0,-9.22,147.0
+   Trinidad and Tobago,TTO,2000,41753.0,780,B R,country,False,-4241.0,-9.22,152.0
+   Trinidad and Tobago,TTO,2005,44812.0,780,B R,country,False,3059.0,7.33,154.0
+   Trinidad and Tobago,TTO,2010,48226.0,780,B R,country,False,3414.0,7.62,156.0
+   Trinidad and Tobago,TTO,2015,50021.0,780,B R,country,False,1795.0,3.72,159.0
+   Trinidad and Tobago,TTO,2020,78849.0,780,B R,country,False,28828.0,57.63,146.0
+   Tunisia,TUN,1990,37984.0,788,C R,country,False,,,153.0
+   Tunisia,TUN,1995,37867.0,788,C R,country,False,-117.0,-0.31,154.0
+   Tunisia,TUN,2000,36719.0,788,C R,country,False,-1148.0,-3.03,156.0
+   Tunisia,TUN,2005,35040.0,788,C R,country,False,-1679.0,-4.57,162.0
+   Tunisia,TUN,2010,43172.0,788,C R,country,False,8132.0,23.21,161.0
+   Tunisia,TUN,2015,56532.0,788,C R,country,False,13360.0,30.95,154.0
+   Tunisia,TUN,2020,60145.0,788,C R,country,False,3613.0,6.39,156.0
+   Turkey,TUR,1990,1163686.0,792,B R,country,False,,,29.0
+   Turkey,TUR,1995,1216173.0,792,B R,country,False,52487.0,4.51,29.0
+   Turkey,TUR,2000,1280963.0,792,B R,country,False,64790.0,5.33,30.0
+   Turkey,TUR,2005,1324108.0,792,B R,country,False,43145.0,3.37,33.0
+   Turkey,TUR,2010,1373749.0,792,B R,country,False,49641.0,3.75,35.0
+   Turkey,TUR,2015,4346197.0,792,B R,country,False,2972448.0,216.37,16.0
+   Turkey,TUR,2020,6052652.0,792,B R,country,False,1706455.0,39.26,13.0
+   Tuvalu,TUV,1990,318.0,798,C,country,False,,,229.0
+   Tuvalu,TUV,1995,263.0,798,C,country,False,-55.0,-17.3,229.0
+   Tuvalu,TUV,2000,218.0,798,C,country,False,-45.0,-17.11,229.0
+   Tuvalu,TUV,2005,209.0,798,C,country,False,-9.0,-4.13,230.0
+   Tuvalu,TUV,2010,220.0,798,C,country,False,11.0,5.26,234.0
+   Tuvalu,TUV,2015,230.0,798,C,country,False,10.0,4.55,234.0
+   Tuvalu,TUV,2020,239.0,798,C,country,False,9.0,3.91,234.0
+   United Republic of Tanzania*,TZA,1990,574025.0,834,B R,country,False,,,52.0
+   United Republic of Tanzania*,TZA,1995,1106043.0,834,B R,country,False,532018.0,92.68,31.0
+   United Republic of Tanzania*,TZA,2000,949600.0,834,B R,country,False,-156443.0,-14.14,42.0
+   United Republic of Tanzania*,TZA,2005,771153.0,834,B R,country,False,-178447.0,-18.79,47.0
+   United Republic of Tanzania*,TZA,2010,309847.0,834,B R,country,False,-461306.0,-59.82,83.0
+   United Republic of Tanzania*,TZA,2015,384567.0,834,B R,country,False,74720.0,24.12,82.0
+   United Republic of Tanzania*,TZA,2020,426017.0,834,B R,country,False,41450.0,10.78,84.0
+   Uganda,UGA,1990,544273.0,800,B R,country,False,,,53.0
+   Uganda,UGA,1995,606987.0,800,B R,country,False,62714.0,11.52,55.0
+   Uganda,UGA,2000,584280.0,800,B R,country,False,-22707.0,-3.74,57.0
+   Uganda,UGA,2005,593308.0,800,B R,country,False,9028.0,1.55,59.0
+   Uganda,UGA,2010,492930.0,800,B R,country,False,-100378.0,-16.92,66.0
+   Uganda,UGA,2015,851175.0,800,B R,country,False,358245.0,72.68,52.0
+   Uganda,UGA,2020,1720313.0,800,B R,country,False,869138.0,102.11,41.0
+   Ukraine*,UKR,1990,6892920.0,804,B,country,False,,,5.0
+   Ukraine*,UKR,1995,6172338.0,804,B,country,False,-720582.0,-10.45,6.0
+   Ukraine*,UKR,2000,5527087.0,804,B,country,False,-645251.0,-10.45,7.0
+   Ukraine*,UKR,2005,5050302.0,804,B,country,False,-476785.0,-8.63,10.0
+   Ukraine*,UKR,2010,4818767.0,804,B,country,False,-231535.0,-4.58,14.0
+   Ukraine*,UKR,2015,4915142.0,804,B,country,False,96375.0,2.0,15.0
+   Ukraine*,UKR,2020,4997387.0,804,B,country,False,82245.0,1.67,15.0
+   Uruguay,URY,1990,98116.0,858,B R,country,False,,,118.0
+   Uruguay,URY,1995,93428.0,858,B R,country,False,-4688.0,-4.78,125.0
+   Uruguay,URY,2000,88874.0,858,B R,country,False,-4554.0,-4.87,128.0
+   Uruguay,URY,2005,82317.0,858,B R,country,False,-6557.0,-7.38,134.0
+   Uruguay,URY,2010,76303.0,858,B R,country,False,-6014.0,-7.31,140.0
+   Uruguay,URY,2015,78799.0,858,B R,country,False,2496.0,3.27,140.0
+   Uruguay,URY,2020,108267.0,858,B R,country,False,29468.0,37.4,135.0
+   United States of America*,USA,1990,23251026.0,840,B,country,False,,,1.0
+   United States of America*,USA,1995,28451053.0,840,B,country,False,5200027.0,22.36,1.0
+   United States of America*,USA,2000,34814053.0,840,B,country,False,6363000.0,22.36,1.0
+   United States of America*,USA,2005,39258293.0,840,B,country,False,4444240.0,12.77,1.0
+   United States of America*,USA,2010,44183643.0,840,B,country,False,4925350.0,12.55,1.0
+   United States of America*,USA,2015,48178877.0,840,B,country,False,3995234.0,9.04,1.0
+   United States of America*,USA,2020,50632836.0,840,B,country,False,2453959.0,5.09,1.0
+   Uzbekistan,UZB,1990,1653000.0,860,B R,country,False,,,18.0
+   Uzbekistan,UZB,1995,1512577.0,860,B R,country,False,-140423.0,-8.5,24.0
+   Uzbekistan,UZB,2000,1406498.0,860,B R,country,False,-106079.0,-7.01,28.0
+   Uzbekistan,UZB,2005,1329932.0,860,B R,country,False,-76566.0,-5.44,32.0
+   Uzbekistan,UZB,2010,1220149.0,860,B R,country,False,-109783.0,-8.25,41.0
+   Uzbekistan,UZB,2015,1170873.0,860,B R,country,False,-49276.0,-4.04,44.0
+   Uzbekistan,UZB,2020,1162007.0,860,B R,country,False,-8866.0,-0.76,51.0
+   Holy See*,VAT,1990,762.0,336,I,country,False,,,226.0
+   Holy See*,VAT,1995,778.0,336,I,country,False,16.0,2.1,226.0
+   Holy See*,VAT,2000,790.0,336,I,country,False,12.0,1.54,226.0
+   Holy See*,VAT,2005,798.0,336,I,country,False,8.0,1.01,228.0
+   Holy See*,VAT,2010,783.0,336,I,country,False,-15.0,-1.88,231.0
+   Holy See*,VAT,2015,790.0,336,I,country,False,7.0,0.89,231.0
+   Holy See*,VAT,2020,809.0,336,I,country,False,19.0,2.41,231.0
+   Saint Vincent and the Grenadines,VCT,1990,3970.0,670,B R,country,False,,,204.0
+   Saint Vincent and the Grenadines,VCT,1995,4135.0,670,B R,country,False,165.0,4.16,208.0
+   Saint Vincent and the Grenadines,VCT,2000,4307.0,670,B R,country,False,172.0,4.16,208.0
+   Saint Vincent and the Grenadines,VCT,2005,4436.0,670,B R,country,False,129.0,3.0,211.0
+   Saint Vincent and the Grenadines,VCT,2010,4569.0,670,B R,country,False,133.0,3.0,216.0
+   Saint Vincent and the Grenadines,VCT,2015,4637.0,670,B R,country,False,68.0,1.49,215.0
+   Saint Vincent and the Grenadines,VCT,2020,4738.0,670,B R,country,False,101.0,2.18,214.0
+   Venezuela (Bolivarian Republic of),VEN,1990,1025009.0,862,B R,country,False,,,36.0
+   Venezuela (Bolivarian Republic of),VEN,1995,1019996.0,862,B R,country,False,-5013.0,-0.49,34.0
+   Venezuela (Bolivarian Republic of),VEN,2000,1013738.0,862,B R,country,False,-6258.0,-0.61,37.0
+   Venezuela (Bolivarian Republic of),VEN,2005,1076474.0,862,B R,country,False,62736.0,6.19,39.0
+   Venezuela (Bolivarian Republic of),VEN,2010,1347347.0,862,B R,country,False,270873.0,25.16,36.0
+   Venezuela (Bolivarian Republic of),VEN,2015,1404448.0,862,B R,country,False,57101.0,4.24,40.0
+   Venezuela (Bolivarian Republic of),VEN,2020,1324193.0,862,B R,country,False,-80255.0,-5.71,47.0
+   British Virgin Islands*,VGB,1990,8035.0,92,B R,territory,False,,,195.0
+   British Virgin Islands*,VGB,1995,10046.0,92,B R,territory,False,2011.0,25.03,190.0
+   British Virgin Islands*,VGB,2000,12958.0,92,B R,territory,False,2912.0,28.99,189.0
+   British Virgin Islands*,VGB,2005,15016.0,92,B R,territory,False,2058.0,15.88,187.0
+   British Virgin Islands*,VGB,2010,17076.0,92,B R,territory,False,2060.0,13.72,192.0
+   British Virgin Islands*,VGB,2015,19535.0,92,B R,territory,False,2459.0,14.4,192.0
+   British Virgin Islands*,VGB,2020,22164.0,92,B R,territory,False,2629.0,13.46,190.0
+   United States Virgin Islands*,VIR,1990,51970.0,850,B,territory,False,,,142.0
+   United States Virgin Islands*,VIR,1995,54241.0,850,B,territory,False,2271.0,4.37,143.0
+   United States Virgin Islands*,VIR,2000,56611.0,850,B,territory,False,2370.0,4.37,143.0
+   United States Virgin Islands*,VIR,2005,56647.0,850,B,territory,False,36.0,0.06,146.0
+   United States Virgin Islands*,VIR,2010,56684.0,850,B,territory,False,37.0,0.07,150.0
+   United States Virgin Islands*,VIR,2015,56721.0,850,B,territory,False,37.0,0.07,153.0
+   United States Virgin Islands*,VIR,2020,56753.0,850,B,territory,False,32.0,0.06,159.0
+   Viet Nam,VNM,1990,28118.0,704,C R,country,False,,,161.0
+   Viet Nam,VNM,1995,51262.0,704,C R,country,False,23144.0,82.31,144.0
+   Viet Nam,VNM,2000,56754.0,704,C R,country,False,5492.0,10.71,142.0
+   Viet Nam,VNM,2005,51768.0,704,C R,country,False,-4986.0,-8.79,149.0
+   Viet Nam,VNM,2010,61756.0,704,C R,country,False,9988.0,19.29,147.0
+   Viet Nam,VNM,2015,72793.0,704,C R,country,False,11037.0,17.87,146.0
+   Viet Nam,VNM,2020,76767.0,704,C R,country,False,3974.0,5.46,147.0
+   Vanuatu,VUT,1990,2308.0,548,B R,country,False,,,219.0
+   Vanuatu,VUT,1995,2461.0,548,B R,country,False,153.0,6.63,219.0
+   Vanuatu,VUT,2000,2626.0,548,B R,country,False,165.0,6.7,218.0
+   Vanuatu,VUT,2005,2800.0,548,B R,country,False,174.0,6.63,219.0
+   Vanuatu,VUT,2010,2991.0,548,B R,country,False,191.0,6.82,220.0
+   Vanuatu,VUT,2015,3186.0,548,B R,country,False,195.0,6.52,220.0
+   Vanuatu,VUT,2020,3257.0,548,B R,country,False,71.0,2.23,219.0
+   Wallis and Futuna Islands*,WLF,1990,1402.0,876,B R,territory,False,,,222.0
+   Wallis and Futuna Islands*,WLF,1995,1704.0,876,B R,territory,False,302.0,21.54,221.0
+   Wallis and Futuna Islands*,WLF,2000,2015.0,876,B R,territory,False,311.0,18.25,221.0
+   Wallis and Futuna Islands*,WLF,2005,2191.0,876,B R,territory,False,176.0,8.73,223.0
+   Wallis and Futuna Islands*,WLF,2010,2111.0,876,B R,territory,False,-80.0,-3.65,225.0
+   Wallis and Futuna Islands*,WLF,2015,2050.0,876,B R,territory,False,-61.0,-2.89,225.0
+   Wallis and Futuna Islands*,WLF,2020,2040.0,876,B R,territory,False,-10.0,-0.49,226.0
+   Samoa,WSM,1990,3357.0,882,B R,country,False,,,208.0
+   Samoa,WSM,1995,4694.0,882,B R,country,False,1337.0,39.83,205.0
+   Samoa,WSM,2000,5998.0,882,B R,country,False,1304.0,27.78,204.0
+   Samoa,WSM,2005,5746.0,882,B R,country,False,-252.0,-4.2,207.0
+   Samoa,WSM,2010,5122.0,882,B R,country,False,-624.0,-10.86,211.0
+   Samoa,WSM,2015,4255.0,882,B R,country,False,-867.0,-16.93,216.0
+   Samoa,WSM,2020,4021.0,882,B R,country,False,-234.0,-5.5,216.0
+   Yemen,YEM,1990,118863.0,887,C R,country,False,,,109.0
+   Yemen,YEM,1995,136515.0,887,C R,country,False,17652.0,14.85,110.0
+   Yemen,YEM,2000,144940.0,887,C R,country,False,8425.0,6.17,108.0
+   Yemen,YEM,2005,171871.0,887,C R,country,False,26931.0,18.58,108.0
+   Yemen,YEM,2010,288394.0,887,C R,country,False,116523.0,67.8,89.0
+   Yemen,YEM,2015,379882.0,887,C R,country,False,91488.0,31.72,83.0
+   Yemen,YEM,2020,387113.0,887,C R,country,False,7231.0,1.9,90.0
+   South Africa,ZAF,1990,1163883.0,710,B R,country,False,,,28.0
+   South Africa,ZAF,1995,1003807.0,710,B R,country,False,-160076.0,-13.75,35.0
+   South Africa,ZAF,2000,1016963.0,710,B R,country,False,13156.0,1.31,36.0
+   South Africa,ZAF,2005,1351031.0,710,B R,country,False,334068.0,32.85,30.0
+   South Africa,ZAF,2010,2114801.0,710,B R,country,False,763770.0,56.53,26.0
+   South Africa,ZAF,2015,3231728.0,710,B R,country,False,1116927.0,52.81,21.0
+   South Africa,ZAF,2020,2860495.0,710,B R,country,False,-371233.0,-11.49,24.0
+   Zambia,ZMB,1990,279463.0,894,B R,country,False,,,83.0
+   Zambia,ZMB,1995,244338.0,894,B R,country,False,-35125.0,-12.57,86.0
+   Zambia,ZMB,2000,343703.0,894,B R,country,False,99365.0,40.67,73.0
+   Zambia,ZMB,2005,252895.0,894,B R,country,False,-90808.0,-26.42,92.0
+   Zambia,ZMB,2010,149962.0,894,B R,country,False,-102933.0,-40.7,115.0
+   Zambia,ZMB,2015,132107.0,894,B R,country,False,-17855.0,-11.91,123.0
+   Zambia,ZMB,2020,187955.0,894,B R,country,False,55848.0,42.27,118.0
+   Zimbabwe,ZWE,1990,634621.0,716,B R,country,False,,,49.0
+   Zimbabwe,ZWE,1995,431226.0,716,B R,country,False,-203395.0,-32.05,66.0
+   Zimbabwe,ZWE,2000,410109.0,716,B R,country,False,-21117.0,-4.9,65.0
+   Zimbabwe,ZWE,2005,402226.0,716,B R,country,False,-7883.0,-1.92,69.0
+   Zimbabwe,ZWE,2010,398307.0,716,B R,country,False,-3919.0,-0.97,73.0
+   Zimbabwe,ZWE,2015,400482.0,716,B R,country,False,2175.0,0.55,79.0
+   Zimbabwe,ZWE,2020,416141.0,716,B R,country,False,15659.0,3.91,86.0
+WORLD,,1990,152986157.0,900,,world,True,,,
+  Sub-Saharan Africa,,1990,13286341.0,947,,region,True,,,
+  Northern Africa and Western Asia,,1990,17608769.0,1833,,region,True,,,
+  Central and Southern Asia,,1990,26168623.0,921,,region,True,,,
+  Eastern and South-Eastern Asia,,1990,6835882.0,1832,,region,True,,,
+  Latin America and the Caribbean,,1990,7135971.0,1830,,region,True,,,
+  Oceania (excluding Australia and New Zealand),,1990,258678.0,1835,,region,True,,,
+  Australia and New Zealand,,1990,4473260.0,927,,region,True,,,
+  Europe and Northern America,,1990,77218633.0,1829,,region,True,,,
+  Developed regions,,1990,82767210.0,901,,aggregate,True,,,
+  Less developed regions,,1990,70218947.0,902,,aggregate,True,,,
+" Less developed regions, excluding least developed countries",,1990,59158726.0,934,,aggregate,True,,,
+" Less developed regions, excluding China",,1990,67419066.0,948,,income_group,True,,,
+  Least developed countries,,1990,11060221.0,941,,aggregate,True,,,
+  Land-locked Developing Countries (LLDC),,1990,14212843.0,1636,,unknown,False,,,2.0
+  Small island developing States (SIDS),,1990,2312665.0,1637,,unknown,False,,,15.0
+  High-income countries,,1990,76295202.0,1503,,income_group,True,,,
+  Middle-income countries,,1990,67228996.0,1517,,income_group,True,,,
+ Upper-middle-income countries,,1990,35289343.0,1502,,income_group,True,,,
+ Lower-middle-income countries,,1990,31939653.0,1501,,income_group,True,,,
+  Low-income countries,,1990,9193274.0,1500,,income_group,True,,,
+ AFRICA,,1990,15689666.0,903,,region,True,,,
+  Eastern Africa,,1990,5959183.0,910,,region,True,,,
+  Middle Africa,,1990,1461155.0,911,,region,True,,,
+  Northern Africa,,1990,2403325.0,912,,region,True,,,
+  Southern Africa,,1990,1395265.0,913,,region,True,,,
+  Western Africa,,1990,4470738.0,914,,region,True,,,
+ ASIA,,1990,48209949.0,935,,region,True,,,
+  Central Asia,,1990,6630683.0,5500,,region,True,,,
+  Eastern Asia,,1990,3959266.0,906,,region,True,,,
+"   China, Taiwan Province of China*",,1990,,158,,unknown,False,,,
+  South-Eastern Asia,,1990,2876616.0,920,,region,True,,,
+  Southern Asia,,1990,19537940.0,5501,,region,True,,,
+  Western Asia,,1990,15205444.0,922,,region,True,,,
+ EUROPE,,1990,49608225.0,908,,region,True,,,
+  Eastern Europe,,1990,21995312.0,923,,region,True,,,
+  Northern Europe,,1990,6645605.0,924,,region,True,,,
+   Channel Islands*,,1990,61660.0,830,B,unknown,False,,,136.0
+  Southern Europe,,1990,4340433.0,925,,region,True,,,
+  Western Europe,,1990,16626875.0,926,,region,True,,,
+ LATIN AMERICA AND THE CARIBBEAN,,1990,7135971.0,904,,region,True,,,
+  Caribbean,,1990,1031083.0,915,,region,True,,,
+  Central America,,1990,1829911.0,916,,region,True,,,
+  South America,,1990,4274977.0,931,,region,True,,,
+ NORTHERN AMERICA,,1990,27610408.0,905,,region,True,,,
+ OCEANIA ,,1990,4731938.0,909,,region,True,,,
+  Australia and New Zealand,,1990,4473260.0,927,,region,True,,,
+  Melanesia,,1990,91200.0,928,,region,True,,,
+  Micronesia,,1990,108969.0,954,,region,True,,,
+  Polynesia*,,1990,58509.0,957,,region,True,,,
+WORLD,,1995,161289976.0,900,,world,True,,,
+  Sub-Saharan Africa,,1995,14275437.0,947,,region,True,,,
+  Northern Africa and Western Asia,,1995,18912064.0,1833,,region,True,,,
+  Central and Southern Asia,,1995,21247814.0,921,,region,True,,,
+  Eastern and South-Eastern Asia,,1995,8339806.0,1832,,region,True,,,
+  Latin America and the Caribbean,,1995,6661553.0,1830,,region,True,,,
+  Oceania (excluding Australia and New Zealand),,1995,280580.0,1835,,region,True,,,
+  Australia and New Zealand,,1995,4741947.0,927,,region,True,,,
+  Europe and Northern America,,1995,86830775.0,1829,,region,True,,,
+  Developed regions,,1995,92935093.0,901,,aggregate,True,,,
+  Less developed regions,,1995,68354883.0,902,,aggregate,True,,,
+" Less developed regions, excluding least developed countries",,1995,56673106.0,934,,aggregate,True,,,
+" Less developed regions, excluding China",,1995,65243958.0,948,,income_group,True,,,
+  Least developed countries,,1995,11681777.0,941,,aggregate,True,,,
+  Land-locked Developing Countries (LLDC),,1995,12370057.0,1636,,unknown,False,,,2.0
+  Small island developing States (SIDS),,1995,2758806.0,1637,,unknown,False,,,15.0
+  High-income countries,,1995,87896678.0,1503,,income_group,True,,,
+  Middle-income countries,,1995,64071357.0,1517,,income_group,True,,,
+ Upper-middle-income countries,,1995,35213683.0,1502,,income_group,True,,,
+ Lower-middle-income countries,,1995,28857674.0,1501,,income_group,True,,,
+  Low-income countries,,1995,8995692.0,1500,,income_group,True,,,
+ AFRICA,,1995,16357077.0,903,,region,True,,,
+  Eastern Africa,,1995,4977644.0,910,,region,True,,,
+  Middle Africa,,1995,2662490.0,911,,region,True,,,
+  Northern Africa,,1995,2081640.0,912,,region,True,,,
+  Southern Africa,,1995,1201708.0,913,,region,True,,,
+  Western Africa,,1995,5433595.0,914,,region,True,,,
+ ASIA,,1995,46418044.0,935,,region,True,,,
+  Central Asia,,1995,5904795.0,5500,,region,True,,,
+  Eastern Asia,,1995,4639749.0,906,,region,True,,,
+"   China, Taiwan Province of China*",,1995,,158,,unknown,False,,,
+  South-Eastern Asia,,1995,3700057.0,920,,region,True,,,
+  Southern Asia,,1995,15343019.0,5501,,region,True,,,
+  Western Asia,,1995,16830424.0,922,,region,True,,,
+ EUROPE,,1995,53489827.0,908,,region,True,,,
+  Eastern Europe,,1995,21344124.0,923,,region,True,,,
+  Northern Europe,,1995,7194824.0,924,,region,True,,,
+   Channel Islands*,,1995,60519.0,830,B,unknown,False,,,141.0
+  Southern Europe,,1995,6230114.0,925,,region,True,,,
+  Western Europe,,1995,18720765.0,926,,region,True,,,
+ LATIN AMERICA AND THE CARIBBEAN,,1995,6661553.0,904,,region,True,,,
+  Caribbean,,1995,1121563.0,915,,region,True,,,
+  Central America,,1995,1298916.0,916,,region,True,,,
+  South America,,1995,4241074.0,931,,region,True,,,
+ NORTHERN AMERICA,,1995,33340948.0,905,,region,True,,,
+ OCEANIA ,,1995,5022527.0,909,,region,True,,,
+  Australia and New Zealand,,1995,4741947.0,927,,region,True,,,
+  Melanesia,,1995,96828.0,928,,region,True,,,
+  Micronesia,,1995,118687.0,954,,region,True,,,
+  Polynesia*,,1995,65065.0,957,,region,True,,,
+WORLD,,2000,173230585.0,900,,world,True,,,
+  Sub-Saharan Africa,,2000,13151229.0,947,,region,True,,,
+  Northern Africa and Western Asia,,2000,20321397.0,1833,,region,True,,,
+  Central and Southern Asia,,2000,20139825.0,921,,region,True,,,
+  Eastern and South-Eastern Asia,,2000,10506212.0,1832,,region,True,,,
+  Latin America and the Caribbean,,2000,6539738.0,1830,,region,True,,,
+  Oceania (excluding Australia and New Zealand),,2000,296618.0,1835,,region,True,,,
+  Australia and New Zealand,,2000,5065063.0,927,,region,True,,,
+  Europe and Northern America,,2000,97210503.0,1829,,region,True,,,
+  Developed regions,,2000,103962010.0,901,,aggregate,True,,,
+  Less developed regions,,2000,69268575.0,902,,aggregate,True,,,
+" Less developed regions, excluding least developed countries",,2000,59204627.0,934,,aggregate,True,,,
+" Less developed regions, excluding China",,2000,65850628.0,948,,income_group,True,,,
+  Least developed countries,,2000,10063948.0,941,,aggregate,True,,,
+  Land-locked Developing Countries (LLDC),,2000,11503826.0,1636,,unknown,False,,,3.0
+  Small island developing States (SIDS),,2000,3287168.0,1637,,unknown,False,,,13.0
+  High-income countries,,2000,101641715.0,1503,,income_group,True,,,
+  Middle-income countries,,2000,63873275.0,1517,,income_group,True,,,
+ Upper-middle-income countries,,2000,35822210.0,1502,,income_group,True,,,
+ Lower-middle-income countries,,2000,28051065.0,1501,,income_group,True,,,
+  Low-income countries,,2000,7322731.0,1500,,income_group,True,,,
+ AFRICA,,2000,15051677.0,903,,region,True,,,
+  Eastern Africa,,2000,4847119.0,910,,region,True,,,
+  Middle Africa,,2000,1775284.0,911,,region,True,,,
+  Northern Africa,,2000,1900448.0,912,,region,True,,,
+  Southern Africa,,2000,1267695.0,913,,region,True,,,
+  Western Africa,,2000,5261131.0,914,,region,True,,,
+ ASIA,,2000,49066986.0,935,,region,True,,,
+  Central Asia,,2000,5189082.0,5500,,region,True,,,
+  Eastern Asia,,2000,5393004.0,906,,region,True,,,
+"   China, Taiwan Province of China*",,2000,,158,,unknown,False,,,
+  South-Eastern Asia,,2000,5113208.0,920,,region,True,,,
+  Southern Asia,,2000,14950743.0,5501,,region,True,,,
+  Western Asia,,2000,18420949.0,922,,region,True,,,
+ EUROPE,,2000,56858793.0,908,,region,True,,,
+  Eastern Europe,,2000,20435785.0,923,,region,True,,,
+  Northern Europe,,2000,7900973.0,924,,region,True,,,
+   Channel Islands*,,2000,64301.0,830,B,unknown,False,,,140.0
+  Southern Europe,,2000,7681658.0,925,,region,True,,,
+  Western Europe,,2000,20840377.0,926,,region,True,,,
+ LATIN AMERICA AND THE CARIBBEAN,,2000,6539738.0,904,,region,True,,,
+  Caribbean,,2000,1216872.0,915,,region,True,,,
+  Central America,,2000,1107577.0,916,,region,True,,,
+  South America,,2000,4215289.0,931,,region,True,,,
+ NORTHERN AMERICA,,2000,40351710.0,905,,region,True,,,
+ OCEANIA ,,2000,5361681.0,909,,region,True,,,
+  Australia and New Zealand,,2000,5065063.0,927,,region,True,,,
+  Melanesia,,2000,95281.0,928,,region,True,,,
+  Micronesia,,2000,130186.0,954,,region,True,,,
+  Polynesia*,,2000,71151.0,957,,region,True,,,
+WORLD,,2005,191446828.0,900,,world,True,,,
+  Sub-Saharan Africa,,2005,14290369.0,947,,region,True,,,
+  Northern Africa and Western Asia,,2005,23165804.0,1833,,region,True,,,
+  Central and Southern Asia,,2005,18854544.0,921,,region,True,,,
+  Eastern and South-Eastern Asia,,2005,12979157.0,1832,,region,True,,,
+  Latin America and the Caribbean,,2005,7184113.0,1830,,region,True,,,
+  Oceania (excluding Australia and New Zealand),,2005,306039.0,1835,,region,True,,,
+  Australia and New Zealand,,2005,5717982.0,927,,region,True,,,
+  Europe and Northern America,,2005,108948820.0,1829,,region,True,,,
+  Developed regions,,2005,116678357.0,901,,aggregate,True,,,
+  Less developed regions,,2005,74768471.0,902,,aggregate,True,,,
+" Less developed regions, excluding least developed countries",,2005,64976460.0,934,,aggregate,True,,,
+" Less developed regions, excluding China",,2005,71088981.0,948,,income_group,True,,,
+  Least developed countries,,2005,9792011.0,941,,aggregate,True,,,
+  Land-locked Developing Countries (LLDC),,2005,11576028.0,1636,,unknown,False,,,3.0
+  Small island developing States (SIDS),,2005,3918084.0,1637,,unknown,False,,,14.0
+  High-income countries,,2005,119026154.0,1503,,income_group,True,,,
+  Middle-income countries,,2005,64747471.0,1517,,income_group,True,,,
+ Upper-middle-income countries,,2005,38209661.0,1502,,income_group,True,,,
+ Lower-middle-income countries,,2005,26537810.0,1501,,income_group,True,,,
+  Low-income countries,,2005,7227899.0,1500,,income_group,True,,,
+ AFRICA,,2005,16040087.0,903,,region,True,,,
+  Eastern Africa,,2005,4788649.0,910,,region,True,,,
+  Middle Africa,,2005,1961951.0,911,,region,True,,,
+  Northern Africa,,2005,1749718.0,912,,region,True,,,
+  Southern Africa,,2005,1582721.0,913,,region,True,,,
+  Western Africa,,2005,5957048.0,914,,region,True,,,
+ ASIA,,2005,53249787.0,935,,region,True,,,
+  Central Asia,,2005,5235877.0,5500,,region,True,,,
+  Eastern Asia,,2005,6228684.0,906,,region,True,,,
+"   China, Taiwan Province of China*",,2005,,158,,unknown,False,,,
+  South-Eastern Asia,,2005,6750473.0,920,,region,True,,,
+  Southern Asia,,2005,13618667.0,5501,,region,True,,,
+  Western Asia,,2005,21416086.0,922,,region,True,,,
+ EUROPE,,2005,63585731.0,908,,region,True,,,
+  Eastern Europe,,2005,19744557.0,923,,region,True,,,
+  Northern Europe,,2005,9588814.0,924,,region,True,,,
+   Channel Islands*,,2005,70941.0,830,B,unknown,False,,,138.0
+  Southern Europe,,2005,12004024.0,925,,region,True,,,
+  Western Europe,,2005,22248336.0,926,,region,True,,,
+ LATIN AMERICA AND THE CARIBBEAN,,2005,7184113.0,904,,region,True,,,
+  Caribbean,,2005,1275731.0,915,,region,True,,,
+  Central America,,2005,1378041.0,916,,region,True,,,
+  South America,,2005,4530341.0,931,,region,True,,,
+ NORTHERN AMERICA,,2005,45363089.0,905,,region,True,,,
+ OCEANIA ,,2005,6024021.0,909,,region,True,,,
+  Australia and New Zealand,,2005,5717982.0,927,,region,True,,,
+  Melanesia,,2005,103881.0,928,,region,True,,,
+  Micronesia,,2005,128390.0,954,,region,True,,,
+  Polynesia*,,2005,73768.0,957,,region,True,,,
+WORLD,,2010,220983187.0,900,,world,True,,,
+  Sub-Saharan Africa,,2010,15854637.0,947,,region,True,,,
+  Northern Africa and Western Asia,,2010,32638434.0,1833,,region,True,,,
+  Central and Southern Asia,,2010,19676783.0,921,,region,True,,,
+  Eastern and South-Eastern Asia,,2010,15760463.0,1832,,region,True,,,
+  Latin America and the Caribbean,,2010,8326588.0,1830,,region,True,,,
+  Oceania (excluding Australia and New Zealand),,2010,298175.0,1835,,region,True,,,
+  Australia and New Zealand,,2010,6830423.0,927,,region,True,,,
+  Europe and Northern America,,2010,121597684.0,1829,,region,True,,,
+  Developed regions,,2010,130562258.0,901,,aggregate,True,,,
+  Less developed regions,,2010,90420929.0,902,,aggregate,True,,,
+" Less developed regions, excluding least developed countries",,2010,79989053.0,934,,aggregate,True,,,
+" Less developed regions, excluding China",,2010,86472612.0,948,,income_group,True,,,
+  Least developed countries,,2010,10431876.0,941,,aggregate,True,,,
+  Land-locked Developing Countries (LLDC),,2010,11597176.0,1636,,unknown,False,,,2.0
+  Small island developing States (SIDS),,2010,4710457.0,1637,,unknown,False,,,15.0
+  High-income countries,,2010,142642749.0,1503,,income_group,True,,,
+  Middle-income countries,,2010,69069732.0,1517,,income_group,True,,,
+ Upper-middle-income countries,,2010,42080101.0,1502,,income_group,True,,,
+ Lower-middle-income countries,,2010,26989631.0,1501,,income_group,True,,,
+  Low-income countries,,2010,8781206.0,1500,,income_group,True,,,
+ AFRICA,,2010,17806677.0,903,,region,True,,,
+  Eastern Africa,,2010,4743657.0,910,,region,True,,,
+  Middle Africa,,2010,2436802.0,911,,region,True,,,
+  Northern Africa,,2010,1952040.0,912,,region,True,,,
+  Southern Africa,,2010,2352541.0,913,,region,True,,,
+  Western Africa,,2010,6321637.0,914,,region,True,,,
+ ASIA,,2010,66123640.0,935,,region,True,,,
+  Central Asia,,2010,5264938.0,5500,,region,True,,,
+  Eastern Asia,,2010,7062527.0,906,,region,True,,,
+"   China, Taiwan Province of China*",,2010,,158,,unknown,False,,,
+  South-Eastern Asia,,2010,8697936.0,920,,region,True,,,
+  Southern Asia,,2010,14411845.0,5501,,region,True,,,
+  Western Asia,,2010,30686394.0,922,,region,True,,,
+ EUROPE,,2010,70627160.0,908,,region,True,,,
+  Eastern Europe,,2010,19110686.0,923,,region,True,,,
+  Northern Europe,,2010,11294937.0,924,,region,True,,,
+   Channel Islands*,,2010,77581.0,830,B,unknown,False,,,138.0
+  Southern Europe,,2010,16206273.0,925,,region,True,,,
+  Western Europe,,2010,24015264.0,926,,region,True,,,
+ LATIN AMERICA AND THE CARIBBEAN,,2010,8326588.0,904,,region,True,,,
+  Caribbean,,2010,1338893.0,915,,region,True,,,
+  Central America,,2010,1751028.0,916,,region,True,,,
+  South America,,2010,5236667.0,931,,region,True,,,
+ NORTHERN AMERICA,,2010,50970524.0,905,,region,True,,,
+ OCEANIA ,,2010,7128598.0,909,,region,True,,,
+  Australia and New Zealand,,2010,6830423.0,927,,region,True,,,
+  Melanesia,,2010,110691.0,928,,region,True,,,
+  Micronesia,,2010,114743.0,954,,region,True,,,
+  Polynesia*,,2010,72741.0,957,,region,True,,,
+WORLD,,2015,247958644.0,900,,world,True,,,
+  Sub-Saharan Africa,,2015,20721874.0,947,,region,True,,,
+  Northern Africa and Western Asia,,2015,42036092.0,1833,,region,True,,,
+  Central and Southern Asia,,2015,19266265.0,921,,region,True,,,
+  Eastern and South-Eastern Asia,,2015,18027810.0,1832,,region,True,,,
+  Latin America and the Caribbean,,2015,9441503.0,1830,,region,True,,,
+  Oceania (excluding Australia and New Zealand),,2015,302810.0,1835,,region,True,,,
+  Australia and New Zealand,,2015,7769466.0,927,,region,True,,,
+  Europe and Northern America,,2015,130392824.0,1829,,region,True,,,
+  Developed regions,,2015,140394479.0,901,,aggregate,True,,,
+  Less developed regions,,2015,107564165.0,902,,aggregate,True,,,
+" Less developed regions, excluding least developed countries",,2015,94124050.0,934,,aggregate,True,,,
+" Less developed regions, excluding China",,2015,103368940.0,948,,income_group,True,,,
+  Least developed countries,,2015,13440115.0,941,,aggregate,True,,,
+  Land-locked Developing Countries (LLDC),,2015,13821420.0,1636,,unknown,False,,,2.0
+  Small island developing States (SIDS),,2015,5273967.0,1637,,unknown,False,,,13.0
+  High-income countries,,2015,158516311.0,1503,,income_group,True,,,
+  Middle-income countries,,2015,78597464.0,1517,,income_group,True,,,
+ Upper-middle-income countries,,2015,50991477.0,1502,,income_group,True,,,
+ Lower-middle-income countries,,2015,27605987.0,1501,,income_group,True,,,
+  Low-income countries,,2015,10321749.0,1500,,income_group,True,,,
+ AFRICA,,2015,22860792.0,903,,region,True,,,
+  Eastern Africa,,2015,6696922.0,910,,region,True,,,
+  Middle Africa,,2015,3479911.0,911,,region,True,,,
+  Northern Africa,,2015,2138918.0,912,,region,True,,,
+  Southern Africa,,2015,3477903.0,913,,region,True,,,
+  Western Africa,,2015,7067138.0,914,,region,True,,,
+ ASIA,,2015,77191249.0,935,,region,True,,,
+  Central Asia,,2015,5392792.0,5500,,region,True,,,
+  Eastern Asia,,2015,7866663.0,906,,region,True,,,
+"   China, Taiwan Province of China*",,2015,,158,,unknown,False,,,
+  South-Eastern Asia,,2015,10161147.0,920,,region,True,,,
+  Southern Asia,,2015,13873473.0,5501,,region,True,,,
+  Western Asia,,2015,39897174.0,922,,region,True,,,
+ EUROPE,,2015,74759083.0,908,,region,True,,,
+  Eastern Europe,,2015,19833989.0,923,,region,True,,,
+  Northern Europe,,2015,13191086.0,924,,region,True,,,
+   Channel Islands*,,2015,82307.0,830,B,unknown,False,,,137.0
+  Southern Europe,,2015,15815457.0,925,,region,True,,,
+  Western Europe,,2015,25918551.0,926,,region,True,,,
+ LATIN AMERICA AND THE CARIBBEAN,,2015,9441503.0,904,,region,True,,,
+  Caribbean,,2015,1501081.0,915,,region,True,,,
+  Central America,,2015,1860215.0,916,,region,True,,,
+  South America,,2015,6080207.0,931,,region,True,,,
+ NORTHERN AMERICA,,2015,55633741.0,905,,region,True,,,
+ OCEANIA ,,2015,8072276.0,909,,region,True,,,
+  Australia and New Zealand,,2015,7769466.0,927,,region,True,,,
+  Melanesia,,2015,119343.0,928,,region,True,,,
+  Micronesia,,2015,113466.0,954,,region,True,,,
+  Polynesia*,,2015,70001.0,957,,region,True,,,
+WORLD,,2020,280598105.0,900,,world,True,,,
+  Sub-Saharan Africa,,2020,22221538.0,947,,region,True,,,
+  Northern Africa and Western Asia,,2020,49767746.0,1833,,region,True,,,
+  Central and Southern Asia,,2020,19427576.0,921,,region,True,,,
+  Eastern and South-Eastern Asia,,2020,19591106.0,1832,,region,True,,,
+  Latin America and the Caribbean,,2020,14794623.0,1830,,region,True,,,
+  Oceania (excluding Australia and New Zealand),,2020,313069.0,1835,,region,True,,,
+  Australia and New Zealand,,2020,9067584.0,927,,region,True,,,
+  Europe and Northern America,,2020,145414863.0,1829,,region,True,,,
+  Developed regions,,2020,157253443.0,901,,aggregate,True,,,
+  Less developed regions,,2020,123344662.0,902,,aggregate,True,,,
+" Less developed regions, excluding least developed countries",,2020,107159937.0,934,,aggregate,True,,,
+" Less developed regions, excluding China",,2020,118939005.0,948,,income_group,True,,,
+  Least developed countries,,2020,16184725.0,941,,aggregate,True,,,
+  Land-locked Developing Countries (LLDC),,2020,15022720.0,1636,,unknown,False,,,3.0
+  Small island developing States (SIDS),,2020,5678001.0,1637,,unknown,False,,,14.0
+  High-income countries,,2020,181897756.0,1503,,income_group,True,,,
+  Middle-income countries,,2020,85895533.0,1517,,income_group,True,,,
+ Upper-middle-income countries,,2020,57383443.0,1502,,income_group,True,,,
+ Lower-middle-income countries,,2020,28512090.0,1501,,income_group,True,,,
+  Low-income countries,,2020,12232043.0,1500,,income_group,True,,,
+ AFRICA,,2020,25389464.0,903,,region,True,,,
+  Eastern Africa,,2020,7682801.0,910,,region,True,,,
+  Middle Africa,,2020,3861568.0,911,,region,True,,,
+  Northern Africa,,2020,3167926.0,912,,region,True,,,
+  Southern Africa,,2020,3125072.0,913,,region,True,,,
+  Western Africa,,2020,7552097.0,914,,region,True,,,
+ ASIA,,2020,85618502.0,935,,region,True,,,
+  Central Asia,,2020,5564042.0,5500,,region,True,,,
+  Eastern Asia,,2020,8975729.0,906,,region,True,,,
+"   China, Taiwan Province of China*",,2020,,158,,unknown,False,,,
+  South-Eastern Asia,,2020,10615377.0,920,,region,True,,,
+  Southern Asia,,2020,13863534.0,5501,,region,True,,,
+  Western Asia,,2020,46599820.0,922,,region,True,,,
+ EUROPE,,2020,86706068.0,908,,region,True,,,
+  Eastern Europe,,2020,20835402.0,923,,region,True,,,
+  Northern Europe,,2020,14973861.0,924,,region,True,,,
+   Channel Islands*,,2020,84087.0,830,B,unknown,False,,,142.0
+  Southern Europe,,2020,17665688.0,925,,region,True,,,
+  Western Europe,,2020,33231117.0,926,,region,True,,,
+ LATIN AMERICA AND THE CARIBBEAN,,2020,14794623.0,904,,region,True,,,
+  Caribbean,,2020,1605148.0,915,,region,True,,,
+  Central America,,2020,2302001.0,916,,region,True,,,
+  South America,,2020,10887474.0,931,,region,True,,,
+ NORTHERN AMERICA,,2020,58708795.0,905,,region,True,,,
+ OCEANIA ,,2020,9380653.0,909,,region,True,,,
+  Australia and New Zealand,,2020,9067584.0,927,,region,True,,,
+  Melanesia,,2020,124073.0,928,,region,True,,,
+  Micronesia,,2020,118860.0,954,,region,True,,,
+  Polynesia*,,2020,70136.0,957,,region,True,,,

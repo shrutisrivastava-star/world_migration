@@ -1,0 +1,15 @@
+dataset_name,check_name,status,severity,details
+UN DESA Destination Migrant Stock,Required Columns Exist,PASS,ERROR,All required columns present.
+UN DESA Destination Migrant Stock,Valid Year Range,PASS,ERROR,"Valid years: [np.int64(1990), np.int64(1995), np.int64(2000), np.int64(2005), np.int64(2010), np.int64(2015), np.int64(2020)]"
+UN DESA Destination Migrant Stock,Sovereign ISO3 Country Codes,PASS,ERROR,All sovereign country codes are valid ISO3.
+UN DESA Destination Migrant Stock,Non-Negative Migrant Stock,PASS,ERROR,All migrant stock values are non-negative.
+UN DESA Destination Migrant Stock,"Unique Primary Key (country_code, year)",PASS,ERROR,Primary keys are unique.
+UN DESA Bilateral Migrant Stock,Required Columns Exist,PASS,ERROR,All required columns present.
+UN DESA Bilateral Migrant Stock,Non-Negative Migrant Stock,PASS,ERROR,All bilateral migrant stock values are non-negative.
+UN DESA Bilateral Migrant Stock,"Unique Corridor Key (origin, dest, year)",PASS,ERROR,Corridor primary keys are unique.
+World Bank Socioeconomic Indicators,Required Columns Exist,PASS,ERROR,All indicator columns present.
+World Bank Socioeconomic Indicators,Non-Negative Population & GDP/Capita,PASS,ERROR,Values are strictly non-negative.
+World Bank Socioeconomic Indicators,Unemployment Percentage Range [0-100%],PASS,ERROR,All unemployment rates within 0-100%.
+World Bank Socioeconomic Indicators,"Unique Primary Key (country_code, year)",PASS,ERROR,Primary keys are unique.
+Merged Country Socioeconomic Dataset,Required Merged Columns Exist,PASS,ERROR,All merged fields present.
+Merged Country Socioeconomic Dataset,Migration & Population Overlap,PASS,ERROR,"1,483 records have both migrant stock and population."
