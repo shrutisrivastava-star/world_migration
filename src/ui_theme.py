@@ -102,18 +102,79 @@ def get_plotly_layout(theme_mode: str = "Light", title: str = "", height: int = 
         Dict[str, Any]: Layout dictionary for fig.update_layout(**layout)
     """
     c = get_theme_colors(theme_mode)
+    is_dark = (theme_mode == "Dark")
+
+    axis_title_color = c["text_primary"]
+    axis_tick_color = "#e2e8f0" if is_dark else c["text_primary"]
+    legend_text_color = c["text_primary"]
+    grid_color = "#334155" if is_dark else "#e2e8f0"
+    zeroline_color = "#475569" if is_dark else "#cbd5e1"
+
     return {
         "template": c["plotly_template"],
         "title": {
             "text": title,
-            "font": {"size": 15, "family": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", "color": c["text_primary"]},
+            "font": {
+                "size": 15,
+                "family": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                "color": c["text_primary"]
+            },
             "x": 0.0,
             "xanchor": "left"
         },
         "font": {
             "family": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
             "size": 12,
-            "color": c["text_secondary"]
+            "color": c["text_primary"]
+        },
+        "xaxis": {
+            "title": {
+                "font": {
+                    "size": 12,
+                    "family": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                    "color": axis_title_color
+                }
+            },
+            "tickfont": {
+                "size": 11,
+                "family": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                "color": axis_tick_color
+            },
+            "gridcolor": grid_color,
+            "zerolinecolor": zeroline_color,
+            "linecolor": grid_color,
+        },
+        "yaxis": {
+            "title": {
+                "font": {
+                    "size": 12,
+                    "family": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                    "color": axis_title_color
+                }
+            },
+            "tickfont": {
+                "size": 11,
+                "family": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                "color": axis_tick_color
+            },
+            "gridcolor": grid_color,
+            "zerolinecolor": zeroline_color,
+            "linecolor": grid_color,
+        },
+        "legend": {
+            "font": {
+                "size": 11,
+                "family": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                "color": legend_text_color
+            },
+            "title": {
+                "font": {
+                    "size": 12,
+                    "family": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+                    "color": c["text_primary"]
+                }
+            },
+            "bgcolor": "rgba(0,0,0,0)"
         },
         "margin": {"l": 24, "r": 24, "t": 48, "b": 24},
         "height": height,
@@ -295,7 +356,7 @@ def apply_ui_theme(theme_mode: str = "Light"):
             outline-offset: 2px;
         }}
 
-        /* 8. Input Controls & Selectboxes */
+        /* 8. Input Controls, Selectboxes & BaseWeb Dropdown Menus */
         .stSelectbox label, .stMultiSelect label, .stSlider label, .stRadio label {{
             color: {c['text_primary']} !important;
             font-size: 0.85rem !important;
@@ -304,17 +365,138 @@ def apply_ui_theme(theme_mode: str = "Light"):
             margin-bottom: 0.25rem;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }}
-        [data-testid="stSelectbox"] > div > div {{
-            background-color: {c['card_bg']};
-            border-color: {c['card_border']};
-            color: {c['text_primary']};
-            border-radius: 6px;
-            font-size: 0.875rem;
+
+        /* Closed selectbox & multiselect control styling */
+        [data-testid="stSelectbox"] > div > div,
+        [data-testid="stMultiSelect"] > div > div,
+        div[data-baseweb="select"] > div {{
+            background-color: {c['card_bg']} !important;
+            border: 1px solid {c['card_border']} !important;
+            color: {c['text_primary']} !important;
+            border-radius: 6px !important;
+            font-size: 0.875rem !important;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }}
-        [data-testid="stSelectbox"] > div > div:focus-within {{
-            border-color: {c['accent_blue']};
-            box-shadow: 0 0 0 1px {c['accent_blue']};
+        [data-testid="stSelectbox"] > div > div:focus-within,
+        [data-testid="stMultiSelect"] > div > div:focus-within,
+        div[data-baseweb="select"] > div:focus-within {{
+            border-color: {c['accent_blue']} !important;
+            box-shadow: 0 0 0 1px {c['accent_blue']} !important;
+        }}
+
+        /* Closed select value text and placeholder */
+        [data-baseweb="select"] div,
+        [data-baseweb="select"] span,
+        [data-testid="stSelectbox"] div[data-testid="stMarkdownContainer"] p {{
+            color: {c['text_primary']} !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }}
+
+        /* Dropdown arrow and clear icons */
+        [data-baseweb="select"] svg,
+        [data-testid="stSelectbox"] svg,
+        [data-testid="stMultiSelect"] svg {{
+            fill: {c['text_secondary']} !important;
+            color: {c['text_secondary']} !important;
+        }}
+
+        /* BaseWeb Popover / Dropdown Menu Container (covers portal-rendered menus outside container) */
+        div[data-baseweb="popover"],
+        div[data-baseweb="popover"] > div,
+        div[data-baseweb="menu"],
+        ul[data-baseweb="menu"],
+        [role="listbox"],
+        ul[role="listbox"],
+        div[role="listbox"] {{
+            background-color: {c['card_bg']} !important;
+            border: 1px solid {c['card_border']} !important;
+            color: {c['text_primary']} !important;
+            border-radius: 6px !important;
+            box-shadow: {c['shadow_md']} !important;
+            overflow: hidden;
+        }}
+
+        /* Popover list options (individual dropdown entries) */
+        [role="option"],
+        li[role="option"],
+        div[role="option"],
+        ul[data-baseweb="menu"] li,
+        div[data-baseweb="menu"] li,
+        [data-baseweb="menu"] [role="option"] {{
+            background-color: {c['card_bg']} !important;
+            color: {c['text_primary']} !important;
+            font-size: 0.875rem !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+            padding: 0.5rem 0.85rem !important;
+            cursor: pointer !important;
+            transition: background-color 0.15s ease, color 0.15s ease !important;
+        }}
+
+        /* Text inside options */
+        [role="option"] *,
+        li[role="option"] *,
+        div[role="option"] * {{
+            color: {c['text_primary']} !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        }}
+
+        /* Hovered / Focused option state */
+        [role="option"]:hover,
+        li[role="option"]:hover,
+        div[role="option"]:hover,
+        [role="option"]:focus,
+        li[role="option"]:focus,
+        [role="option"][aria-selected="false"]:hover,
+        [data-baseweb="menu"] li:hover,
+        [data-baseweb="menu"] [aria-highlighted="true"],
+        li[data-highlighted="true"] {{
+            background-color: {c['button_hover_bg']} !important;
+            color: {c['text_primary']} !important;
+        }}
+        [role="option"]:hover *,
+        li[role="option"]:hover *,
+        [data-baseweb="menu"] [aria-highlighted="true"] * {{
+            color: {c['text_primary']} !important;
+        }}
+
+        /* Selected option state */
+        [role="option"][aria-selected="true"],
+        li[role="option"][aria-selected="true"],
+        div[role="option"][aria-selected="true"],
+        [data-baseweb="menu"] [aria-selected="true"] {{
+            background-color: {c['button_bg']} !important;
+            color: {c['accent_blue']} !important;
+            font-weight: 600 !important;
+        }}
+        [role="option"][aria-selected="true"] *,
+        li[role="option"][aria-selected="true"] * {{
+            color: {c['accent_blue']} !important;
+            font-weight: 600 !important;
+        }}
+
+        /* Search / Input text inside select controls */
+        [data-baseweb="select"] input,
+        [data-baseweb="popover"] input,
+        [data-testid="stSelectbox"] input,
+        [data-testid="stMultiSelect"] input {{
+            color: {c['text_primary']} !important;
+            background-color: transparent !important;
+            caret-color: {c['accent_blue']} !important;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        }}
+
+        /* MultiSelect tags / pills */
+        [data-baseweb="tag"] {{
+            background-color: {c['button_bg']} !important;
+            border: 1px solid {c['card_border']} !important;
+            color: {c['text_primary']} !important;
+            border-radius: 4px !important;
+        }}
+        [data-baseweb="tag"] span {{
+            color: {c['text_primary']} !important;
+        }}
+        [data-baseweb="tag"] svg {{
+            fill: {c['text_secondary']} !important;
         }}
 
         /* 9. Tabs Styling */

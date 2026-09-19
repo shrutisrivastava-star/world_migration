@@ -1,5 +1,6 @@
 """
 Unit tests for dashboard_data module.
+Validates overview KPIs, map data formatting, country profiles, trends, rankings, and corridor filters.
 """
 
 import pandas as pd
@@ -42,11 +43,15 @@ def sample_bilateral_df():
 
 
 def test_overview_kpis(sample_merged_df, sample_bilateral_df):
-    """Test dynamic overview KPI computation."""
+    """Test dynamic overview KPI computation including global_migrant_pct."""
     kpis = get_overview_kpis(sample_merged_df, sample_bilateral_df, year=2020)
     assert kpis["year"] == 2020
     # Sovereign sum: 50M (USA) + 15M (DEU) = 65M (excluding World)
     assert kpis["total_migrant_stock"] == 65000000.0
+    assert kpis["total_population"] == 413000000.0  # 330M + 83M
+    assert "global_migrant_pct" in kpis
+    expected_pct = (65000000.0 / 413000000.0) * 100.0
+    assert np.isclose(kpis["global_migrant_pct"], expected_pct, atol=0.01)
     assert kpis["num_countries"] == 2
     assert kpis["top_destination_name"] == "United States"
     assert kpis["top_destination_stock"] == 50000000.0
@@ -56,13 +61,17 @@ def test_overview_kpis(sample_merged_df, sample_bilateral_df):
 
 
 def test_get_map_data(sample_merged_df):
-    """Test map data formatting and metric resolution."""
+    """Test map data formatting, metric resolution, and hover columns including gdp_per_capita."""
     map_df = get_map_data(sample_merged_df, year=2020, metric_name="Migrant Stock")
     assert len(map_df) == 2  # Sovereign only
     assert "USA" in map_df["country_code"].values
     assert "DEU" in map_df["country_code"].values
     assert "WLD" not in map_df["country_code"].values
     assert map_df.loc[map_df["country_code"] == "USA", "metric_value"].values[0] == 50000000.0
+    # Verify all expected hover columns exist
+    for col in ["country_code", "metric_value", "population", "gdp_per_capita", "migrant_stock_pct_population"]:
+        assert col in map_df.columns
+    assert map_df.loc[map_df["country_code"] == "USA", "gdp_per_capita"].values[0] == 63000.0
 
 
 def test_get_global_trend_data(sample_merged_df):
@@ -106,11 +115,44 @@ def test_get_filtered_corridors_by_origin(sample_bilateral_df):
     assert all(filtered["origin_code"] == "IND")
 
 
+def test_get_filtered_corridors_by_destination_and_pair(sample_bilateral_df):
+    """Test corridor filtering by destination_code, dest_code, and combined pair."""
+    # Test destination_code keyword parameter
+    filtered_dest = get_filtered_corridors(sample_bilateral_df, year=2020, destination_code="USA")
+    assert len(filtered_dest) == 2
+    assert all(filtered_dest["destination_code"] == "USA")
+
+    # Test dest_code legacy keyword parameter
+    filtered_dest_legacy = get_filtered_corridors(sample_bilateral_df, year=2020, dest_code="ARE")
+    assert len(filtered_dest_legacy) == 1
+    assert filtered_dest_legacy.iloc[0]["destination_code"] == "ARE"
+
+    # Test pair (origin + destination)
+    filtered_pair = get_filtered_corridors(sample_bilateral_df, year=2020, origin_code="MEX", destination_code="USA")
+    assert len(filtered_pair) == 1
+    assert filtered_pair.iloc[0]["origin_code"] == "MEX"
+    assert filtered_pair.iloc[0]["destination_code"] == "USA"
+
+    # Test no-match returns empty dataframe safely
+    no_match = get_filtered_corridors(sample_bilateral_df, year=2020, origin_code="NONEXISTENT")
+    assert no_match.empty
+
+
 def test_get_country_profile_data(sample_merged_df, sample_bilateral_df):
-    """Test country profile data compilation."""
+    """Test country profile data compilation and schema contract."""
     profile = get_country_profile_data(sample_merged_df, sample_bilateral_df, country_code="USA", year=2020)
     assert profile["country_code"] == "USA"
     assert profile["country_name"] == "United States"
+    assert "immigrant_stock" in profile
+    assert "migrant_stock" in profile
+    assert profile["immigrant_stock"] == 50000000.0
+    assert profile["migrant_stock"] == 50000000.0
+    assert profile["total_population"] == 330000000.0
+    assert np.isclose(profile["migrant_pct_population"], 15.15, atol=0.01)
+    assert "emigrant_stock" in profile
+    assert "net_migrant_stock" in profile
+    assert "top_inbound_origins" in profile
+    assert "top_outbound_destinations" in profile
     assert len(profile["history_df"]) == 2
     assert len(profile["inbound_corridors"]) == 2  # MEX -> USA, IND -> USA
     assert len(profile["outbound_corridors"]) == 0

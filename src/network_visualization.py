@@ -88,7 +88,7 @@ COUNTRY_CENTROIDS: Dict[str, Tuple[float, float]] = {
 
 def create_network_2d_plot(
     G: nx.DiGraph,
-    metrics_df: pd.DataFrame,
+    metrics_df: Optional[pd.DataFrame] = None,
     layout_type: str = "Spring",
     node_size_metric: str = "Weighted Strength",
     node_color_metric: str = "Weighted Strength",
@@ -103,7 +103,7 @@ def create_network_2d_plot(
     
     Args:
         G: NetworkX DiGraph or Graph.
-        metrics_df: Country network metrics DataFrame.
+        metrics_df: Country network metrics DataFrame (optional, calculated from G if omitted).
         layout_type: 'Spring', 'Circular', or 'Kamada-Kawai'.
         node_size_metric: Metric for node scaling.
         node_color_metric: Metric for node coloring.
@@ -123,6 +123,10 @@ def create_network_2d_plot(
             annotations=[dict(text="No active network nodes for the selected filter threshold.", showarrow=False)]
         )
         return fig
+
+    if metrics_df is None or (isinstance(metrics_df, pd.DataFrame) and metrics_df.empty):
+        from src.network_analysis import calculate_network_metrics
+        metrics_df = calculate_network_metrics(G)
 
     # 1. Compute 2D node coordinates
     if layout_type == "Circular":
@@ -254,7 +258,8 @@ def create_network_2d_plot(
             size=node_sizes,
             colorbar=dict(
                 thickness=12,
-                title=dict(text=node_color_metric, side="top"),
+                title=dict(text=node_color_metric, side="top", font=dict(color=colors["text_primary"], size=11, family="Inter, sans-serif")),
+                tickfont=dict(color=colors["text_primary"], size=10, family="Inter, sans-serif"),
                 xanchor="left"
             ),
             line=dict(width=1.5, color=colors["card_bg"])
@@ -271,7 +276,7 @@ def create_network_2d_plot(
         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
         height=560,
-        font=dict(family="Inter, sans-serif")
+        font=dict(family="Inter, sans-serif", color=colors["text_primary"])
     )
     return fig
 
@@ -386,7 +391,7 @@ def create_geographic_network_map(
         ),
         margin=dict(l=0, r=0, t=40, b=0),
         height=540,
-        font=dict(family="Inter, sans-serif")
+        font=dict(family="Inter, sans-serif", color=colors["text_primary"])
     )
     return fig
 
@@ -478,12 +483,19 @@ def create_community_graph_plot(
         title=title,
         template=colors["plotly_template"],
         showlegend=True,
-        legend=dict(orientation="h", yanchor="bottom", y=-0.15, xanchor="center", x=0.5),
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=-0.15,
+            xanchor="center",
+            x=0.5,
+            font=dict(color=colors["text_primary"], size=10, family="Inter, sans-serif")
+        ),
         hovermode="closest",
         margin=dict(b=40, l=20, r=20, t=40),
         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
         height=560,
-        font=dict(family="Inter, sans-serif")
+        font=dict(family="Inter, sans-serif", color=colors["text_primary"])
     )
     return fig

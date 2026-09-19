@@ -39,6 +39,8 @@ def test_all_years_overview_kpis(loaded_datasets):
         assert kpi["num_countries"] > 150
         assert kpi["top_destination_stock"] > 0
         assert kpi["num_corridors"] > 1000
+        assert "global_migrant_pct" in kpi
+        assert 1.0 < kpi["global_migrant_pct"] < 10.0
 
 
 def test_all_map_metrics_and_years(loaded_datasets):
@@ -52,12 +54,14 @@ def test_all_map_metrics_and_years(loaded_datasets):
             assert not map_df.empty
             assert "country_code" in map_df.columns
             assert "metric_value" in map_df.columns
+            assert "population" in map_df.columns
+            assert "gdp_per_capita" in map_df.columns
 
 
 def test_all_rankings_metrics_and_years(loaded_datasets):
     df_c, _ = loaded_datasets
     years = sorted(df_c["year"].unique())
-    metrics = list(METRIC_COLUMN_MAP.keys())
+    metrics = ["Migrant Stock", "Migrant Stock % of Population", "5-Year Stock Change", "5-Year Stock Growth %"]
     
     for yr in years:
         for m in metrics:
@@ -93,3 +97,10 @@ def test_country_profile_major_countries(loaded_datasets):
         assert profile["country_code"] == code
         assert not profile["history_df"].empty
         assert len(profile["history_df"]) == 7  # 7 census rounds 1990-2020
+        assert "immigrant_stock" in profile
+        assert "migrant_stock" in profile
+        assert profile["immigrant_stock"] > 0
+        assert "emigrant_stock" in profile
+        assert "net_migrant_stock" in profile
+        assert "top_inbound_origins" in profile
+        assert "top_outbound_destinations" in profile

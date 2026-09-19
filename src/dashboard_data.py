@@ -1,6 +1,7 @@
 """
-Dashboard Data Access & Analytical Helper Layer for the Global Migration Observatory.
-Provides clean, cached, and performant data transformations for Streamlit visualizations.
+Dashboard Data Preparation and Aggregation Helper Module.
+Serves high-performance query methods for the Streamlit dashboard views:
+Overview KPIs, Global Map Choropleth, Trends, Country Profiles, Rankings, and Corridors.
 """
 
 from pathlib import Path
@@ -15,45 +16,61 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.config import config
 from src.data_loader import load_processed_data
 
 
-METRIC_COLUMN_MAP = {
+# Human-friendly metric name to dataframe column mappings
+METRIC_COLUMN_MAP: Dict[str, str] = {
     "Migrant Stock": "migrant_stock",
     "Migrant Stock % of Population": "migrant_stock_pct_population",
     "5-Year Stock Change": "stock_change_5yr",
     "5-Year Stock Growth %": "stock_growth_pct_5yr",
+    "GDP per Capita": "gdp_per_capita",
+    "Total GDP": "gdp",
+    "Population": "population",
+    "Unemployment Rate": "unemployment",
 }
 
-METRIC_LABELS = {
+METRIC_LABELS: Dict[str, str] = {
     "migrant_stock": "Migrant Stock (People)",
-    "migrant_stock_pct_population": "Migrant Stock % of Population",
-    "stock_change_5yr": "5-Year Absolute Stock Change",
-    "stock_growth_pct_5yr": "5-Year Stock Growth Rate (%)",
+    "migrant_stock_pct_population": "Migrant Stock (% of Population)",
+    "stock_change_5yr": "5-Year Stock Change (People)",
+    "stock_growth_pct_5yr": "5-Year Stock Growth (%)",
+    "gdp_per_capita": "GDP per Capita (USD)",
+    "gdp": "Total GDP (USD)",
+    "population": "Total Population",
+    "unemployment": "Unemployment Rate (%)",
 }
 
 
 def load_canonical_country_map() -> Dict[str, str]:
-    """Load ISO3 -> canonical country name dictionary."""
-    try:
-        df_ref = load_processed_data("country_reference.csv")
-        return dict(zip(df_ref["iso3"], df_ref["name"]))
-    except Exception:
-        return {}
+    """
+    Build a clean mapping of ISO3 codes to clean country display names.
+    
+    Returns:
+        Dict[str, str]: ISO3 -> Country Name mapping.
+    """
+    df_raw = load_processed_data("migration_destination_cleaned.csv")
+    sovereign = df_raw[~df_raw["is_aggregate"] & df_raw["country_code"].notna()]
+    clean_map = {}
+    for _, row in sovereign.iterrows():
+        code = str(row["country_code"])
+        name = str(row["country"]).replace("*", "").strip()
+        if code not in clean_map or len(name) < len(clean_map[code]):
+            clean_map[code] = name
+    return clean_map
 
 
 def prepare_country_socioeconomic_data() -> pd.DataFrame:
     """
-    Load and clean the merged country socioeconomic dataset with canonical names.
+    Load and clean the merged country socioeconomic dataset with canonical display names.
     
     Returns:
-        pd.DataFrame: Cleaned country socioeconomic dataset.
+        pd.DataFrame: Cleaned merged country dataset.
     """
     df = load_processed_data("migration_country_socioeconomic.csv")
     name_map = load_canonical_country_map()
     
-    # Standardize country display names
     def _clean_name(row):
         code = str(row["country_code"]) if pd.notna(row["country_code"]) else ""
         if code in name_map:
@@ -109,12 +126,15 @@ def get_overview_kpis(
         year: Target census round year (e.g. 2020).
         
     Returns:
-        Dict[str, Any]: Dynamic KPI metrics.
+        Dict[str, Any]: Dynamic KPI metrics including total migrant stock, global migrant share,
+                       participating sovereign nations, top destinations, and active corridors.
     """
     # Filter to non-aggregates for sovereign state stats
     df_yr_sovereign = df_merged[(df_merged["year"] == year) & (~df_merged["is_aggregate"])].copy()
     
     total_migrant_stock = float(df_yr_sovereign["migrant_stock"].sum(skipna=True))
+    total_population = float(df_yr_sovereign["population"].sum(skipna=True))
+    global_migrant_pct = (total_migrant_stock / total_population * 100.0) if total_population > 0 else 0.0
     num_countries = int(df_yr_sovereign["country_code"].nunique())
     
     # Top destination by stock
@@ -131,7 +151,7 @@ def get_overview_kpis(
     # Number of active bilateral corridors (> 0 migrants between sovereign entities)
     df_b_yr = df_bilateral[
         (df_bilateral["year"] == year) &
-        (~df_bilateral["is_aggregate_route"]) &
+        (~df_bilateral.get("is_aggregate_route", False)) &
         (df_bilateral["migrant_stock"] > 0)
     ]
     num_corridors = int(len(df_b_yr))
@@ -139,6 +159,8 @@ def get_overview_kpis(
     return {
         "year": year,
         "total_migrant_stock": total_migrant_stock,
+        "total_population": total_population,
+        "global_migrant_pct": global_migrant_pct,
         "num_countries": num_countries,
         "top_destination_name": top_dest_name,
         "top_destination_stock": top_dest_stock,
@@ -172,16 +194,21 @@ def get_map_data(
         (df_merged["country_code"].notna())
     ].copy()
     
-    df_yr["metric_value"] = df_yr[col_name]
+    df_yr["metric_value"] = df_yr[col_name] if col_name in df_yr.columns else np.nan
     df_yr["metric_label"] = METRIC_LABELS.get(col_name, metric_name)
     
     cols = [
-        "display_name", "country_code", "year", "metric_value",
+        "display_name", "country_code", "year", "metric_value", "metric_label",
         "migrant_stock", "population", "migrant_stock_pct_population",
-        "stock_change_5yr", "stock_growth_pct_5yr", "migrant_stock_global_rank"
+        "stock_change_5yr", "stock_growth_pct_5yr", "migrant_stock_global_rank",
+        "gdp_per_capita", "gdp", "unemployment"
     ]
-    existing = [c for c in cols if c in df_yr.columns]
-    return df_yr[existing].copy()
+    
+    for c in cols:
+        if c not in df_yr.columns:
+            df_yr[c] = np.nan
+            
+    return df_yr[cols].copy()
 
 
 def get_global_trend_data(df_merged: pd.DataFrame) -> pd.DataFrame:
@@ -220,18 +247,20 @@ def get_country_trend_data(
         metric_name: Selected metric name.
         
     Returns:
-        pd.DataFrame: Cleaned time series DataFrame.
+        pd.DataFrame: Formatted DataFrame for multi-line comparison.
     """
     col_name = METRIC_COLUMN_MAP.get(metric_name, "migrant_stock")
-    
     df_filtered = df_merged[
-        (df_merged["country_code"].isin(country_codes)) &
+        df_merged["country_code"].isin(country_codes) &
         (~df_merged["is_aggregate"])
     ].copy()
     
     df_filtered["metric_value"] = df_filtered[col_name]
     df_filtered["metric_label"] = METRIC_LABELS.get(col_name, metric_name)
-    return df_filtered.sort_values(["display_name", "year"])
+    
+    cols = ["display_name", "country_code", "year", "metric_value", "metric_label"]
+    existing = [c for c in cols if c in df_filtered.columns]
+    return df_filtered[existing].sort_values(["display_name", "year"]).copy()
 
 
 def get_rankings_data(
@@ -242,29 +271,30 @@ def get_rankings_data(
     ascending: bool = False
 ) -> pd.DataFrame:
     """
-    Generate dynamic country rankings for a given metric and year.
+    Compute country rankings by selected metric.
     
     Args:
         df_merged: Merged country socioeconomic DataFrame.
         year: Selected year.
-        metric_name: Selected metric.
-        top_n: Top N entities to return (e.g. 10, 25, 50).
-        ascending: Sort order (False = highest first).
+        metric_name: Selected metric name.
+        top_n: Number of top countries to return.
+        ascending: If True, sort lowest first.
         
     Returns:
-        pd.DataFrame: Top N ranked countries with rank index.
+        pd.DataFrame: Ranked country DataFrame.
     """
     col_name = METRIC_COLUMN_MAP.get(metric_name, "migrant_stock")
-    
     df_yr = df_merged[
         (df_merged["year"] == year) &
         (~df_merged["is_aggregate"]) &
+        (df_merged["country_code"].notna()) &
         (df_merged[col_name].notna())
     ].copy()
     
     df_sorted = df_yr.sort_values(col_name, ascending=ascending).head(top_n).copy()
     df_sorted["rank"] = range(1, len(df_sorted) + 1)
     df_sorted["metric_value"] = df_sorted[col_name]
+    df_sorted["metric_label"] = METRIC_LABELS.get(col_name, metric_name)
     
     cols = [
         "rank", "display_name", "country_code", "year", "metric_value",
@@ -281,19 +311,19 @@ def get_top_global_corridors(
     top_n: int = 10
 ) -> pd.DataFrame:
     """
-    Retrieve top N bilateral migration stock corridors globally for a selected year.
+    Extract the top global bilateral migrant stock corridors for a selected year.
     
     Args:
         df_bilateral: Cleaned bilateral DataFrame.
         year: Selected year.
-        top_n: Number of corridors to return.
+        top_n: Number of top corridors to return.
         
     Returns:
-        pd.DataFrame: Top N bilateral corridors.
+        pd.DataFrame: Top bilateral corridors.
     """
     df_yr = df_bilateral[
         (df_bilateral["year"] == year) &
-        (~df_bilateral["is_aggregate_route"]) &
+        (~df_bilateral.get("is_aggregate_route", False)) &
         (df_bilateral["origin_code"].notna()) &
         (df_bilateral["destination_code"].notna()) &
         (df_bilateral["origin_code"] != df_bilateral["destination_code"]) &
@@ -317,6 +347,7 @@ def get_filtered_corridors(
     year: int,
     origin_code: Optional[str] = None,
     dest_code: Optional[str] = None,
+    destination_code: Optional[str] = None,
     top_n: int = 20
 ) -> pd.DataFrame:
     """
@@ -327,14 +358,17 @@ def get_filtered_corridors(
         year: Selected year.
         origin_code: Optional origin ISO3 code.
         dest_code: Optional destination ISO3 code.
+        destination_code: Optional destination ISO3 code (alias for dest_code).
         top_n: Max rows to return.
         
     Returns:
         pd.DataFrame: Filtered bilateral corridor records.
     """
+    target_dest_code = destination_code if destination_code is not None else dest_code
+
     df_yr = df_bilateral[
         (df_bilateral["year"] == year) &
-        (~df_bilateral["is_aggregate_route"]) &
+        (~df_bilateral.get("is_aggregate_route", False)) &
         (df_bilateral["origin_code"].notna()) &
         (df_bilateral["destination_code"].notna()) &
         (df_bilateral["origin_code"] != df_bilateral["destination_code"])
@@ -343,8 +377,8 @@ def get_filtered_corridors(
     if origin_code and origin_code != "All":
         df_yr = df_yr[df_yr["origin_code"] == origin_code]
         
-    if dest_code and dest_code != "All":
-        df_yr = df_yr[df_yr["destination_code"] == dest_code]
+    if target_dest_code and target_dest_code != "All":
+        df_yr = df_yr[df_yr["destination_code"] == target_dest_code]
         
     df_sorted = df_yr.sort_values("migrant_stock", ascending=False).head(top_n).copy()
     if not df_sorted.empty:
@@ -375,7 +409,7 @@ def get_country_profile_data(
         year: Selected reference year.
         
     Returns:
-        Dict[str, Any]: Country profile summary data.
+        Dict[str, Any]: Country profile summary data with inbound, outbound, and net stock metrics.
     """
     # Country history across all years
     df_history = df_merged[
@@ -390,7 +424,7 @@ def get_country_profile_data(
     inbound_df = df_bilateral[
         (df_bilateral["destination_code"] == country_code) &
         (df_bilateral["year"] == year) &
-        (~df_bilateral["is_aggregate_route"]) &
+        (~df_bilateral.get("is_aggregate_route", False)) &
         (df_bilateral["origin_code"] != country_code) &
         (df_bilateral["migrant_stock"] > 0)
     ].sort_values("migrant_stock", ascending=False).head(10).copy()
@@ -399,17 +433,40 @@ def get_country_profile_data(
     outbound_df = df_bilateral[
         (df_bilateral["origin_code"] == country_code) &
         (df_bilateral["year"] == year) &
-        (~df_bilateral["is_aggregate_route"]) &
+        (~df_bilateral.get("is_aggregate_route", False)) &
         (df_bilateral["destination_code"] != country_code) &
         (df_bilateral["migrant_stock"] > 0)
     ].sort_values("migrant_stock", ascending=False).head(10).copy()
+    
+    immigrant_stock = float(curr_data.get("migrant_stock", 0.0)) if pd.notna(curr_data.get("migrant_stock")) else 0.0
+    total_population = float(curr_data.get("population", 0.0)) if pd.notna(curr_data.get("population")) else 0.0
+    migrant_pct_population = float(curr_data.get("migrant_stock_pct_population", 0.0)) if pd.notna(curr_data.get("migrant_stock_pct_population")) else 0.0
+    
+    # Compute total emigrant diaspora stock from bilateral data
+    all_outbound = df_bilateral[
+        (df_bilateral["origin_code"] == country_code) &
+        (df_bilateral["year"] == year) &
+        (~df_bilateral.get("is_aggregate_route", False)) &
+        (df_bilateral["destination_code"] != country_code) &
+        (df_bilateral["migrant_stock"] > 0)
+    ]
+    emigrant_stock = float(all_outbound["migrant_stock"].sum(skipna=True))
+    net_migrant_stock = immigrant_stock - emigrant_stock
     
     return {
         "country_code": country_code,
         "country_name": curr_data.get("display_name", country_code),
         "year": year,
+        "immigrant_stock": immigrant_stock,
+        "migrant_stock": immigrant_stock,
+        "total_population": total_population,
+        "migrant_pct_population": migrant_pct_population,
+        "emigrant_stock": emigrant_stock,
+        "net_migrant_stock": net_migrant_stock,
         "current_stats": curr_data,
         "history_df": df_history,
         "inbound_corridors": inbound_df,
         "outbound_corridors": outbound_df,
+        "top_inbound_origins": inbound_df,
+        "top_outbound_destinations": outbound_df,
     }

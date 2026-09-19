@@ -1,8 +1,9 @@
 """
-Global Migration Observatory — Phase 3 UI Polish
-A professional, empirical data dashboard integrating UN DESA 2020 International Migrant Stock
-and World Bank WDI indicators with NetworkX network analytics, community detection,
-geographic corridor maps, centrality rankings, and universal Light/Dark theming.
+Global Migration Observatory — Phase 5 Advanced Migration Analytics & Data Storytelling
+An empirical, academic-grade data platform integrating UN DESA 2020 International Migrant Stock
+and World Bank WDI indicators with NetworkX network analytics, community detection, concentration (HHI),
+socioeconomic bivariate correlations, transparent outlier detection, multi-country comparisons,
+and rule-based automated data storytelling.
 """
 
 from pathlib import Path
@@ -21,6 +22,19 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+from src.advanced_analytics import (
+    classify_stock_changes,
+    compute_corridor_concentration_trend,
+    compute_corridor_trajectories,
+    compute_destination_concentration,
+    compute_longitudinal_concentration_trend,
+    compute_multicountry_comparison,
+    compute_origin_concentration,
+    compute_socioeconomic_correlations,
+    detect_migration_anomalies,
+    get_bivariate_scatter_data,
+    get_top_growth_and_declining_countries,
+)
 from src.config import config
 from src.dashboard_data import (
     METRIC_COLUMN_MAP,
@@ -35,6 +49,15 @@ from src.dashboard_data import (
     get_top_global_corridors,
     prepare_bilateral_corridor_data,
     prepare_country_socioeconomic_data,
+)
+from src.insight_engine import (
+    generate_all_insights,
+    generate_change_insights,
+    generate_concentration_insights,
+    generate_corridor_insights,
+    generate_global_insights,
+    generate_network_insights,
+    generate_socioeconomic_insights,
 )
 from src.network_analysis import (
     build_migration_network,
@@ -52,11 +75,14 @@ from src.network_visualization import (
     create_network_2d_plot,
 )
 from src.ui_components import (
+    render_correlation_badge,
+    render_insight_card,
     render_kpi_card,
     render_masthead,
     render_scientific_alert,
     render_section_title,
     render_sidebar_header,
+    render_warning_callout,
 )
 from src.ui_theme import apply_ui_theme, get_plotly_layout, get_theme_colors
 
@@ -128,6 +154,16 @@ def get_cached_temporal_evolution(min_stock: Optional[float], top_n_edges: Optio
     return get_temporal_network_evolution(df_bilat, min_stock=min_stock, top_n_edges=top_n_edges)
 
 
+@st.cache_data(show_spinner="Computing concentration trends...")
+def get_cached_concentration_trend():
+    return compute_longitudinal_concentration_trend(df_country, df_bilat)
+
+
+@st.cache_data(show_spinner="Computing corridor concentration trends...")
+def get_cached_corridor_concentration_trend():
+    return compute_corridor_concentration_trend(df_bilat)
+
+
 try:
     df_country, df_bilat = load_cached_datasets()
     data_loaded = True
@@ -166,7 +202,7 @@ if data_loaded:
 
     st.sidebar.markdown("---")
 
-    # Grouped Navigation
+    # Grouped Navigation Options
     st.sidebar.markdown(f"<p style='font-size: 0.75rem; font-weight: 700; color: {theme_colors['text_muted']}; text-transform: uppercase; letter-spacing: 0.08em; margin: 0.5rem 0 0.25rem 0;'>Navigation</p>", unsafe_allow_html=True)
     
     NAV_OPTIONS = [
@@ -179,8 +215,10 @@ if data_loaded:
         "🕸️ Migration Network",
         "🔗 Corridor Analysis",
         "🌐 Communities",
+        "📊 Advanced Analytics",
+        "⚖️ Country Comparison",
+        "💡 Migration Insights",
         "ℹ️ Methodology",
-        "⚙️ Settings",
     ]
 
     page = st.sidebar.radio(
@@ -219,97 +257,71 @@ if data_loaded:
         # KPI Row
         k1, k2, k3, k4, k5 = st.columns(5)
         with k1:
-            st.markdown(render_kpi_card("Total Migrant Stock", f"{kpis['total_migrant_stock']:,.0f}", f"Sovereign totals in {selected_year}", theme_mode), unsafe_allow_html=True)
+            st.markdown(render_kpi_card("Total Global Migrant Stock", f"{kpis['total_migrant_stock']:,.0f}", f"Estimated in {selected_year}", theme_mode), unsafe_allow_html=True)
         with k2:
-            st.markdown(render_kpi_card("Countries & Areas", f"{kpis['num_countries']}", "Sovereign entities tracked", theme_mode), unsafe_allow_html=True)
+            st.markdown(render_kpi_card("Global Migrant Share", f"{kpis['global_migrant_pct']:.2f}%", "Share of world population", theme_mode), unsafe_allow_html=True)
         with k3:
-            st.markdown(render_kpi_card("Top Destination", kpis['top_destination_name'], f"{kpis['top_destination_stock']:,.0f} foreign-born", theme_mode), unsafe_allow_html=True)
+            st.markdown(render_kpi_card("Countries / Entities", f"{kpis['num_countries']}", "Reporting sovereign nations", theme_mode), unsafe_allow_html=True)
         with k4:
-            st.markdown(render_kpi_card("Top Share of Pop.", kpis['top_share_name'], f"{kpis['top_share_pct']:.1f}% of national pop.", theme_mode), unsafe_allow_html=True)
+            st.markdown(render_kpi_card("Top Destination", f"{kpis['top_destination_name']}", f"{kpis['top_destination_stock']:,.0f} migrants", theme_mode), unsafe_allow_html=True)
         with k5:
-            st.markdown(render_kpi_card("Active Corridors", f"{kpis['num_corridors']:,}", "Origin-Destination pairs > 0", theme_mode), unsafe_allow_html=True)
+            st.markdown(render_kpi_card("Bilateral Corridors", f"{kpis['num_corridors']:,}", "Active non-zero pairs", theme_mode), unsafe_allow_html=True)
 
         render_scientific_alert(
             "<b>Scientific Principle</b>: <b>Migrant stock</b> represents the estimated cumulative count of foreign-born individuals living in a destination country at mid-year. It is <b>NOT</b> an annual flow rate. Intercensal differences between 5-year rounds reflect net cumulative changes including births, deaths, naturalizations, return migration, and boundary adjustments.",
             theme_mode
         )
 
+        st.markdown("<br>", unsafe_allow_html=True)
+
         # Overview Visualizations
-        c_left, c_right = st.columns(2)
-        
-        with c_left:
-            render_section_title("Global Migrant Stock Trajectory", "1990–2020 longitudinal aggregate")
-            df_gt = get_global_trend_data(df_country)
-            fig_gt = px.line(
-                df_gt,
+        ov_col1, ov_col2 = st.columns([3, 2])
+        with ov_col1:
+            render_section_title("Global Migrant Stock Growth (1990–2020)")
+            trend_df = get_global_trend_data(df_country)
+            fig_trend = px.area(
+                trend_df,
                 x="year",
                 y="total_migrant_stock",
-                markers=True,
-                labels={"year": "Census Round", "total_migrant_stock": "Total Migrant Stock (People)"},
+                title="Global Residing Migrant Stock (Quinquennial Census Rounds)",
+                labels={"year": "Census Round", "total_migrant_stock": "Migrant Stock (People)"},
                 template=plotly_tmpl
             )
-            fig_gt.update_traces(line=dict(color=theme_colors["accent_blue"], width=3), marker=dict(size=8))
-            fig_gt.update_layout(**get_plotly_layout(theme_mode, "", height=350))
-            st.plotly_chart(fig_gt, use_container_width=True)
-
-        with c_right:
-            render_section_title(f"Top 10 Destinations by Migrant Stock", f"Census Round {selected_year}")
-            top10_dest = get_rankings_data(df_country, year=selected_year, metric_name="Migrant Stock", top_n=10)
-            fig_top10 = px.bar(
-                top10_dest,
-                x="migrant_stock",
+            fig_trend.update_layout(**get_plotly_layout(theme_mode, "Global Residing Migrant Stock (Quinquennial Census Rounds)", height=380))
+            fig_trend.update_traces(line=dict(color=theme_colors["accent_blue"], width=3), fillcolor="rgba(2, 132, 199, 0.15)" if not is_dark else "rgba(56, 189, 248, 0.15)")
+            st.plotly_chart(fig_trend, use_container_width=True)
+            
+        with ov_col2:
+            render_section_title(f"Top 10 Destination Countries ({selected_year})")
+            top10_df = get_rankings_data(df_country, year=selected_year, metric_name="Migrant Stock", top_n=10)
+            fig_bar = px.bar(
+                top10_df.sort_values("metric_value", ascending=True),
+                x="metric_value",
                 y="display_name",
                 orientation="h",
-                color="migrant_stock_pct_population",
-                color_continuous_scale="Blues",
-                labels={
-                    "migrant_stock": "Migrant Stock",
-                    "display_name": "Country",
-                    "migrant_stock_pct_population": "Stock % Pop."
-                },
+                title=f"Top 10 Hosts in {selected_year}",
+                labels={"metric_value": "Migrant Stock", "display_name": "Country"},
                 template=plotly_tmpl
             )
-            fig_top10.update_layout(**get_plotly_layout(theme_mode, "", height=350))
-            fig_top10.update_layout(yaxis=dict(autorange="reversed"))
-            st.plotly_chart(fig_top10, use_container_width=True)
+            fig_bar.update_layout(**get_plotly_layout(theme_mode, f"Top 10 Hosts in {selected_year}", height=380))
+            fig_bar.update_traces(marker_color=theme_colors["accent_blue"])
+            st.plotly_chart(fig_bar, use_container_width=True)
 
-        # Underlying Data Table & Download
-        render_section_title(f"📋 Summary Data Table ({selected_year})", "Filterable sovereign dataset")
-        overview_table = df_country[
-            (df_country["year"] == selected_year) & (~df_country["is_aggregate"])
-        ][[
-            "display_name", "country_code", "year", "migrant_stock",
-            "population", "migrant_stock_pct_population", "stock_change_5yr",
-            "stock_growth_pct_5yr", "gdp_per_capita", "migrant_stock_global_rank"
-        ]].sort_values("migrant_stock", ascending=False).rename(columns={
-            "display_name": "Country",
-            "country_code": "ISO3",
-            "year": "Year",
-            "migrant_stock": "Migrant Stock",
-            "population": "Population",
-            "migrant_stock_pct_population": "Stock % of Pop",
-            "stock_change_5yr": "5-Yr Stock Change",
-            "stock_growth_pct_5yr": "5-Yr Stock Growth %",
-            "gdp_per_capita": "GDP per Capita (USD)",
-            "migrant_stock_global_rank": "Global Rank"
+        # Download Table
+        render_section_title("Top 10 Destinations Summary Table")
+        overview_table = top10_df[["rank", "display_name", "country_code", "metric_value", "migrant_stock_pct_population", "population"]].rename(columns={
+            "rank": "Rank", "display_name": "Country", "country_code": "ISO3",
+            "metric_value": "Migrant Stock", "migrant_stock_pct_population": "Migrant % of Pop", "population": "Total Population"
         })
-        
         st.dataframe(
             overview_table.style.format({
-                "Migrant Stock": "{:,.0f}",
-                "Population": "{:,.0f}",
-                "Stock % of Pop": "{:.2f}%",
-                "5-Yr Stock Change": "{:+,.0f}",
-                "5-Yr Stock Growth %": "{:+.2f}%",
-                "GDP per Capita (USD)": "${:,.0f}",
-                "Global Rank": "{:.0f}"
-            }, na_rep="—"),
+                "Migrant Stock": "{:,.0f}", "Migrant % of Pop": "{:.2f}%", "Total Population": "{:,.0f}"
+            }),
             use_container_width=True,
-            height=320
+            height=280
         )
-        
         st.download_button(
-            label=f"📥 Download Overview Data ({selected_year}) as CSV",
+            label="📥 Download Overview Data CSV",
             data=overview_table.to_csv(index=False).encode("utf-8"),
             file_name=f"migration_overview_{selected_year}.csv",
             mime="text/csv"
@@ -319,40 +331,19 @@ if data_loaded:
     # PAGE 2: 🌍 GLOBAL MAP
     # =============================================================================
     elif page == "🌍 Global Map":
-        render_section_title("🌍 Global Migrant Stock Choropleth Map", "Spatial distribution of migrant stock and demographic shares")
+        render_section_title("🌍 Global Migration Choropleth Map", "Interactive world map displaying country-level migrant stock and demographic intensities")
         
-        m_c1, m_c2 = st.columns([3, 2])
-        with m_c1:
-            selected_metric = st.selectbox(
-                "Select Map Metric",
-                list(METRIC_COLUMN_MAP.keys()),
-                index=0,
-                key="map_metric"
-            )
-        with m_c2:
-            selected_year = st.selectbox(
-                "Select Census Year",
-                AVAILABLE_YEARS,
-                index=len(AVAILABLE_YEARS) - 1,
-                key="map_year"
-            )
+        m_col1, m_col2, m_col3 = st.columns([2, 2, 2])
+        with m_col1:
+            map_year = st.selectbox("Select Census Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="map_year")
+        with m_col2:
+            map_metric = st.selectbox("Select Display Metric", list(METRIC_COLUMN_MAP.keys()), index=0, key="map_metric")
+        with m_col3:
+            map_proj = st.selectbox("Map Projection", ["natural earth", "equirectangular", "orthographic", "robinson", "mercator"], index=0, key="map_proj")
 
-        if selected_year == 1990 and ("Change" in selected_metric or "Growth" in selected_metric):
-            st.info("ℹ️ **Baseline Year Notice**: 5-year intercensal stock change and growth rate are calculated relative to the previous 5-year round (available for 1995–2020). For the 1990 baseline round, please select **Migrant Stock** or **Migrant Stock % of Population**.")
-
-        map_df = get_map_data(df_country, year=selected_year, metric_name=selected_metric)
+        map_df = get_map_data(df_country, year=map_year, metric_name=map_metric)
+        color_scale = "Blues" if not is_dark else "Viridis"
         
-        # Color Scale Customization based on metric
-        if "Growth" in selected_metric or "Change" in selected_metric:
-            color_scale = "Tealrose"
-            midpoint = 0.0
-        elif "% of Population" in selected_metric:
-            color_scale = "Viridis"
-            midpoint = None
-        else:
-            color_scale = "Blues"
-            midpoint = None
-
         fig_map = px.choropleth(
             map_df,
             locations="country_code",
@@ -360,81 +351,45 @@ if data_loaded:
             hover_name="display_name",
             hover_data={
                 "country_code": True,
-                "year": True,
-                "metric_value": ":,.2f" if "%" in selected_metric else ":,.0f",
-                "migrant_stock": ":,.0f",
+                "metric_value": ":,.2f" if "pct" in map_metric.lower() or "%" in map_metric else ":,.0f",
                 "population": ":,.0f",
-                "migrant_stock_pct_population": ":.2f",
-                "migrant_stock_global_rank": ":.0f"
+                "gdp_per_capita": ":$,.0f"
             },
+            labels={"metric_value": map_metric, "country_code": "ISO3"},
             color_continuous_scale=color_scale,
-            color_continuous_midpoint=midpoint,
-            labels={
-                "metric_value": selected_metric,
-                "country_code": "ISO3 Code",
-                "year": "Year",
-                "migrant_stock": "Total Migrant Stock",
-                "population": "Population",
-                "migrant_stock_pct_population": "Stock % of Pop",
-                "migrant_stock_global_rank": "Global Rank"
-            },
-            title=f"Global {selected_metric} by Country ({selected_year})",
+            projection=map_proj,
             template=plotly_tmpl
         )
-        
         fig_map.update_layout(
-            geo=dict(
-                showframe=False,
-                showcoastlines=True,
-                coastlinecolor=theme_colors["map_coastline"],
-                landcolor=theme_colors["map_land"],
-                oceancolor=theme_colors["map_ocean"],
-                showocean=True,
-                projection_type="natural earth"
-            ),
-            margin=dict(l=0, r=0, t=40, b=0),
-            height=540,
-            font=dict(family="'Inter', sans-serif")
+            **get_plotly_layout(theme_mode, f"Global Distribution: {map_metric} ({map_year})", height=540)
         )
-        
+        fig_map.update_geos(
+            showcoastlines=True, coastlinecolor=theme_colors["map_coastline"],
+            showland=True, landcolor=theme_colors["map_land"],
+            showocean=True, oceancolor=theme_colors["map_ocean"],
+            showframe=False
+        )
         st.plotly_chart(fig_map, use_container_width=True)
 
-        render_section_title(f"📋 Country-Level Map Data ({selected_year})")
-        display_map_df = map_df[[
-            "display_name", "country_code", "year", "metric_value",
-            "migrant_stock", "population", "migrant_stock_pct_population",
-            "stock_change_5yr", "stock_growth_pct_5yr", "migrant_stock_global_rank"
-        ]].sort_values("metric_value", ascending=False).rename(columns={
-            "display_name": "Country",
-            "country_code": "ISO3",
-            "year": "Year",
-            "metric_value": f"Selected Metric ({selected_metric})",
-            "migrant_stock": "Migrant Stock",
-            "population": "Population",
-            "migrant_stock_pct_population": "Stock % Pop",
-            "stock_change_5yr": "5-Yr Stock Change",
-            "stock_growth_pct_5yr": "5-Yr Stock Growth %",
-            "migrant_stock_global_rank": "Global Rank"
-        })
-
+        # Map Data Table
+        render_section_title(f"Data Records for {map_metric} ({map_year})")
+        display_map_df = map_df[["display_name", "country_code", "metric_value", "population", "gdp_per_capita"]].dropna(subset=["metric_value"]).sort_values("metric_value", ascending=False)
         st.dataframe(
-            display_map_df.style.format({
-                f"Selected Metric ({selected_metric})": "{:,.2f}" if "%" in selected_metric else "{:,.0f}",
-                "Migrant Stock": "{:,.0f}",
-                "Population": "{:,.0f}",
-                "Stock % Pop": "{:.2f}%",
-                "5-Yr Stock Change": "{:+,.0f}",
-                "5-Yr Stock Growth %": "{:+.2f}%",
-                "Global Rank": "{:.0f}"
-            }, na_rep="—"),
+            display_map_df.rename(columns={
+                "display_name": "Country", "country_code": "ISO3", "metric_value": map_metric,
+                "population": "Total Population", "gdp_per_capita": "GDP per Capita (USD)"
+            }).style.format({
+                map_metric: "{:,.2f}%" if "pct" in map_metric.lower() or "%" in map_metric else "{:,.0f}",
+                "Total Population": "{:,.0f}",
+                "GDP per Capita (USD)": "${:,.0f}"
+            }),
             use_container_width=True,
-            height=300
+            height=280
         )
-
         st.download_button(
-            label="📥 Download Map Data as CSV",
+            label="📥 Download Map Data CSV",
             data=display_map_df.to_csv(index=False).encode("utf-8"),
-            file_name=f"map_data_{selected_metric.lower().replace(' ', '_')}_{selected_year}.csv",
+            file_name=f"migration_map_{map_metric}_{map_year}.csv",
             mime="text/csv"
         )
 
@@ -442,869 +397,392 @@ if data_loaded:
     # PAGE 3: 📈 TRENDS
     # =============================================================================
     elif page == "📈 Trends":
-        render_section_title("📈 Long-Term Migration Stock Trajectories", "Longitudinal trajectories across 1990–2020 census rounds")
+        render_section_title("📈 Longitudinal Migration Trends (1990–2020)", "Multi-round time-series trajectories for global totals and individual countries")
         
-        render_scientific_alert(
-            "<b>Stock Differences Note</b>: Changes in migrant stock between 5-year census rounds reflect net cumulative demographic changes. They are not annual border-crossing counts.",
-            theme_mode
-        )
-        
-        # Visualization 1: Global Aggregate Trend
-        render_section_title("1. Global Aggregated Migrant Stock (1990–2020)")
-        df_gt = get_global_trend_data(df_country)
-        
-        fig_gt = go.Figure()
-        fig_gt.add_trace(go.Scatter(
-            x=df_gt["year"],
-            y=df_gt["total_migrant_stock"],
-            mode="lines+markers",
-            name="Total Global Migrant Stock",
-            line=dict(color=theme_colors["accent_blue"], width=3),
-            marker=dict(size=8)
-        ))
-        fig_gt.update_layout(
-            **get_plotly_layout(theme_mode, "Global Residing Migrant Stock Across 5-Year UN Census Rounds", height=350)
-        )
-        st.plotly_chart(fig_gt, use_container_width=True)
+        t_tabs = st.tabs(["🌐 Global Trajectory", "🔍 Country Comparison Trends"])
+        with t_tabs[0]:
+            glob_trend = get_global_trend_data(df_country)
+            fig_g_trend = go.Figure()
+            fig_g_trend.add_trace(go.Scatter(
+                x=glob_trend["year"],
+                y=glob_trend["total_migrant_stock"],
+                mode="lines+markers",
+                name="Total Migrant Stock",
+                line=dict(color=theme_colors["accent_blue"], width=3),
+                marker=dict(size=8)
+            ))
+            fig_g_trend.update_layout(**get_plotly_layout(theme_mode, "Total Residing Migrant Stock Worldwide (1990–2020)", height=420))
+            st.plotly_chart(fig_g_trend, use_container_width=True)
 
-        st.markdown("---")
-        
-        # Visualization 2: Multi-Country Comparison
-        render_section_title("2. Multi-Country Trend Comparison")
-        
-        t_c1, t_c2 = st.columns([3, 2])
-        with t_c1:
-            default_countries = ["United States of America", "Germany", "India", "Canada", "United Arab Emirates", "United Kingdom"]
-            valid_defaults = [c for c in default_countries if c in COUNTRY_DICT]
-            selected_country_names = st.multiselect(
-                "Select Countries to Compare",
-                options=list(COUNTRY_DICT.keys()),
-                default=valid_defaults if valid_defaults else list(COUNTRY_DICT.keys())[:5],
-                key="trend_countries"
-            )
-        with t_c2:
-            trend_metric = st.selectbox(
-                "Comparison Metric",
-                list(METRIC_COLUMN_MAP.keys()),
-                index=0,
-                key="trend_metric"
-            )
+        with t_tabs[1]:
+            t_col1, t_col2 = st.columns([3, 1])
+            with t_col1:
+                selected_trend_countries = st.multiselect(
+                    "Select Countries to Compare Trends",
+                    list(COUNTRY_DICT.keys()),
+                    default=["United States of America", "Germany", "United Kingdom", "Canada", "India"] if "United States of America" in COUNTRY_DICT else list(COUNTRY_DICT.keys())[:5],
+                    key="trend_countries"
+                )
+            with t_col2:
+                trend_metric = st.selectbox(
+                    "Select Trend Metric",
+                    ["Migrant Stock", "Migrant Stock % of Population", "GDP per Capita"],
+                    index=0,
+                    key="trend_metric_select"
+                )
 
-        if selected_country_names:
-            selected_codes = [COUNTRY_DICT[c] for c in selected_country_names]
-            trend_df = get_country_trend_data(df_country, country_codes=selected_codes, metric_name=trend_metric)
-            
-            fig_ct = px.line(
-                trend_df,
-                x="year",
-                y="metric_value",
-                color="display_name",
-                markers=True,
-                labels={
-                    "year": "Census Year",
-                    "metric_value": trend_metric,
-                    "display_name": "Country"
-                },
-                title=f"Comparative Trajectories: {trend_metric} (1990–2020)",
-                template=plotly_tmpl
-            )
-            fig_ct.update_layout(**get_plotly_layout(theme_mode, f"Comparative Trajectories: {trend_metric} (1990–2020)", height=450))
-            st.plotly_chart(fig_ct, use_container_width=True)
+            selected_codes = [COUNTRY_DICT[c] for c in selected_trend_countries if c in COUNTRY_DICT]
+            trend_data = get_country_trend_data(df_country, country_codes=selected_codes, metric_name=trend_metric)
+            if not trend_data.empty:
+                metric_lbl = trend_data["metric_label"].iloc[0] if "metric_label" in trend_data.columns else trend_metric
+                fig_c_trend = px.line(
+                    trend_data,
+                    x="year",
+                    y="metric_value",
+                    color="display_name",
+                    markers=True,
+                    title=f"Comparative Historical Trajectories: {trend_metric}",
+                    labels={"year": "Census Round", "metric_value": metric_lbl, "display_name": "Country"},
+                    template=plotly_tmpl
+                )
+                fig_c_trend.update_layout(**get_plotly_layout(theme_mode, f"Comparative Historical Trajectories: {trend_metric}", height=440))
+                st.plotly_chart(fig_c_trend, use_container_width=True)
 
-            # Data Table
-            render_section_title("📋 Comparative Trend Data")
-            table_trend = trend_df[[
-                "display_name", "country_code", "year", "metric_value",
-                "migrant_stock", "population", "migrant_stock_pct_population"
-            ]].rename(columns={
-                "display_name": "Country",
-                "country_code": "ISO3",
-                "year": "Year",
-                "metric_value": f"Selected Metric ({trend_metric})",
-                "migrant_stock": "Migrant Stock",
-                "population": "Population",
-                "migrant_stock_pct_population": "Stock % of Pop"
-            })
-            
-            st.dataframe(
-                table_trend.style.format({
-                    f"Selected Metric ({trend_metric})": "{:,.2f}" if "%" in trend_metric else "{:,.0f}",
-                    "Migrant Stock": "{:,.0f}",
-                    "Population": "{:,.0f}",
-                    "Stock % of Pop": "{:.2f}%"
-                }, na_rep="—"),
-                use_container_width=True,
-                height=260
-            )
-
-            st.download_button(
-                label="📥 Download Trend Data as CSV",
-                data=table_trend.to_csv(index=False).encode("utf-8"),
-                file_name=f"migration_trends_{trend_metric.lower().replace(' ', '_')}.csv",
-                mime="text/csv"
-            )
-        else:
-            st.info("Select at least one country above to display trend comparisons.")
+                table_trend = trend_data[["year", "display_name", "country_code", "metric_value"]].pivot(index="display_name", columns="year", values="metric_value").reset_index()
+                st.dataframe(table_trend, use_container_width=True)
+                st.download_button(
+                    label="📥 Download Trend Data CSV",
+                    data=table_trend.to_csv(index=False).encode("utf-8"),
+                    file_name=f"migration_trends_{METRIC_COLUMN_MAP.get(trend_metric, 'metric')}.csv",
+                    mime="text/csv"
+                )
 
     # =============================================================================
     # PAGE 4: 🏆 RANKINGS
     # =============================================================================
     elif page == "🏆 Rankings":
-        render_section_title("🏆 Country Rankings & Distribution", "Quinquennial ranking leaderboards by demographic indicators")
+        render_section_title("🏆 Global Country Rankings", "Ranked leaderboards by migrant stock, demographic intensity, and 5-year growth")
         
-        r_c1, r_c2, r_c3, r_c4 = st.columns([3, 2, 2, 2])
-        with r_c1:
-            rank_metric = st.selectbox(
-                "Ranking Metric",
-                list(METRIC_COLUMN_MAP.keys()),
-                index=0,
-                key="rank_metric"
-            )
-        with r_c2:
-            rank_year = st.selectbox(
-                "Census Year",
-                AVAILABLE_YEARS,
-                index=len(AVAILABLE_YEARS) - 1,
-                key="rank_year"
-            )
-        with r_c3:
-            rank_top_n = st.selectbox(
-                "Top N Entities",
-                [10, 25, 50],
-                index=0,
-                key="rank_top_n"
-            )
-        with r_c4:
-            sort_order = st.radio(
-                "Order",
-                ["Highest First", "Lowest First"],
-                index=0,
-                key="rank_order"
-            )
+        r_col1, r_col2, r_col3 = st.columns([2, 2, 2])
+        with r_col1:
+            rank_year = st.selectbox("Select Census Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="rank_year")
+        with r_col2:
+            rank_metric = st.selectbox("Select Ranking Metric", list(METRIC_COLUMN_MAP.keys()), index=0, key="rank_metric")
+        with r_col3:
+            rank_top_n = st.slider("Number of Countries (Top N)", min_value=10, max_value=50, value=20, step=5, key="rank_top_n")
 
-        if rank_year == 1990 and ("Change" in rank_metric or "Growth" in rank_metric):
-            st.info("ℹ️ **Baseline Year Notice**: 5-year intercensal stock change and growth rate are calculated relative to the previous 5-year round (available for 1995–2020). For the 1990 baseline round, please select **Total Migrant Stock** or **Migrant Stock % of Population**.")
-
-        df_rank = get_rankings_data(
-            df_country,
-            year=rank_year,
-            metric_name=rank_metric,
-            top_n=rank_top_n,
-            ascending=(sort_order == "Lowest First")
-        )
-
-        # Bar chart
-        fig_rank = px.bar(
-            df_rank,
-            x="metric_value",
-            y="display_name",
-            orientation="h",
-            text="metric_value",
-            labels={
-                "metric_value": rank_metric,
-                "display_name": "Country"
-            },
-            title=f"Top {rank_top_n} Countries by {rank_metric} ({rank_year}) — {sort_order}",
-            template=plotly_tmpl,
-            color="metric_value",
-            color_continuous_scale="Blues" if sort_order == "Highest First" else "Teal"
-        )
+        rank_df = get_rankings_data(df_country, year=rank_year, metric_name=rank_metric, top_n=rank_top_n)
         
-        fmt = "%{text:,.2f}%" if "%" in rank_metric else "%{text:,.0f}"
-        fig_rank.update_traces(texttemplate=fmt, textposition="outside")
-        fig_rank.update_layout(**get_plotly_layout(theme_mode, f"Top {rank_top_n} Countries by {rank_metric} ({rank_year}) — {sort_order}", height=max(380, len(df_rank) * 26)))
-        fig_rank.update_layout(yaxis=dict(autorange="reversed"))
-        st.plotly_chart(fig_rank, use_container_width=True)
+        if not rank_df.empty:
+            fig_rank = px.bar(
+                rank_df.sort_values("metric_value", ascending=True),
+                x="metric_value",
+                y="display_name",
+                orientation="h",
+                title=f"Top {rank_top_n} Nations by {rank_metric} ({rank_year})",
+                labels={"metric_value": rank_metric, "display_name": "Country"},
+                template=plotly_tmpl
+            )
+            fig_rank.update_layout(**get_plotly_layout(theme_mode, f"Top {rank_top_n} Nations by {rank_metric} ({rank_year})", height=500))
+            fig_rank.update_traces(marker_color=theme_colors["accent_blue"])
+            st.plotly_chart(fig_rank, use_container_width=True)
 
-        # Rankings Table
-        render_section_title(f"📋 Full Ranking Data Table ({rank_year})")
-        display_rank = df_rank[[
-            "rank", "display_name", "country_code", "year", "metric_value",
-            "migrant_stock", "population", "migrant_stock_pct_population",
-            "stock_change_5yr", "stock_growth_pct_5yr", "gdp_per_capita"
-        ]].rename(columns={
-            "rank": "Rank",
-            "display_name": "Country",
-            "country_code": "ISO3",
-            "year": "Year",
-            "metric_value": f"Rank Metric ({rank_metric})",
-            "migrant_stock": "Migrant Stock",
-            "population": "Population",
-            "migrant_stock_pct_population": "Stock % Pop",
-            "stock_change_5yr": "5-Yr Stock Change",
-            "stock_growth_pct_5yr": "5-Yr Stock Growth %",
-            "gdp_per_capita": "GDP per Capita (USD)"
-        })
-
-        st.dataframe(
-            display_rank.style.format({
-                f"Rank Metric ({rank_metric})": "{:,.2f}" if "%" in rank_metric else "{:,.0f}",
-                "Migrant Stock": "{:,.0f}",
-                "Population": "{:,.0f}",
-                "Stock % Pop": "{:.2f}%",
-                "5-Yr Stock Change": "{:+,.0f}",
-                "5-Yr Stock Growth %": "{:+.2f}%",
-                "GDP per Capita (USD)": "${:,.0f}"
-            }, na_rep="—"),
-            use_container_width=True,
-            height=320
-        )
-
-        st.download_button(
-            label="📥 Download Rankings as CSV",
-            data=display_rank.to_csv(index=False).encode("utf-8"),
-            file_name=f"rankings_{rank_metric.lower().replace(' ', '_')}_{rank_year}.csv",
-            mime="text/csv"
-        )
+            render_section_title("Rankings Full Table")
+            display_rank = rank_df[["rank", "display_name", "country_code", "metric_value", "population", "gdp_per_capita"]].rename(columns={
+                "rank": "Rank", "display_name": "Country", "country_code": "ISO3",
+                "metric_value": rank_metric, "population": "Total Population", "gdp_per_capita": "GDP per Capita (USD)"
+            })
+            st.dataframe(
+                display_rank.style.format({
+                    rank_metric: "{:,.2f}%" if "pct" in rank_metric.lower() or "%" in rank_metric else "{:,.0f}",
+                    "Total Population": "{:,.0f}",
+                    "GDP per Capita (USD)": "${:,.0f}"
+                }),
+                use_container_width=True,
+                height=320
+            )
+            st.download_button(
+                label="📥 Download Rankings CSV",
+                data=display_rank.to_csv(index=False).encode("utf-8"),
+                file_name=f"migration_rankings_{rank_metric}_{rank_year}.csv",
+                mime="text/csv"
+            )
 
     # =============================================================================
     # PAGE 5: 🔀 ROUTE EXPLORER
     # =============================================================================
     elif page == "🔀 Route Explorer":
-        render_section_title("🔀 Bilateral Migrant Stock Corridor Explorer", "Bilateral corridor stocks and origin/destination shares")
+        render_section_title("🔀 Bilateral Corridor Route Explorer", "Explore origin-to-destination bilateral migrant-stock pairs")
         
         render_scientific_alert(
             "<b>Corridor Stock Definition</b>: A bilateral corridor estimate represents the number of individuals born in the <b>Origin Country</b> residing in the <b>Destination Country</b> at mid-year. Corridor shares reflect the portion of total bilateral migrant stock, <b>not</b> annual flow rates.",
             theme_mode
         )
-        
-        # Section A: Global Top Corridors
-        render_section_title("1. Top Global Bilateral Corridors")
-        
-        gt_c1, gt_c2 = st.columns([2, 2])
-        with gt_c1:
-            corridor_year = st.selectbox(
-                "Select Corridor Census Year",
-                AVAILABLE_YEARS,
-                index=len(AVAILABLE_YEARS) - 1,
-                key="corridor_year"
+
+        rc1, rc2, rc3 = st.columns([2, 2, 2])
+        with rc1:
+            route_year = st.selectbox("Census Round Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="route_year")
+        with rc2:
+            filter_origin = st.selectbox("Filter Origin Country", ["All Origins"] + list(COUNTRY_DICT.keys()), index=0, key="filter_origin")
+        with rc3:
+            filter_dest = st.selectbox("Filter Destination Country", ["All Destinations"] + list(COUNTRY_DICT.keys()), index=0, key="filter_dest")
+
+        orig_code = COUNTRY_DICT.get(filter_origin, None) if filter_origin != "All Origins" else None
+        dest_code = COUNTRY_DICT.get(filter_dest, None) if filter_dest != "All Destinations" else None
+
+        if orig_code is None and dest_code is None:
+            corridor_df = get_top_global_corridors(df_bilat, year=route_year, top_n=25)
+            chart_title = f"Top 25 Global Migration Corridors ({route_year})"
+        else:
+            corridor_df = get_filtered_corridors(df_bilat, year=route_year, origin_code=orig_code, destination_code=dest_code, top_n=25)
+            chart_title = f"Filtered Corridors: {filter_origin} → {filter_dest} ({route_year})"
+
+        if not corridor_df.empty:
+            fig_corridor = px.bar(
+                corridor_df.sort_values("migrant_stock", ascending=True).tail(20),
+                x="migrant_stock",
+                y="corridor_label",
+                orientation="h",
+                title=chart_title,
+                labels={"migrant_stock": "Residing Migrant Stock", "corridor_label": "Bilateral Corridor"},
+                template=plotly_tmpl
             )
-        with gt_c2:
-            top_corridor_n = st.selectbox(
-                "Top N Global Corridors",
-                [10, 25, 50],
-                index=0,
-                key="top_corridor_n"
-            )
+            fig_corridor.update_layout(**get_plotly_layout(theme_mode, chart_title, height=480))
+            fig_corridor.update_traces(marker_color=theme_colors["accent_teal"])
+            st.plotly_chart(fig_corridor, use_container_width=True)
 
-        top_corridors_df = get_top_global_corridors(df_bilat, year=corridor_year, top_n=top_corridor_n)
-        
-        fig_corridors = px.bar(
-            top_corridors_df,
-            x="migrant_stock",
-            y="corridor_label",
-            orientation="h",
-            text="migrant_stock",
-            labels={
-                "migrant_stock": "Migrant Stock (People)",
-                "corridor_label": "Bilateral Corridor (Origin → Destination)"
-            },
-            title=f"Top {top_corridor_n} Global Bilateral Corridors ({corridor_year})",
-            template=plotly_tmpl,
-            color="migrant_stock",
-            color_continuous_scale="Blues"
-        )
-        fig_corridors.update_traces(texttemplate="%{text:,.0f}", textposition="outside")
-        fig_corridors.update_layout(**get_plotly_layout(theme_mode, f"Top {top_corridor_n} Global Bilateral Corridors ({corridor_year})", height=max(360, len(top_corridors_df) * 28)))
-        fig_corridors.update_layout(yaxis=dict(autorange="reversed"))
-        st.plotly_chart(fig_corridors, use_container_width=True)
-
-        st.markdown("---")
-        
-        # Section B: Interactive Corridor Query
-        render_section_title("2. Search & Filter Bilateral Corridors")
-        
-        f_c1, f_c2, f_c3 = st.columns([3, 3, 2])
-        with f_c1:
-            orig_selection = st.selectbox(
-                "Origin Country (Emigrants)",
-                ["All"] + list(COUNTRY_DICT.keys()),
-                index=0,
-                key="route_orig"
-            )
-        with f_c2:
-            dest_selection = st.selectbox(
-                "Destination Country (Immigrants)",
-                ["All"] + list(COUNTRY_DICT.keys()),
-                index=0,
-                key="route_dest"
-            )
-        with f_c3:
-            custom_top_n = st.selectbox(
-                "Max Corridors Displayed",
-                [10, 20, 50, 100],
-                index=1,
-                key="route_top_n"
-            )
-
-        orig_code = COUNTRY_DICT.get(orig_selection) if orig_selection != "All" else None
-        dest_code = COUNTRY_DICT.get(dest_selection) if dest_selection != "All" else None
-
-        filtered_routes = get_filtered_corridors(
-            df_bilat,
-            year=corridor_year,
-            origin_code=orig_code,
-            dest_code=dest_code,
-            top_n=custom_top_n
-        )
-
-        if not filtered_routes.empty:
-            if orig_code and dest_code:
-                single_r = filtered_routes.iloc[0]
-                rk1, rk2, rk3 = st.columns(3)
-                with rk1:
-                    st.markdown(render_kpi_card("Corridor Migrant Stock", f"{single_r['migrant_stock']:,.0f}", f"{single_r['corridor_label']} ({corridor_year})", theme_mode), unsafe_allow_html=True)
-                with rk2:
-                    st.markdown(render_kpi_card("Origin Emigrant Share", f"{single_r['origin_corridor_share_pct']:.2f}%", f"Share of {orig_selection}'s emigrants", theme_mode), unsafe_allow_html=True)
-                with rk3:
-                    st.markdown(render_kpi_card("Dest. Immigrant Share", f"{single_r['dest_corridor_share_pct']:.2f}%", f"Share of {dest_selection}'s immigrants", theme_mode), unsafe_allow_html=True)
-
-            render_section_title(f"📋 Matching Corridors ({corridor_year})")
-            display_routes = filtered_routes[[
-                "rank", "corridor_label", "origin_display_name", "origin_code",
-                "dest_display_name", "destination_code", "year", "migrant_stock",
-                "origin_corridor_share_pct", "dest_corridor_share_pct"
+            render_section_title("Corridor Detail Records")
+            display_routes = corridor_df[[
+                "rank", "corridor_label", "origin_display_name", "dest_display_name",
+                "migrant_stock", "origin_corridor_share_pct", "dest_corridor_share_pct"
             ]].rename(columns={
-                "rank": "Rank",
-                "corridor_label": "Bilateral Corridor",
-                "origin_display_name": "Origin",
-                "origin_code": "Origin ISO3",
-                "dest_display_name": "Destination",
-                "destination_code": "Dest ISO3",
-                "year": "Year",
-                "migrant_stock": "Migrant Stock",
-                "origin_corridor_share_pct": "Origin Emigrant Share %",
-                "dest_corridor_share_pct": "Dest Immigrant Share %"
+                "rank": "Rank", "corridor_label": "Corridor", "origin_display_name": "Origin",
+                "dest_display_name": "Destination", "migrant_stock": "Migrant Stock",
+                "origin_corridor_share_pct": "Origin Emigrant Share %", "dest_corridor_share_pct": "Dest Immigrant Share %"
             })
-
             st.dataframe(
                 display_routes.style.format({
-                    "Migrant Stock": "{:,.0f}",
-                    "Origin Emigrant Share %": "{:.2f}%",
-                    "Dest Immigrant Share %": "{:.2f}%"
-                }, na_rep="—"),
+                    "Migrant Stock": "{:,.0f}", "Origin Emigrant Share %": "{:.2f}%", "Dest Immigrant Share %": "{:.2f}%"
+                }),
                 use_container_width=True,
                 height=300
             )
-
             st.download_button(
-                label="📥 Download Corridor Data as CSV",
+                label="📥 Download Corridor Data CSV",
                 data=display_routes.to_csv(index=False).encode("utf-8"),
-                file_name=f"corridors_{corridor_year}.csv",
+                file_name=f"migration_corridors_{route_year}.csv",
                 mime="text/csv"
             )
-        else:
-            st.warning("No bilateral corridors found matching the selected filters.")
 
     # =============================================================================
     # PAGE 6: 🌎 COUNTRY EXPLORER
     # =============================================================================
     elif page == "🌎 Country Explorer":
-        render_section_title("🌎 Individual Country Profile Explorer", "Detailed demographic, economic, and network profile")
+        render_section_title("🌎 Individual Country Profile & Diaspora Intelligence", "In-depth bilateral inbound and outbound stock profile for any sovereign entity")
         
-        ce_c1, ce_c2 = st.columns([3, 2])
-        with ce_c1:
+        c_prof1, c_prof2 = st.columns([3, 2])
+        with c_prof1:
             selected_country_name = st.selectbox(
-                "Select Country",
-                options=list(COUNTRY_DICT.keys()),
-                index=0,
-                key="profile_country"
+                "Select Country to Inspect",
+                list(COUNTRY_DICT.keys()),
+                index=list(COUNTRY_DICT.keys()).index("United States of America") if "United States of America" in COUNTRY_DICT else 0,
+                key="prof_country"
             )
-        with ce_c2:
-            selected_country_year = st.selectbox(
-                "Snapshot Reference Year",
-                AVAILABLE_YEARS,
-                index=len(AVAILABLE_YEARS) - 1,
-                key="profile_year"
-            )
+        with c_prof2:
+            prof_year = st.selectbox("Census Observation Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="prof_year")
 
-        country_code = COUNTRY_DICT[selected_country_name]
-        profile = get_country_profile_data(df_country, df_bilat, country_code=country_code, year=selected_country_year)
-        stats = profile["current_stats"]
+        sel_code = COUNTRY_DICT[selected_country_name]
+        profile = get_country_profile_data(df_country, df_bilat, country_code=sel_code, year=prof_year)
+        
+        # Country KPI Row
+        cp1, cp2, cp3, cp4 = st.columns(4)
+        with cp1:
+            st.markdown(render_kpi_card("Residing Immigrant Stock", f"{profile['immigrant_stock']:,.0f}", f"Inbound stock ({prof_year})", theme_mode), unsafe_allow_html=True)
+        with cp2:
+            st.markdown(render_kpi_card("Migrant % of Population", f"{profile['migrant_pct_population']:.2f}%", f"Total Pop: {profile['total_population']:,.0f}", theme_mode), unsafe_allow_html=True)
+        with cp3:
+            st.markdown(render_kpi_card("Emigrant Stock Abroad", f"{profile['emigrant_stock']:,.0f}", f"Living abroad ({prof_year})", theme_mode), unsafe_allow_html=True)
+        with cp4:
+            st.markdown(render_kpi_card("Net Migrant Stock Balance", f"{profile['net_migrant_stock']:+,.0f}", "Immigrant minus Emigrant Stock", theme_mode), unsafe_allow_html=True)
 
-        # Metric Banner
-        m_val = stats.get("migrant_stock", np.nan)
-        s_val = stats.get("migrant_stock_pct_population", np.nan)
-        r_val = stats.get("migrant_stock_global_rank", np.nan)
-        pop_val = stats.get("population", np.nan)
-        gdp_val = stats.get("gdp_per_capita", np.nan)
+        st.markdown("<br>", unsafe_allow_html=True)
 
-        m_str = f"{m_val:,.0f}" if pd.notna(m_val) else "N/A"
-        s_str = f"{s_val:.2f}%" if pd.notna(s_val) else "N/A"
-        r_str = f"#{r_val:.0f}" if pd.notna(r_val) else "N/A"
-        pop_str = f"{pop_val:,.0f}" if pd.notna(pop_val) else "N/A"
-        gdp_str = f"${gdp_val:,.0f}" if pd.notna(gdp_val) else "N/A"
-
-        p1, p2, p3, p4, p5 = st.columns(5)
-        with p1:
-            st.markdown(render_kpi_card("Migrant Stock", m_str, f"Foreign-born in {selected_country_year}", theme_mode), unsafe_allow_html=True)
-        with p2:
-            st.markdown(render_kpi_card("Stock % Pop.", s_str, "Share of resident pop.", theme_mode), unsafe_allow_html=True)
-        with p3:
-            st.markdown(render_kpi_card("Global Rank", r_str, f"By stock in {selected_country_year}", theme_mode), unsafe_allow_html=True)
-        with p4:
-            st.markdown(render_kpi_card("Total Population", pop_str, "World Bank midyear", theme_mode), unsafe_allow_html=True)
-        with p5:
-            st.markdown(render_kpi_card("GDP per Capita", gdp_str, "Current US$", theme_mode), unsafe_allow_html=True)
-
-        st.markdown("<div style='margin-top: 1.5rem;'></div>", unsafe_allow_html=True)
-
-        # 5 Analytic Tabs (Extended with Network Profile)
-        tab1, tab2, tab3, tab4, tab5 = st.tabs([
-            "📈 Stock Trajectory (1990–2020)",
-            "🔀 Inbound & Outbound Corridors",
-            "🕸️ Network Centrality Profile",
-            "🏆 Global Rank History",
-            "📊 Socioeconomic Indicators"
-        ])
-
-        with tab1:
-            render_section_title(f"Migrant Stock Trajectory: {selected_country_name}")
-            history_df = profile["history_df"]
-            if not history_df.empty:
-                fig_p1 = px.line(
-                    history_df,
-                    x="year",
-                    y="migrant_stock",
-                    markers=True,
-                    labels={"year": "Census Year", "migrant_stock": "Migrant Stock (People)"},
-                    title=f"Total Residing Migrant Stock (1990–2020)",
+        # Inbound and Outbound Corridors
+        in_col, out_col = st.columns(2)
+        with in_col:
+            render_section_title(f"Top 10 Inbound Origins (Migrants in {selected_country_name})")
+            if not profile["top_inbound_origins"].empty:
+                fig_in = px.bar(
+                    profile["top_inbound_origins"].sort_values("migrant_stock", ascending=True),
+                    x="migrant_stock",
+                    y="origin_display_name",
+                    orientation="h",
+                    title=f"Origins of Migrants Residing in {selected_country_name}",
+                    labels={"migrant_stock": "Residing Migrants", "origin_display_name": "Origin Country"},
                     template=plotly_tmpl
                 )
-                fig_p1.update_traces(line=dict(color=theme_colors["accent_blue"], width=3), marker=dict(size=8))
-                fig_p1.update_layout(**get_plotly_layout(theme_mode, f"Total Residing Migrant Stock: {selected_country_name}", height=380))
-                st.plotly_chart(fig_p1, use_container_width=True)
-            else:
-                st.info("No historical data available for this country.")
+                fig_in.update_layout(**get_plotly_layout(theme_mode, f"Origins of Migrants Residing in {selected_country_name}", height=380))
+                fig_in.update_traces(marker_color=theme_colors["accent_blue"])
+                st.plotly_chart(fig_in, use_container_width=True)
 
-        with tab2:
-            render_section_title(f"Top Bilateral Corridors ({selected_country_year})")
-            in_df = profile["inbound_corridors"]
-            out_df = profile["outbound_corridors"]
-            
-            c_in, c_out = st.columns(2)
-            with c_in:
-                st.markdown(f"**Top Inbound Origins** (Foreign-born residing in {selected_country_name}):")
-                if not in_df.empty:
-                    fig_in = px.bar(
-                        in_df,
-                        x="migrant_stock",
-                        y="origin_display_name",
-                        orientation="h",
-                        labels={"migrant_stock": "Migrant Stock", "origin_display_name": "Origin Country"},
-                        template=plotly_tmpl,
-                        color="dest_corridor_share_pct",
-                        color_continuous_scale="Blues"
-                    )
-                    fig_in.update_layout(**get_plotly_layout(theme_mode, "", height=320))
-                    fig_in.update_layout(yaxis=dict(autorange="reversed"))
-                    st.plotly_chart(fig_in, use_container_width=True)
-                else:
-                    st.caption("No inbound corridor records available.")
-                    
-            with c_out:
-                st.markdown(f"**Top Outbound Destinations** (Emigrants from {selected_country_name}):")
-                if not out_df.empty:
-                    fig_out = px.bar(
-                        out_df,
-                        x="migrant_stock",
-                        y="dest_display_name",
-                        orientation="h",
-                        labels={"migrant_stock": "Migrant Stock", "dest_display_name": "Destination Country"},
-                        template=plotly_tmpl,
-                        color="origin_corridor_share_pct",
-                        color_continuous_scale="Teal"
-                    )
-                    fig_out.update_layout(**get_plotly_layout(theme_mode, "", height=320))
-                    fig_out.update_layout(yaxis=dict(autorange="reversed"))
-                    st.plotly_chart(fig_out, use_container_width=True)
-                else:
-                    st.caption("No outbound corridor records available.")
-
-        with tab3:
-            render_section_title(f"🕸️ Network Profile: {selected_country_name} ({selected_country_year})")
-            G_full, df_net_m = get_cached_network_and_metrics(year=selected_country_year, min_stock=None, top_n_edges=None)
-            c_net = df_net_m[df_net_m["country_code"] == country_code]
-            
-            if not c_net.empty:
-                c_row = c_net.iloc[0]
-                nc1, nc2, nc3, nc4 = st.columns(4)
-                with nc1:
-                    st.metric("Total Degree (Connections)", f"{c_row['total_degree']:,}", f"In: {c_row['in_degree']} | Out: {c_row['out_degree']}")
-                with nc2:
-                    st.metric("Weighted Network Strength", f"{c_row['total_strength']:,.0f}", f"In: {c_row['in_strength']:,.0f}")
-                with nc3:
-                    st.metric("Betweenness Centrality", f"{c_row['betweenness_centrality']:.4f}")
-                with nc4:
-                    st.metric("PageRank Score", f"{c_row['pagerank']:.4f}")
-                    
-                st.markdown("---")
-                st.markdown(f"**Ego Network (Neighborhood Subgraph for {selected_country_name})**:")
-                if G_full.has_node(country_code):
-                    # Extract 1-hop ego network
-                    ego_nodes = list(G_full.predecessors(country_code)) + list(G_full.successors(country_code)) + [country_code]
-                    ego_subG = G_full.subgraph(ego_nodes)
-                    fig_ego = create_network_2d_plot(
-                        ego_subG,
-                        df_net_m[df_net_m["country_code"].isin(ego_nodes)],
-                        layout_type="Spring",
-                        is_dark_mode=is_dark,
-                        title=f"{selected_country_name} Network Neighborhood ({selected_country_year})"
-                    )
-                    st.plotly_chart(fig_ego, use_container_width=True)
-            else:
-                st.info("Country is not connected in the selected year network.")
-
-        with tab4:
-            render_section_title("Global Migrant Stock Rank Trajectory (1990–2020)")
-            history_df = profile["history_df"]
-            if not history_df.empty and "migrant_stock_global_rank" in history_df.columns:
-                fig_rank_hist = px.line(
-                    history_df,
-                    x="year",
-                    y="migrant_stock_global_rank",
-                    markers=True,
-                    labels={"year": "Census Year", "migrant_stock_global_rank": "Global Rank (1 = Highest)"},
-                    title=f"Global Rank Position Over Time",
+        with out_col:
+            render_section_title(f"Top 10 Outbound Destinations (Diaspora from {selected_country_name})")
+            if not profile["top_outbound_destinations"].empty:
+                fig_out = px.bar(
+                    profile["top_outbound_destinations"].sort_values("migrant_stock", ascending=True),
+                    x="migrant_stock",
+                    y="dest_display_name",
+                    orientation="h",
+                    title=f"Destinations of Migrants Born in {selected_country_name}",
+                    labels={"migrant_stock": "Diaspora Stock", "dest_display_name": "Destination Country"},
                     template=plotly_tmpl
                 )
-                fig_rank_hist.update_traces(line=dict(color=theme_colors["accent_amber"], width=3), marker=dict(size=8))
-                fig_rank_hist.update_layout(**get_plotly_layout(theme_mode, f"Global Rank Position Over Time: {selected_country_name}", height=350))
-                fig_rank_hist.update_layout(yaxis=dict(autorange="reversed"))
-                st.plotly_chart(fig_rank_hist, use_container_width=True)
+                fig_out.update_layout(**get_plotly_layout(theme_mode, f"Destinations of Migrants Born in {selected_country_name}", height=380))
+                fig_out.update_traces(marker_color=theme_colors["accent_amber"])
+                st.plotly_chart(fig_out, use_container_width=True)
 
-        with tab5:
-            render_section_title(f"Macroeconomic Indicators ({selected_country_name})")
-            st.caption("Descriptive macroeconomic indicators from World Bank WDI. These values describe economic context and do not establish causal relationships.")
-            if not history_df.empty:
-                econ_table = history_df[[
-                    "year", "population", "gdp", "gdp_per_capita", "unemployment", "migrant_stock", "migrant_stock_pct_population"
-                ]].rename(columns={
-                    "year": "Year",
-                    "population": "Population",
-                    "gdp": "Total GDP (USD)",
-                    "gdp_per_capita": "GDP per Capita (USD)",
-                    "unemployment": "Unemployment Rate (%)",
-                    "migrant_stock": "Migrant Stock",
-                    "migrant_stock_pct_population": "Stock % of Pop"
-                })
-                st.dataframe(
-                    econ_table.style.format({
-                        "Population": "{:,.0f}",
-                        "Total GDP (USD)": "${:,.0f}",
-                        "GDP per Capita (USD)": "${:,.0f}",
-                        "Unemployment Rate (%)": "{:.2f}%",
-                        "Migrant Stock": "{:,.0f}",
-                        "Stock % of Pop": "{:.2f}%"
-                    }, na_rep="—"),
-                    use_container_width=True,
-                    height=280
-                )
-
-        # Complete Country History Table
-        render_section_title(f"📋 Complete Country History: {selected_country_name}")
+        # Historical Trajectory Table
+        render_section_title(f"Historical Demographic & Socioeconomic Records (1990–2020)")
+        history_df = profile["history_df"][["year", "migrant_stock", "migrant_stock_pct_population", "population", "gdp_per_capita", "unemployment"]].rename(columns={
+            "year": "Year", "migrant_stock": "Migrant Stock", "migrant_stock_pct_population": "Migrant % Pop",
+            "population": "Population", "gdp_per_capita": "GDP per Capita", "unemployment": "Unemployment %"
+        })
         st.dataframe(
-            history_df[[
-                "display_name", "country_code", "year", "migrant_stock",
-                "population", "migrant_stock_pct_population", "stock_change_5yr",
-                "stock_growth_pct_5yr", "gdp_per_capita", "unemployment", "migrant_stock_global_rank"
-            ]].style.format({
-                "migrant_stock": "{:,.0f}",
-                "population": "{:,.0f}",
-                "migrant_stock_pct_population": "{:.2f}%",
-                "stock_change_5yr": "{:+,.0f}",
-                "stock_growth_pct_5yr": "{:+.2f}%",
-                "gdp_per_capita": "${:,.0f}",
-                "unemployment": "{:.2f}%",
-                "migrant_stock_global_rank": "{:.0f}"
-            }, na_rep="—"),
+            history_df.style.format({
+                "Migrant Stock": "{:,.0f}", "Migrant % Pop": "{:.2f}%", "Population": "{:,.0f}",
+                "GDP per Capita": "${:,.0f}", "Unemployment %": "{:.2f}%"
+            }),
             use_container_width=True,
-            height=260
+            height=280
         )
-
-        st.download_button(
-            label=f"📥 Download {selected_country_name} Profile Data as CSV",
-            data=history_df.to_csv(index=False).encode("utf-8"),
-            file_name=f"country_profile_{country_code}.csv",
-            mime="text/csv"
-        )
+        st.caption("Descriptive macroeconomic indicators from World Bank WDI. These values describe economic context and do not establish causal relationships.")
 
     # =============================================================================
     # PAGE 7: 🕸️ MIGRATION NETWORK
     # =============================================================================
     elif page == "🕸️ Migration Network":
-        render_section_title("🕸️ Global Bilateral Migrant-Stock Network", "Network topology, centrality analysis, and spatial arcs")
+        render_section_title("🕸️ Global Migration Stock Network Analysis", "Network graph modeling bilateral migrant stock with centrality metrics and geographic flows")
         
         render_scientific_alert(
             "<b>Scientific Definition</b>: Each directed edge Origin → Destination represents the UN DESA estimated migrant stock residing in the destination whose origin is the specified origin country, for the selected UN DESA observation year. The network represents bilateral migrant-stock relationships. It does <b>NOT</b> represent annual migration flows, annual immigration flows, annual emigration flows, or yearly migration movements.",
             theme_mode
         )
-        
-        net_tabs = st.tabs([
-            "🌐 Interactive 2D Network",
-            "🗺️ Geographic Network Map",
-            "🏆 Network Centrality Rankings",
-            "📈 Longitudinal Network Evolution",
-            "📊 Country Centrality Comparison"
-        ])
-        
-        # Controls Header
-        nc1, nc2, nc3 = st.columns([2, 2, 2])
-        with nc1:
-            net_year = st.selectbox("Network Census Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="net_yr")
-        with nc2:
-            top_edges = st.selectbox("Top N Strongest Edges", [25, 50, 100, 250, 500], index=2, key="net_top_e")
-        with nc3:
-            min_stock_thresh = st.selectbox("Minimum Stock Threshold", [0, 50000, 100000, 500000, 1000000], index=0, key="net_min_s")
 
-        G_curr, df_metrics = get_cached_network_and_metrics(year=net_year, min_stock=min_stock_thresh, top_n_edges=top_edges)
+        net_c1, net_c2, net_c3 = st.columns([2, 2, 2])
+        with net_c1:
+            net_year = st.selectbox("Select Network Census Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="net_yr")
+        with net_c2:
+            net_min_stock = st.selectbox("Min Corridor Stock Filter", [None, 50000, 100000, 250000, 500000, 1000000], index=3, format_func=lambda x: "All Corridors" if x is None else f"≥ {x:,.0f} migrants", key="net_stock")
+        with net_c3:
+            net_top_edges = st.selectbox("Top N Global Corridors", [None, 50, 100, 200, 300], index=2, format_func=lambda x: "All Edges" if x is None else f"Top {x} Corridors", key="net_edges")
 
-        # TAB 1: 2D NETWORK GRAPH
+        G, df_metrics = get_cached_network_and_metrics(net_year, net_min_stock, net_top_edges)
+
+        # Network KPIs
+        nk1, nk2, nk3, nk4 = st.columns(4)
+        with nk1:
+            st.markdown(render_kpi_card("Connected Nodes (Countries)", f"{G.number_of_nodes():,}", f"Active entities in {net_year}", theme_mode), unsafe_allow_html=True)
+        with nk2:
+            st.markdown(render_kpi_card("Directed Corridors (Edges)", f"{G.number_of_edges():,}", f"Bilateral connections", theme_mode), unsafe_allow_html=True)
+        with nk3:
+            total_net_stock = sum(d["weight"] for _, _, d in G.edges(data=True)) if G.number_of_edges() > 0 else 0
+            st.markdown(render_kpi_card("Network Total Migrant Stock", f"{total_net_stock:,.0f}", "Sum of included corridors", theme_mode), unsafe_allow_html=True)
+        with nk4:
+            density = nx.density(G) if G.number_of_nodes() > 1 else 0
+            st.markdown(render_kpi_card("Network Graph Density", f"{density:.4f}", "Edge saturation ratio", theme_mode), unsafe_allow_html=True)
+
+        st.markdown("<br>", unsafe_allow_html=True)
+
+        # Visualizations Tabs
+        net_tabs = st.tabs(["🌐 Geographic Network Map", "🕸️ 2D Force-Directed Layout", "🏆 Centrality Leaderboards"])
         with net_tabs[0]:
-            render_section_title(f"2D Force-Directed Graph ({net_year})", f"Filtered to Top {top_edges} strongest bilateral corridors")
-            g_c1, g_c2, g_c3 = st.columns([2, 2, 2])
-            with g_c1:
-                layout_choice = st.selectbox("Layout Algorithm", ["Spring", "Circular", "Kamada-Kawai"], index=0, key="net_layout")
-            with g_c2:
-                node_size_choice = st.selectbox("Node Size Metric", ["Weighted Strength", "Total Degree", "Betweenness Centrality", "PageRank"], index=0, key="net_size")
-            with g_c3:
-                node_color_choice = st.selectbox("Node Color Metric", ["Weighted Strength", "Total Degree", "Betweenness Centrality", "PageRank"], index=0, key="net_color")
-
-            fig_2d = create_network_2d_plot(
-                G_curr,
-                df_metrics,
-                layout_type=layout_choice,
-                node_size_metric=node_size_choice,
-                node_color_metric=node_color_choice,
+            fig_geo = create_geographic_network_map(
+                G,
                 is_dark_mode=is_dark,
-                title=f"Global Migrant-Stock Network ({net_year}) — Top {top_edges} Edges"
+                title=f"Geographic Bilateral Migrant-Stock Network ({net_year})"
+            )
+            st.plotly_chart(fig_geo, use_container_width=True)
+
+        with net_tabs[1]:
+            layout_algo = st.radio("Graph Layout Algorithm", ["spring", "circular"], horizontal=True, index=0)
+            fig_2d = create_network_2d_plot(
+                G,
+                metrics_df=df_metrics,
+                layout_type=layout_algo,
+                is_dark_mode=is_dark,
+                title=f"2D Force-Directed Migration Network ({net_year})"
             )
             st.plotly_chart(fig_2d, use_container_width=True)
 
-        # TAB 2: GEOGRAPHIC NETWORK MAP
-        with net_tabs[1]:
-            render_section_title(f"Geographic Migration Arcs ({net_year})", "Spatial arcs between origin and destination centroids")
-            fig_geo_net = create_geographic_network_map(
-                G_curr,
-                is_dark_mode=is_dark,
-                top_n_edges=top_edges,
-                title=f"Geographic Migrant Stock Corridors ({net_year})"
-            )
-            st.plotly_chart(fig_geo_net, use_container_width=True)
-
-        # TAB 3: CENTRALITY RANKINGS
         with net_tabs[2]:
-            render_section_title(f"Network Centrality Rankings ({net_year})")
-            rk_c1, rk_c2 = st.columns([3, 2])
-            with rk_c1:
-                rank_metric_net = st.selectbox("Centrality Metric", ["Weighted Strength", "In-Strength", "Out-Strength", "Total Degree", "Betweenness Centrality", "PageRank"], index=0, key="net_rank_metric")
-            with rk_c2:
-                rank_n_net = st.selectbox("Top N Countries", [10, 25, 50], index=0, key="net_rank_n")
-
-            df_rank_net = get_network_rankings_data(df_metrics, metric_name=rank_metric_net, top_n=rank_n_net)
-            
-            if not df_rank_net.empty:
-                fig_rank_n = px.bar(
-                    df_rank_net,
-                    x="metric_value",
-                    y="country_name",
-                    orientation="h",
-                    text="metric_value",
-                    labels={"metric_value": rank_metric_net, "country_name": "Country"},
-                    title=f"Top {rank_n_net} Countries by {rank_metric_net} ({net_year})",
-                    template=plotly_tmpl,
-                    color="metric_value",
-                    color_continuous_scale="Blues"
-                )
-                fmt_str = "%{text:.4f}" if "Centrality" in rank_metric_net or "PageRank" in rank_metric_net else "%{text:,.0f}"
-                fig_rank_n.update_traces(texttemplate=fmt_str, textposition="outside")
-                fig_rank_n.update_layout(**get_plotly_layout(theme_mode, f"Top {rank_n_net} Countries by {rank_metric_net} ({net_year})", height=max(360, len(df_rank_net)*28)))
-                fig_rank_n.update_layout(yaxis=dict(autorange="reversed"))
-                st.plotly_chart(fig_rank_n, use_container_width=True)
-
-                # Data Table
-                render_section_title("Centrality Data Table")
-                st.dataframe(
-                    df_rank_net[[
-                        "rank", "country_name", "country_code", "total_strength",
-                        "in_strength", "out_strength", "total_degree", "betweenness_centrality", "pagerank"
-                    ]].rename(columns={
-                        "rank": "Rank", "country_name": "Country", "country_code": "ISO3",
-                        "total_strength": "Total Strength", "in_strength": "In-Strength", "out_strength": "Out-Strength",
-                        "total_degree": "Degree", "betweenness_centrality": "Betweenness", "pagerank": "PageRank"
-                    }).style.format({
-                        "Total Strength": "{:,.0f}", "In-Strength": "{:,.0f}", "Out-Strength": "{:,.0f}",
-                        "Degree": "{:,.0f}", "Betweenness": "{:.4f}", "PageRank": "{:.4f}"
-                    }),
-                    use_container_width=True,
-                    height=280
-                )
-
-                st.download_button(
-                    label="📥 Download Centrality Rankings CSV",
-                    data=df_rank_net.to_csv(index=False).encode("utf-8"),
-                    file_name=f"centrality_rankings_{net_year}.csv",
-                    mime="text/csv"
-                )
-
-        # TAB 4: TEMPORAL EVOLUTION
-        with net_tabs[3]:
-            render_section_title("Longitudinal Network Evolution (1990–2020)")
-            df_temp_net = get_cached_temporal_evolution(min_stock=min_stock_thresh, top_n_edges=top_edges)
-            
-            tp1, tp2 = st.columns(2)
-            with tp1:
-                fig_nodes_edges = px.line(
-                    df_temp_net,
-                    x="year",
-                    y=["node_count", "edge_count"],
-                    markers=True,
-                    title="Active Network Nodes & Edges (1990–2020)",
-                    labels={"year": "Year", "value": "Count", "variable": "Network Element"},
-                    template=plotly_tmpl
-                )
-                fig_nodes_edges.update_layout(**get_plotly_layout(theme_mode, "Active Network Nodes & Edges (1990–2020)", height=350))
-                st.plotly_chart(fig_nodes_edges, use_container_width=True)
-            with tp2:
-                fig_dens = px.line(
-                    df_temp_net,
-                    x="year",
-                    y="network_density",
-                    markers=True,
-                    title="Global Network Density Over Time",
-                    labels={"year": "Year", "network_density": "Network Density"},
-                    template=plotly_tmpl
-                )
-                fig_dens.update_traces(line=dict(color=theme_colors["accent_teal"], width=3))
-                fig_dens.update_layout(**get_plotly_layout(theme_mode, "Global Network Density Over Time", height=350))
-                st.plotly_chart(fig_dens, use_container_width=True)
+            render_section_title("Centrality & Hub Rankings")
+            df_rank_net = df_metrics[[
+                "country_name", "country_code", "in_strength", "out_strength",
+                "total_strength", "pagerank", "betweenness_centrality", "total_degree"
+            ]].rename(columns={
+                "country_name": "Country", "country_code": "ISO3",
+                "in_strength": "Inbound Residing Stock", "out_strength": "Outbound Diaspora Stock",
+                "total_strength": "Total Weighted Strength", "pagerank": "PageRank Centrality",
+                "betweenness_centrality": "Betweenness Centrality", "total_degree": "Degree"
+            }).sort_values("Total Weighted Strength", ascending=False)
 
             st.dataframe(
-                df_temp_net.rename(columns={
-                    "year": "Census Year", "node_count": "Nodes", "edge_count": "Edges",
-                    "total_observed_stock": "Total Observed Stock", "avg_degree": "Average Degree",
-                    "network_density": "Density", "top_corridor": "Largest Bilateral Corridor"
-                }).style.format({
-                    "Nodes": "{:,}", "Edges": "{:,}", "Total Observed Stock": "{:,.0f}",
-                    "Average Degree": "{:.2f}", "Density": "{:.4f}"
+                df_rank_net.style.format({
+                    "Inbound Residing Stock": "{:,.0f}", "Outbound Diaspora Stock": "{:,.0f}",
+                    "Total Weighted Strength": "{:,.0f}", "PageRank Centrality": "{:.4f}",
+                    "Betweenness Centrality": "{:.4f}", "Degree": "{:,.0f}"
                 }),
-                use_container_width=True
+                use_container_width=True,
+                height=340
             )
-
-        # TAB 5: COUNTRY CENTRALITY TRAJECTORY
-        with net_tabs[4]:
-            render_section_title("Compare Longitudinal Centrality Across Countries")
-            cmp_c1, cmp_c2 = st.columns([3, 2])
-            with cmp_c1:
-                comp_countries = st.multiselect(
-                    "Select Countries to Compare",
-                    options=list(COUNTRY_DICT.keys()),
-                    default=["United States of America", "India", "Germany", "United Arab Emirates", "China"],
-                    key="net_comp_c"
-                )
-            with cmp_c2:
-                comp_metric_choice = st.selectbox(
-                    "Longitudinal Centrality Metric",
-                    ["total_strength", "in_strength", "out_strength", "betweenness_centrality", "pagerank"],
-                    index=0,
-                    key="net_comp_m"
-                )
-
-            if comp_countries:
-                comp_codes = [COUNTRY_DICT[c] for c in comp_countries]
-                df_traj = get_country_centrality_trajectories(df_bilat, country_codes=comp_codes, top_n_edges=top_edges)
-                
-                if not df_traj.empty:
-                    fig_traj = px.line(
-                        df_traj,
-                        x="year",
-                        y=comp_metric_choice,
-                        color="country_name",
-                        markers=True,
-                        title=f"Centrality Trajectories: {comp_metric_choice.replace('_', ' ').title()} (1990–2020)",
-                        labels={"year": "Year", comp_metric_choice: comp_metric_choice.replace('_', ' ').title(), "country_name": "Country"},
-                        template=plotly_tmpl
-                    )
-                    fig_traj.update_layout(**get_plotly_layout(theme_mode, f"Centrality Trajectories: {comp_metric_choice.replace('_', ' ').title()} (1990–2020)", height=420))
-                    st.plotly_chart(fig_traj, use_container_width=True)
+            st.download_button(
+                label="📥 Download Centrality Metrics CSV",
+                data=df_rank_net.to_csv(index=False).encode("utf-8"),
+                file_name=f"migration_network_centrality_{net_year}.csv",
+                mime="text/csv"
+            )
 
     # =============================================================================
     # PAGE 8: 🔗 CORRIDOR ANALYSIS
     # =============================================================================
     elif page == "🔗 Corridor Analysis":
-        render_section_title("🔗 Advanced Corridor Analytics & Bidirectional Asymmetry", "Bilateral asymmetry and portfolio concentration")
+        render_section_title("🔗 Advanced Bilateral Corridor & Asymmetry Analytics", "Directional asymmetry, reciprocal balances, and corridor concentration")
         
-        c_tabs = st.tabs([
-            "⚖️ Bidirectional Asymmetry Analyzer",
-            "📊 Origin & Destination Concentration",
-            "🌐 Global Top Corridors"
-        ])
-
+        c_tabs = st.tabs(["⚖️ Country-Pair Asymmetry", "🎯 Corridor Concentration (HHI)", "📋 Top 50 Global Corridors"])
         with c_tabs[0]:
-            render_section_title("1. Bidirectional Country Pair Analysis", "Directional bilateral migrant stock between two sovereign nations")
-            
-            b_c1, b_c2, b_c3 = st.columns([3, 3, 2])
-            with b_c1:
-                b_orig = st.selectbox("Country A", options=list(COUNTRY_DICT.keys()), index=list(COUNTRY_DICT.keys()).index("India") if "India" in COUNTRY_DICT else 0, key="bi_a")
-            with b_c2:
-                b_dest = st.selectbox("Country B", options=list(COUNTRY_DICT.keys()), index=list(COUNTRY_DICT.keys()).index("United Arab Emirates") if "United Arab Emirates" in COUNTRY_DICT else 1, key="bi_b")
-            with b_c3:
-                b_year = st.selectbox("Census Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="bi_yr")
+            asym_col1, asym_col2, asym_col3 = st.columns([2, 2, 2])
+            with asym_col1:
+                asym_year = st.selectbox("Census Observation Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="asym_yr")
+            with asym_col2:
+                c_a = st.selectbox("Country A", list(COUNTRY_DICT.keys()), index=list(COUNTRY_DICT.keys()).index("Mexico") if "Mexico" in COUNTRY_DICT else 0, key="asym_ca")
+            with asym_col3:
+                c_b = st.selectbox("Country B", list(COUNTRY_DICT.keys()), index=list(COUNTRY_DICT.keys()).index("United States of America") if "United States of America" in COUNTRY_DICT else 1, key="asym_cb")
 
-            code_a = COUNTRY_DICT[b_orig]
-            code_b = COUNTRY_DICT[b_dest]
+            code_a = COUNTRY_DICT[c_a]
+            code_b = COUNTRY_DICT[c_b]
+            asym_res = get_bidirectional_corridor_analysis(df_bilat, country_a=code_a, country_b=code_b, year=asym_year)
 
-            if code_a != code_b:
-                bi_res = get_bidirectional_corridor_analysis(df_bilat, year=b_year, country_a=code_a, country_b=code_b)
-                
-                # Asymmetry KPI Cards
-                ak1, ak2, ak3, ak4 = st.columns(4)
-                with ak1:
-                    st.markdown(render_kpi_card(f"{b_orig} → {b_dest}", f"{bi_res['stock_a_to_b']:,.0f}", f"Born in {b_orig} living in {b_dest}", theme_mode), unsafe_allow_html=True)
-                with ak2:
-                    st.markdown(render_kpi_card(f"{b_dest} → {b_orig}", f"{bi_res['stock_b_to_a']:,.0f}", f"Born in {b_dest} living in {b_orig}", theme_mode), unsafe_allow_html=True)
-                with ak3:
-                    st.markdown(render_kpi_card("Combined Bilateral Stock", f"{bi_res['total_bilateral_stock']:,.0f}", "Total two-way residing stock", theme_mode), unsafe_allow_html=True)
-                with ak4:
-                    st.markdown(render_kpi_card("Directional Asymmetry", f"{bi_res['asymmetry_index']:+.2f}", "Range: [-1.0, +1.0]", theme_mode), unsafe_allow_html=True)
+            ak1, ak2, ak3, ak4 = st.columns(4)
+            with ak1:
+                st.markdown(render_kpi_card(f"{c_a} → {c_b} Stock", f"{asym_res['stock_a_to_b']:,.0f}", f"Born in {c_a}, residing in {c_b}", theme_mode), unsafe_allow_html=True)
+            with ak2:
+                st.markdown(render_kpi_card(f"{c_b} → {c_a} Stock", f"{asym_res['stock_b_to_a']:,.0f}", f"Born in {c_b}, residing in {c_a}", theme_mode), unsafe_allow_html=True)
+            with ak3:
+                st.markdown(render_kpi_card("Combined Bilateral Stock", f"{asym_res['total_bilateral_stock']:,.0f}", "Total mutual stock", theme_mode), unsafe_allow_html=True)
+            with ak4:
+                st.markdown(render_kpi_card("Directional Asymmetry Index", f"{asym_res['asymmetry_index']:+.3f}", f"Dominant: {asym_res['dominant_direction']}", theme_mode), unsafe_allow_html=True)
 
-                render_scientific_alert(
-                    f"<b>Asymmetry Interpretation</b>: Dominant corridor direction is <b>{bi_res['dominant_direction']}</b> with a stock difference of <b>{bi_res['stock_difference']:,.0f}</b> people.",
-                    theme_mode
-                )
-
-                # Bar comparison
-                bi_chart_df = pd.DataFrame([
-                    {"Direction": f"{b_orig} → {b_dest}", "Migrant Stock": bi_res["stock_a_to_b"]},
-                    {"Direction": f"{b_dest} → {b_orig}", "Migrant Stock": bi_res["stock_b_to_a"]}
-                ])
-                fig_bi = px.bar(
-                    bi_chart_df,
-                    x="Direction",
-                    y="Migrant Stock",
-                    color="Direction",
-                    color_discrete_sequence=[theme_colors["accent_blue"], theme_colors["accent_teal"]],
-                    title=f"Bidirectional Stock Comparison ({b_year})",
-                    template=plotly_tmpl
-                )
-                fig_bi.update_layout(**get_plotly_layout(theme_mode, f"Bidirectional Stock Comparison ({b_year})", height=350))
-                st.plotly_chart(fig_bi, use_container_width=True)
-            else:
-                st.warning("Please select two distinct countries to analyze bidirectional asymmetry.")
+            st.markdown(f"**Dominant Direction**: `{asym_res['dominant_direction']}` | **Directional Ratio**: `{asym_res['directional_ratio']:.1f}:1`")
 
         with c_tabs[1]:
-            render_section_title("2. Corridor Concentration (Herfindahl Index)")
-            st.caption("Measures how concentrated a country's emigrant stock or immigrant stock is across partner countries.")
-            
+            render_section_title("Destination Concentration for a Given Origin Country")
             conc_c1, conc_c2 = st.columns([3, 2])
             with conc_c1:
-                conc_country = st.selectbox("Select Country for Concentration Audit", options=list(COUNTRY_DICT.keys()), index=0, key="conc_c")
+                conc_country = st.selectbox("Select Origin Country", list(COUNTRY_DICT.keys()), index=0, key="conc_orig")
             with conc_c2:
-                conc_year = st.selectbox("Census Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="conc_yr")
+                conc_year = st.selectbox("Select Census Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="conc_yr")
 
             c_code = COUNTRY_DICT[conc_country]
-            
-            # Compute emigrant destination concentration
             emig_df = df_bilat[
                 (df_bilat["origin_code"] == c_code) &
                 (df_bilat["year"] == conc_year) &
@@ -1320,9 +798,9 @@ if data_loaded:
                 
                 ck1, ck2 = st.columns(2)
                 with ck1:
-                    st.metric("Total Emigrant Stock Abroad", f"{tot_emig:,.0f}")
+                    st.markdown(render_kpi_card("Total Emigrant Stock Abroad", f"{tot_emig:,.0f}", f"Born in {conc_country}", theme_mode), unsafe_allow_html=True)
                 with ck2:
-                    st.metric("Emigrant Destination Concentration (HHI)", f"{hhi_emig:,.0f}", "Max 10,000 (Monopoly)")
+                    st.markdown(render_kpi_card("Emigrant Destination HHI", f"{hhi_emig:,.0f}", "Max 10,000 (Monopoly)", theme_mode), unsafe_allow_html=True)
 
                 fig_conc = px.pie(
                     emig_df.head(8),
@@ -1333,11 +811,9 @@ if data_loaded:
                 )
                 fig_conc.update_layout(**get_plotly_layout(theme_mode, f"Emigrant Stock Concentration: Top Destinations for {conc_country} ({conc_year})", height=400))
                 st.plotly_chart(fig_conc, use_container_width=True)
-            else:
-                st.info("No outbound corridor data available for this selection.")
 
         with c_tabs[2]:
-            render_section_title("3. Top Global Corridors Full Table")
+            render_section_title("Top 50 Global Corridors Full Table")
             top_c_all = get_top_global_corridors(df_bilat, year=AVAILABLE_YEARS[-1], top_n=50)
             st.dataframe(
                 top_c_all.rename(columns={
@@ -1350,6 +826,12 @@ if data_loaded:
                 }),
                 use_container_width=True,
                 height=380
+            )
+            st.download_button(
+                label="📥 Download Top 50 Corridors CSV",
+                data=top_c_all.to_csv(index=False).encode("utf-8"),
+                file_name=f"top_50_global_corridors_{AVAILABLE_YEARS[-1]}.csv",
+                mime="text/csv"
             )
 
     # =============================================================================
@@ -1377,7 +859,6 @@ if data_loaded:
 
         st.markdown(f"**Modularity Score**: `{modularity_score:.4f}` (Values &gt; 0.3 indicate strong community cluster structure)")
         
-        # Plot community clusters
         fig_comm = create_community_graph_plot(
             G_comm,
             node_comm_map,
@@ -1386,7 +867,6 @@ if data_loaded:
         )
         st.plotly_chart(fig_comm, use_container_width=True)
 
-        # Community Summary Table & Drill-down
         render_section_title("📋 Community Clusters Summary")
         st.dataframe(
             df_comm_summary[[
@@ -1399,19 +879,6 @@ if data_loaded:
             height=250
         )
 
-        # Detailed Member Inspector
-        render_section_title("🔍 Inspect Community Members")
-        selected_comm_id = st.selectbox(
-            "Select Community ID to Inspect",
-            df_comm_summary["community_id"].tolist() if not df_comm_summary.empty else [1]
-        )
-        
-        selected_row = df_comm_summary[df_comm_summary["community_id"] == selected_comm_id]
-        if not selected_row.empty:
-            members_list = selected_row.iloc[0]["members"]
-            st.markdown(f"**Member Countries ({len(members_list)} total)**:")
-            st.write(", ".join(members_list))
-
         st.download_button(
             label="📥 Download Community Membership CSV",
             data=pd.DataFrame([
@@ -1423,7 +890,441 @@ if data_loaded:
         )
 
     # =============================================================================
-    # PAGE 10: ℹ️ METHODOLOGY
+    # PAGE 10: 📊 ADVANCED ANALYTICS (PHASE 5)
+    # =============================================================================
+    elif page == "📊 Advanced Analytics":
+        render_section_title("📊 Advanced Migration Analytics", "Statistical concentration indices, growth classifications, socioeconomic correlations, and anomaly detection")
+
+        adv_tabs = st.tabs([
+            "🌐 Geographic Concentration (HHI)",
+            "📈 Migration Change & Growth",
+            "🔬 Socioeconomic Relationships",
+            "⚠️ Outlier & Anomaly Detection"
+        ])
+
+        # TAB 1: CONCENTRATION
+        with adv_tabs[0]:
+            render_section_title("Global Destination & Origin Concentration (1990–2020)")
+            conc_trend_df = get_cached_concentration_trend()
+
+            hhi_c1, hhi_c2, hhi_c3, hhi_c4 = st.columns(4)
+            latest_dest_conc = compute_destination_concentration(df_country, year=AVAILABLE_YEARS[-1])
+            latest_orig_conc = compute_origin_concentration(df_bilat, year=AVAILABLE_YEARS[-1])
+
+            with hhi_c1:
+                st.markdown(render_kpi_card("Destination HHI (2020)", f"{latest_dest_conc['hhi']:,.0f}", latest_dest_conc["hhi_category"], theme_mode), unsafe_allow_html=True)
+            with hhi_c2:
+                st.markdown(render_kpi_card("Top 10 Destination Share", f"{latest_dest_conc['top_10_share']:.1f}%", "Hosted by top 10 nations", theme_mode), unsafe_allow_html=True)
+            with hhi_c3:
+                st.markdown(render_kpi_card("Origin HHI (2020)", f"{latest_orig_conc['origin_hhi']:,.0f}", "Origin diaspora concentration", theme_mode), unsafe_allow_html=True)
+            with hhi_c4:
+                st.markdown(render_kpi_card("Top 10 Origin Share", f"{latest_orig_conc['top_10_origin_share']:.1f}%", "Originated in top 10 nations", theme_mode), unsafe_allow_html=True)
+
+            # HHI Trend Chart
+            fig_hhi = go.Figure()
+            fig_hhi.add_trace(go.Scatter(
+                x=conc_trend_df["year"], y=conc_trend_df["dest_hhi"],
+                mode="lines+markers", name="Destination HHI",
+                line=dict(color=theme_colors["accent_blue"], width=3), marker=dict(size=8)
+            ))
+            fig_hhi.add_trace(go.Scatter(
+                x=conc_trend_df["year"], y=conc_trend_df["orig_hhi"],
+                mode="lines+markers", name="Origin HHI",
+                line=dict(color=theme_colors["accent_amber"], width=3), marker=dict(size=8)
+            ))
+            fig_hhi.add_hline(y=1000, line_dash="dash", line_color="gray", annotation_text="Unconcentrated (< 1,000)")
+            fig_hhi.add_hline(y=1800, line_dash="dash", line_color="orange", annotation_text="Moderately Concentrated (1,000–1,800)")
+            fig_hhi.update_layout(**get_plotly_layout(theme_mode, "Herfindahl-Hirschman Index (HHI) Evolution (1990–2020)", height=420))
+            st.plotly_chart(fig_hhi, use_container_width=True)
+
+            # Top Shares Trend
+            fig_shares = px.line(
+                conc_trend_df,
+                x="year",
+                y=["dest_top_5_share", "dest_top_10_share", "dest_top_25_share"],
+                markers=True,
+                title="Top 5, Top 10, and Top 25 Destination Shares of Global Migrant Stock (%)",
+                labels={"year": "Census Year", "value": "Share of Global Migrant Stock (%)", "variable": "Metric Tier"},
+                template=plotly_tmpl
+            )
+            fig_shares.update_layout(**get_plotly_layout(theme_mode, "Top Destination Shares of Global Migrant Stock (%)", height=380))
+            st.plotly_chart(fig_shares, use_container_width=True)
+
+            st.download_button(
+                label="📥 Download Concentration Trends CSV",
+                data=conc_trend_df.to_csv(index=False).encode("utf-8"),
+                file_name="migration_concentration_trends_1990_2020.csv",
+                mime="text/csv"
+            )
+
+        # TAB 2: MIGRATION CHANGE
+        with adv_tabs[1]:
+            render_section_title("5-Year Intercensal Growth & Change Classifications")
+            
+            chg_year = st.selectbox("Select Target Census Round", AVAILABLE_YEARS[1:], index=len(AVAILABLE_YEARS)-2, key="chg_year")
+            df_classified = classify_stock_changes(df_country, year=chg_year)
+            top_changes = get_top_growth_and_declining_countries(df_country, year=chg_year, top_n=10)
+
+            # Classification Breakdown Chart
+            cat_counts = df_classified["change_category"].value_counts().reset_index()
+            cat_counts.columns = ["Category", "Count"]
+            fig_cat = px.bar(
+                cat_counts,
+                x="Category", y="Count",
+                title=f"Country Distribution by 5-Year Growth Category ({chg_year - 5} → {chg_year})",
+                template=plotly_tmpl
+            )
+            fig_cat.update_layout(**get_plotly_layout(theme_mode, f"Growth Category Distribution ({chg_year - 5} → {chg_year})", height=360))
+            fig_cat.update_traces(marker_color=theme_colors["accent_blue"])
+            st.plotly_chart(fig_cat, use_container_width=True)
+
+            # Fastest Growth & Largest Absolute Adjustments
+            g_col1, g_col2 = st.columns(2)
+            with g_col1:
+                render_section_title(f"Fastest Percentage Growth (≥ 10k stock)")
+                st.dataframe(
+                    top_changes["fastest_growth_pct"][["display_name", "country_code", "migrant_stock", "stock_growth_pct_5yr"]].rename(columns={
+                        "display_name": "Country", "country_code": "ISO3", "migrant_stock": "Migrant Stock", "stock_growth_pct_5yr": "5-Yr Growth %"
+                    }).style.format({
+                        "Migrant Stock": "{:,.0f}", "5-Yr Growth %": "{:+.1f}%"
+                    }),
+                    use_container_width=True,
+                    height=280
+                )
+            with g_col2:
+                render_section_title(f"Largest Absolute Stock Increases")
+                st.dataframe(
+                    top_changes["largest_increase_abs"][["display_name", "country_code", "stock_change_5yr", "migrant_stock"]].rename(columns={
+                        "display_name": "Country", "country_code": "ISO3", "stock_change_5yr": "5-Yr Net Increase", "migrant_stock": "Migrant Stock"
+                    }).style.format({
+                        "5-Yr Net Increase": "{:+,.0f}", "Migrant Stock": "{:,.0f}"
+                    }),
+                    use_container_width=True,
+                    height=280
+                )
+
+            st.download_button(
+                label="📥 Download Growth Classification CSV",
+                data=df_classified.to_csv(index=False).encode("utf-8"),
+                file_name=f"migration_change_classification_{chg_year}.csv",
+                mime="text/csv"
+            )
+
+        # TAB 3: SOCIOECONOMIC RELATIONSHIPS
+        with adv_tabs[2]:
+            render_section_title("Socioeconomic Bivariate Relationship Engine", "Observational correlations between macroeconomic context and migrant stock")
+
+            render_warning_callout(
+                "<b>Correlation ≠ Causation Advisory</b>: Empirical associations between World Bank economic indicators (e.g. GDP per capita, unemployment) and migrant stock describe macroeconomic context and do NOT establish causal mechanisms or individual behavioral drivers.",
+                theme_mode
+            )
+
+            s_col1, s_col2, s_col3, s_col4 = st.columns([2, 2, 2, 2])
+            with s_col1:
+                soc_year = st.selectbox("Select Census Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="soc_year")
+            with s_col2:
+                x_axis_choice = st.selectbox(
+                    "X-Axis Indicator",
+                    ["GDP per Capita", "Total GDP", "Total Population", "Unemployment Rate"],
+                    index=0,
+                    key="x_axis_choice"
+                )
+            with s_col3:
+                y_axis_choice = st.selectbox(
+                    "Y-Axis Indicator",
+                    ["Migrant Stock % of Population", "Total Migrant Stock"],
+                    index=0,
+                    key="y_axis_choice"
+                )
+            with s_col4:
+                use_log_x = st.checkbox("Log10 X-Axis", value=True, key="log_x")
+                use_log_y = st.checkbox("Log10 Y-Axis", value=False, key="log_y")
+
+            col_map = {
+                "GDP per Capita": "gdp_per_capita", "Total GDP": "gdp", "Total Population": "population",
+                "Unemployment Rate": "unemployment", "Migrant Stock % of Population": "migrant_stock_pct_population",
+                "Total Migrant Stock": "migrant_stock"
+            }
+
+            x_col = col_map[x_axis_choice]
+            y_col = col_map[y_axis_choice]
+
+            scatter_df, stats_dict = get_bivariate_scatter_data(
+                df_country, x_metric_col=x_col, y_metric_col=y_col, year=soc_year,
+                log_scale_x=use_log_x, log_scale_y=use_log_y
+            )
+
+            # Correlation Summary Table
+            _, df_metrics_soc = get_cached_network_and_metrics(soc_year, min_stock=None, top_n_edges=None)
+            corr_df = compute_socioeconomic_correlations(df_country, year=soc_year, df_net_metrics=df_metrics_soc)
+            
+            st.dataframe(
+                corr_df[[
+                    "pair_name", "sample_size", "spearman_rho", "spearman_p_value",
+                    "pearson_r", "pearson_p_value", "relationship_strength", "statistical_significance"
+                ]].rename(columns={
+                    "pair_name": "Indicator Pair", "sample_size": "N", "spearman_rho": "Spearman ρ",
+                    "spearman_p_value": "Spearman p", "pearson_r": "Pearson r", "pearson_p_value": "Pearson p",
+                    "relationship_strength": "Empirical Strength", "statistical_significance": "Significance"
+                }).style.format({
+                    "Spearman ρ": "{:+.3f}", "Spearman p": "{:.4g}", "Pearson r": "{:+.3f}", "Pearson p": "{:.4g}"
+                }),
+                use_container_width=True,
+                height=220
+            )
+
+            if not scatter_df.empty:
+                fig_scatter = px.scatter(
+                    scatter_df,
+                    x="plot_x",
+                    y="plot_y",
+                    hover_name="display_name",
+                    hover_data={"country_code": True, "migrant_stock": ":,.0f", "population": ":,.0f", "gdp_per_capita": ":$,.0f"},
+                    title=f"Bivariate Relationship: {x_axis_choice} vs. {y_axis_choice} ({soc_year}) [N={stats_dict.get('n', 0)}]",
+                    labels={"plot_x": f"{x_axis_choice} {'(Log10)' if use_log_x else ''}", "plot_y": f"{y_axis_choice} {'(Log10)' if use_log_y else ''}"},
+                    template=plotly_tmpl
+                )
+                
+                # Add regression line
+                if "slope" in stats_dict and pd.notna(stats_dict["slope"]):
+                    x_line = np.linspace(scatter_df["plot_x"].min(), scatter_df["plot_x"].max(), 50)
+                    y_line = stats_dict["slope"] * x_line + stats_dict["intercept"]
+                    fig_scatter.add_trace(go.Scatter(
+                        x=x_line, y=y_line, mode="lines",
+                        name=f"OLS Fit (ρ = {stats_dict.get('spearman_rho', 0):+.2f})",
+                        line=dict(color=theme_colors["accent_blue"], width=2, dash="dash")
+                    ))
+                    
+                fig_scatter.update_layout(**get_plotly_layout(theme_mode, f"{x_axis_choice} vs. {y_axis_choice} ({soc_year})", height=480))
+                fig_scatter.update_traces(marker=dict(size=9, opacity=0.8, line=dict(width=1, color=theme_colors["card_border"])))
+                st.plotly_chart(fig_scatter, use_container_width=True)
+
+                st.download_button(
+                    label="📥 Download Scatter Data CSV",
+                    data=scatter_df.to_csv(index=False).encode("utf-8"),
+                    file_name=f"bivariate_scatter_{x_col}_{y_col}_{soc_year}.csv",
+                    mime="text/csv"
+                )
+
+        # TAB 4: ANOMALY DETECTION
+        with adv_tabs[3]:
+            render_section_title("Statistical Outlier & Anomaly Identification", "Detection of unusual distribution patterns across migrant stock and demographic shares")
+            
+            anom_c1, anom_c2, anom_c3 = st.columns([2, 2, 2])
+            with anom_c1:
+                anom_year = st.selectbox("Census Observation Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="anom_year")
+            with anom_c2:
+                anom_metric_choice = st.selectbox(
+                    "Target Metric",
+                    ["Migrant Stock % of Population", "Total Migrant Stock", "5-Year Stock Growth (%)"],
+                    index=0,
+                    key="anom_metric"
+                )
+            with anom_c3:
+                anom_method = st.selectbox("Detection Method", ["IQR", "Z-Score"], index=0, key="anom_method")
+
+            target_metric_col = "migrant_stock_pct_population" if "Population" in anom_metric_choice else ("migrant_stock" if "Total" in anom_metric_choice else "stock_growth_pct_5yr")
+            threshold_val = 1.5 if anom_method == "IQR" else 2.5
+            
+            outliers_df, dist_summary = detect_migration_anomalies(
+                df_country, metric_col=target_metric_col, year=anom_year, method=anom_method, threshold=threshold_val
+            )
+
+            # Summary metrics
+            as1, as2, as3, as4 = st.columns(4)
+            with as1:
+                st.markdown(render_kpi_card("Method", f"{dist_summary.get('method', 'N/A')}", f"Threshold: {threshold_val}", theme_mode), unsafe_allow_html=True)
+            with as2:
+                st.markdown(render_kpi_card("Lower Bound", f"{dist_summary.get('lower_bound', 0):,.2f}", "Normal range floor", theme_mode), unsafe_allow_html=True)
+            with as3:
+                st.markdown(render_kpi_card("Upper Bound", f"{dist_summary.get('upper_bound', 0):,.2f}", "Normal range ceiling", theme_mode), unsafe_allow_html=True)
+            with as4:
+                st.markdown(render_kpi_card("Detected Anomalies", f"{len(outliers_df)}", f"Nations beyond threshold", theme_mode), unsafe_allow_html=True)
+
+            render_scientific_alert(
+                f"<b>Analytical Interpretation</b>: {len(outliers_df)} observations exceed the {anom_method} statistical threshold for <i>{anom_metric_choice}</i> in {anom_year}. In demographic analysis, anomalies frequently represent specialized demographic contexts (e.g. Gulf Cooperation Council labor-importing states, microstates, or sudden humanitarian refugee host nations) rather than reporting errors.",
+                theme_mode
+            )
+
+            if not outliers_df.empty:
+                st.dataframe(
+                    outliers_df[[
+                        "display_name", "country_code", target_metric_col, "outlier_type", "population", "gdp_per_capita"
+                    ]].rename(columns={
+                        "display_name": "Country", "country_code": "ISO3", target_metric_col: anom_metric_choice,
+                        "outlier_type": "Anomaly Classification", "population": "Population", "gdp_per_capita": "GDP per Capita"
+                    }).style.format({
+                        anom_metric_choice: "{:,.2f}%" if "%" in anom_metric_choice else "{:,.0f}",
+                        "Population": "{:,.0f}",
+                        "GDP per Capita": "${:,.0f}"
+                    }),
+                    use_container_width=True,
+                    height=300
+                )
+                st.download_button(
+                    label="📥 Download Detected Outliers CSV",
+                    data=outliers_df.to_csv(index=False).encode("utf-8"),
+                    file_name=f"migration_outliers_{target_metric_col}_{anom_year}.csv",
+                    mime="text/csv"
+                )
+
+    # =============================================================================
+    # PAGE 11: ⚖️ COUNTRY COMPARISON (PHASE 5)
+    # =============================================================================
+    elif page == "⚖️ Country Comparison":
+        render_section_title("⚖️ Multi-Country Comparative Profiler", "Cross-national comparative analysis across demographic, economic, and network dimensions")
+
+        cmp_c1, cmp_c2 = st.columns([3, 2])
+        with cmp_c1:
+            default_countries = ["United States of America", "Germany", "India", "United Arab Emirates"]
+            valid_defaults = [c for c in default_countries if c in COUNTRY_DICT]
+            comp_selected_names = st.multiselect(
+                "Select 2 to 5 Countries for Comparative Profiling",
+                list(COUNTRY_DICT.keys()),
+                default=valid_defaults if len(valid_defaults) >= 2 else list(COUNTRY_DICT.keys())[:3],
+                max_selections=5,
+                key="comp_countries"
+            )
+        with cmp_c2:
+            comp_year = st.selectbox("Census Observation Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="comp_year")
+
+        if len(comp_selected_names) >= 2:
+            comp_codes = [COUNTRY_DICT[c] for c in comp_selected_names if c in COUNTRY_DICT]
+            _, df_metrics_comp = get_cached_network_and_metrics(comp_year, min_stock=None, top_n_edges=None)
+
+            abs_df, norm_df = compute_multicountry_comparison(
+                df_country, country_codes=comp_codes, year=comp_year, df_net_metrics=df_metrics_comp
+            )
+
+            # Absolute Values Table
+            render_section_title("1. Absolute Indicator Comparison Matrix")
+            st.dataframe(
+                abs_df.rename(columns={"country_name": "Country", "country_code": "ISO3"}).style.format({
+                    "Total Migrant Stock (People)": "{:,.0f}",
+                    "Migrant Stock % of Population": "{:.2f}%",
+                    "5-Year Stock Growth (%)": "{:+.1f}%",
+                    "GDP per Capita (USD)": "${:,.0f}",
+                    "Total Population": "{:,.0f}",
+                    "Unemployment Rate (%)": "{:.2f}%",
+                    "Network Weighted Strength": "{:,.0f}",
+                    "Network Degree Centrality": "{:,.0f}",
+                    "PageRank Score": "{:.4f}"
+                }),
+                use_container_width=True
+            )
+
+            # Normalized Relative Score Chart
+            render_section_title("2. Normalized Relative Comparison Scores [0–100]")
+            render_warning_callout(
+                "<b>Normalized Scoring Methodology</b>: Scores represent min-max relative normalization across all global sovereign entities for that census year ($0 = \\text{global minimum}, 100 = \\text{global maximum}$). These values are comparative scores and do not represent original units.",
+                theme_mode
+            )
+
+            norm_melted = norm_df.melt(id_vars=["country_name", "country_code"], var_name="Indicator", value_name="Normalized Score")
+            fig_norm = px.bar(
+                norm_melted,
+                x="Indicator",
+                y="Normalized Score",
+                color="country_name",
+                barmode="group",
+                title=f"Normalized Multi-Country Comparison ({comp_year})",
+                labels={"Normalized Score": "Relative Scale [0–100]", "country_name": "Country"},
+                template=plotly_tmpl
+            )
+            fig_norm.update_layout(**get_plotly_layout(theme_mode, f"Normalized Relative Profile ({comp_year})", height=420))
+            st.plotly_chart(fig_norm, use_container_width=True)
+
+            # Historical Multi-Line Trajectory
+            render_section_title("3. Historical Longitudinal Trajectories (1990–2020)")
+            comp_hist_metric = st.selectbox(
+                "Select Trajectory Metric",
+                ["Migrant Stock", "Migrant Stock % of Population", "GDP per Capita", "Population", "5-Year Stock Growth %"],
+                index=0,
+                key="comp_hist_m"
+            )
+            comp_traj_df = get_country_trend_data(df_country, country_codes=comp_codes, metric_name=comp_hist_metric)
+
+            if not comp_traj_df.empty:
+                metric_lbl = comp_traj_df["metric_label"].iloc[0] if "metric_label" in comp_traj_df.columns else comp_hist_metric
+                fig_comp_traj = px.line(
+                    comp_traj_df,
+                    x="year",
+                    y="metric_value",
+                    color="display_name",
+                    markers=True,
+                    title=f"Comparative Trajectory: {comp_hist_metric} (1990–2020)",
+                    labels={"year": "Census Year", "metric_value": metric_lbl, "display_name": "Country"},
+                    template=plotly_tmpl
+                )
+                fig_comp_traj.update_layout(**get_plotly_layout(theme_mode, f"Comparative Trajectory: {comp_hist_metric}", height=400))
+                st.plotly_chart(fig_comp_traj, use_container_width=True)
+
+            st.download_button(
+                label="📥 Download Country Comparison CSV",
+                data=abs_df.to_csv(index=False).encode("utf-8"),
+                file_name=f"country_comparison_{comp_year}.csv",
+                mime="text/csv"
+            )
+        else:
+            st.info("Please select at least 2 countries to generate comparative analytics.")
+
+    # =============================================================================
+    # PAGE 12: 💡 MIGRATION INSIGHTS (PHASE 5)
+    # =============================================================================
+    elif page == "💡 Migration Insights":
+        render_section_title("💡 Automated Migration Data Storytelling", "Deterministic, data-driven analytical insights derived directly from UN DESA & World Bank datasets")
+
+        ins_c1, ins_c2 = st.columns([2, 2])
+        with ins_c1:
+            ins_year = st.selectbox("Select Census Year", AVAILABLE_YEARS, index=len(AVAILABLE_YEARS)-1, key="ins_year")
+        with ins_c2:
+            ins_cat_filter = st.selectbox(
+                "Filter Insight Category",
+                ["All Categories", "Global Trend", "Concentration", "Fastest Growth", "Largest Changes", "Major Corridors", "Socioeconomic Associations", "Network Structure"],
+                index=0,
+                key="ins_cat"
+            )
+
+        _, df_metrics_ins = get_cached_network_and_metrics(ins_year, min_stock=None, top_n_edges=None)
+        insights = generate_all_insights(df_country, df_bilat, year=ins_year, df_net_metrics=df_metrics_ins)
+
+        if ins_cat_filter != "All Categories":
+            insights = [i for i in insights if i["category"] == ins_cat_filter]
+
+        render_scientific_alert(
+            "<b>Deterministic Generation Principle</b>: All narrative insights are generated deterministically from underlying calculations across the verified UN DESA and World Bank datasets. No statistical mechanisms or causal relationships are fabricated.",
+            theme_mode
+        )
+
+        for ins in insights:
+            render_insight_card(
+                category=ins["category"],
+                title=ins["title"],
+                message=ins["message"],
+                badge_text=ins.get("badge", None),
+                theme_mode=theme_mode
+            )
+
+        # Tabular View & Download
+        render_section_title("Summary Table of Generated Insights")
+        insights_df = pd.DataFrame(insights)
+        if not insights_df.empty:
+            st.dataframe(
+                insights_df[["category", "title", "message", "badge"]].rename(columns={
+                    "category": "Category", "title": "Headline", "message": "Analytical Summary", "badge": "Key Metric"
+                }),
+                use_container_width=True,
+                height=260
+            )
+            st.download_button(
+                label="📥 Download Generated Insights CSV",
+                data=insights_df.to_csv(index=False).encode("utf-8"),
+                file_name=f"migration_insights_{ins_year}.csv",
+                mime="text/csv"
+            )
+
+    # =============================================================================
+    # PAGE 13: ℹ️ METHODOLOGY
     # =============================================================================
     elif page == "ℹ️ Methodology":
         render_section_title("ℹ️ Data Sources, Methodological Standards & Limitations")
@@ -1469,28 +1370,20 @@ if data_loaded:
            - $\\text{Asymmetry Index}_{A \\leftrightarrow B} = \\frac{S_{A \\to B} - S_{B \\to A}}{S_{A \\to B} + S_{B \\to A}} \\in [-1, 1]$
         5. **Community Detection (Modularity)**:
            - $Q = \\frac{1}{2m} \\sum_{i,j} \\left[ A_{ij} - \\frac{k_i k_j}{2m} \\right] \\delta(c_i, c_j)$
-        """)
 
-    # =============================================================================
-    # PAGE 11: ⚙️ SETTINGS
-    # =============================================================================
-    elif page == "⚙️ Settings":
-        render_section_title("⚙️ Application Settings & Theme")
-        
-        st.markdown("#### Visual Appearance")
-        chosen_theme = st.radio(
-            "Select Interface Theme",
-            ["Light", "Dark"],
-            index=1 if is_dark else 0,
-            key="settings_theme"
-        )
-        if chosen_theme != st.session_state["theme_mode"]:
-            st.session_state["theme_mode"] = chosen_theme
-            st.rerun()
-            
-        st.markdown("---")
-        render_section_title("Cache Management")
-        if st.button("🧹 Clear Streamlit Cache"):
-            st.cache_data.clear()
-            st.success("Cache cleared successfully! Reloading...")
-            st.rerun()
+        ---
+
+        #### 4. Advanced Analytics & Statistical Formulations
+        1. **Herfindahl-Hirschman Index (HHI)**:
+           - $\\text{HHI} = \\sum_{i=1}^{N} s_i^2$, where $s_i = \\left( \\frac{S_i}{S_{\\text{total}}} \\right) \\times 100$.
+           - Benchmarks: $\\text{HHI} < 1000$ (Unconcentrated), $1000 \\le \\text{HHI} \\le 1800$ (Moderately Concentrated), $\\text{HHI} > 1800$ (Highly Concentrated).
+        2. **Bivariate Correlation (Pearson & Spearman)**:
+           - Pearson: $r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2}}$ (Linear association)
+           - Spearman: $\\rho = 1 - \\frac{6 \\sum d_i^2}{n(n^2 - 1)}$ (Monotonic rank association)
+           - **Correlation $\\neq$ Causation**: Observational cross-sectional macroeconomic correlations do not establish causal mechanisms.
+        3. **Statistical Outlier Detection (IQR & Z-Score)**:
+           - $\\text{IQR} = Q_3 - Q_1$, Outliers beyond $[Q_1 - k \\cdot \\text{IQR}, Q_3 + k \\cdot \\text{IQR}]$.
+           - $Z = \\frac{x - \\mu}{\\sigma}$, Outliers where $|Z| > \\text{threshold}$.
+        4. **Min-Max Normalization**:
+           - $x_{\\text{norm}} = \\frac{x - x_{\\text{min}}}{x_{\\text{max}} - x_{\\text{min}}} \\times 100 \\in [0, 100]$.
+        """)

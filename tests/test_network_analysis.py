@@ -171,9 +171,13 @@ def test_network_visualization_safety(synthetic_bilateral_df):
     G = build_migration_network(synthetic_bilateral_df, year=2020)
     df_metrics = calculate_network_metrics(G)
     
-    # 2D Plot
-    fig_2d = create_network_2d_plot(G, df_metrics, is_dark_mode=False)
+    # 2D Plot with explicit metrics_df
+    fig_2d = create_network_2d_plot(G, metrics_df=df_metrics, is_dark_mode=False)
     assert fig_2d is not None
+    
+    # 2D Plot with omitted metrics_df (auto-computed)
+    fig_2d_auto = create_network_2d_plot(G, is_dark_mode=False)
+    assert fig_2d_auto is not None
     
     # Dark Mode 2D Plot
     fig_2d_dark = create_network_2d_plot(G, df_metrics, is_dark_mode=True)
