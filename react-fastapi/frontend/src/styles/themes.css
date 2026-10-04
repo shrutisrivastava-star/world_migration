@@ -1,0 +1,208 @@
+/* ==============================================================================
+   GLOBAL MIGRATION OBSERVATORY — Light & Dark Theme Definitions
+   ============================================================================== */
+
+/* ------------------------------------------------------------------------------
+   ☀️ Light Mode (Default)
+   ------------------------------------------------------------------------------ */
+:root,
+[data-theme="light"] {
+  --color-scheme: light;
+
+  /* Surfaces & Backgrounds */
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-subtle: #f1f5f9;
+  --bg-surface-hover: #f1f5f9;
+  --bg-surface-active: #e2e8f0;
+
+  /* Secondary surface alias */
+  --color-bg-secondary: #f8fafc;
+  --color-bg-card: #ffffff;
+
+  --bg-sidebar: #0f172a;
+  --bg-sidebar-hover: #1e293b;
+  --bg-sidebar-active: #0284c7;
+  --text-sidebar: #94a3b8;
+  --text-sidebar-active: #ffffff;
+  --border-sidebar: #1e293b;
+
+  /* Borders & Dividers */
+  --border-subtle: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-strong: #94a3b8;
+  --border-focus: #0284c7;
+  --color-border: #e2e8f0;
+
+  /* Text & Typography */
+  --text-main: #0f172a;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Accent Colors */
+  --primary: #0284c7;
+  --color-primary: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-active: #075985;
+  --primary-subtle: #e0f2fe;
+  --primary-glow: rgba(2, 132, 199, 0.12);
+
+  --accent-teal: #0d9488;
+  --color-teal: #0d9488;
+  --accent-teal-hover: #0f766e;
+  --accent-teal-subtle: #ccfbf1;
+
+  --accent-amber: #d97706;
+  --color-warning: #d97706;
+  --accent-amber-hover: #b45309;
+  --accent-amber-subtle: #fef3c7;
+
+  --accent-rose: #e11d48;
+  --color-danger: #e11d48;
+  --accent-rose-hover: #be123c;
+  --accent-rose-subtle: #ffe4e6;
+
+  --accent-emerald: #10b981;
+  --color-success: #10b981;
+  --accent-emerald-hover: #059669;
+  --accent-emerald-subtle: #d1fae5;
+
+  --accent-violet: #8b5cf6;
+  --color-accent: #8b5cf6;
+
+  /* Status Colors */
+  --status-connected-bg: #d1fae5;
+  --status-connected-text: #065f46;
+  --status-connected-border: #a7f3d0;
+  --status-connected-dot: #10b981;
+
+  --status-connecting-bg: #fef3c7;
+  --status-connecting-text: #92400e;
+  --status-connecting-border: #fde68a;
+  --status-connecting-dot: #f59e0b;
+
+  --status-error-bg: #ffe4e6;
+  --status-error-text: #9f1239;
+  --status-error-border: #fecdd3;
+  --status-error-dot: #e11d48;
+
+  /* Skeleton Shimmer */
+  --skeleton-bg: #e2e8f0;
+  --skeleton-shimmer: #f1f5f9;
+
+  /* Input States */
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --input-text: #0f172a;
+  --input-placeholder: #94a3b8;
+
+  /* Card Shadows */
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --card-shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* ------------------------------------------------------------------------------
+   🌙 Dark Mode
+   ------------------------------------------------------------------------------ */
+[data-theme="dark"] {
+  --color-scheme: dark;
+
+  /* Surfaces & Backgrounds */
+  --bg-app: #080c14;
+  --bg-surface: #111827;
+  --bg-surface-elevated: #1a2234;
+  --bg-surface-subtle: #1e293b;
+  --bg-surface-hover: #1e293b;
+  --bg-surface-active: #26334d;
+
+  /* Secondary surface alias */
+  --color-bg-secondary: #0d1320;
+  --color-bg-card: #111827;
+
+  --bg-sidebar: #0a0e1a;
+  --bg-sidebar-hover: #161e31;
+  --bg-sidebar-active: #0284c7;
+  --text-sidebar: #94a3b8;
+  --text-sidebar-active: #ffffff;
+  --border-sidebar: #192238;
+
+  /* Borders & Dividers */
+  --border-subtle: #1e293b;
+  --border-medium: #334155;
+  --border-strong: #475569;
+  --border-focus: #38bdf8;
+  --color-border: #1e293b;
+
+  /* Text & Typography */
+  --text-main: #f8fafc;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --text-inverse: #0f172a;
+
+  /* Accent Colors */
+  --primary: #38bdf8;
+  --color-primary: #38bdf8;
+  --primary-hover: #7dd3fc;
+  --primary-active: #bae6fd;
+  --primary-subtle: rgba(56, 189, 248, 0.14);
+  --primary-glow: rgba(56, 189, 248, 0.2);
+
+  --accent-teal: #2dd4bf;
+  --color-teal: #2dd4bf;
+  --accent-teal-hover: #5eead4;
+  --accent-teal-subtle: rgba(45, 212, 191, 0.14);
+
+  --accent-amber: #fbbf24;
+  --color-warning: #fbbf24;
+  --accent-amber-hover: #fcd34d;
+  --accent-amber-subtle: rgba(251, 191, 36, 0.14);
+
+  --accent-rose: #f43f5e;
+  --color-danger: #f43f5e;
+  --accent-rose-hover: #fb7185;
+  --accent-rose-subtle: rgba(244, 63, 94, 0.14);
+
+  --accent-emerald: #34d399;
+  --color-success: #34d399;
+  --accent-emerald-hover: #6ee7b7;
+  --accent-emerald-subtle: rgba(52, 211, 153, 0.14);
+
+  --accent-violet: #a78bfa;
+  --color-accent: #a78bfa;
+
+  /* Status Colors */
+  --status-connected-bg: rgba(16, 185, 129, 0.15);
+  --status-connected-text: #6ee7b7;
+  --status-connected-border: rgba(16, 185, 129, 0.3);
+  --status-connected-dot: #34d399;
+
+  --status-connecting-bg: rgba(245, 158, 11, 0.15);
+  --status-connecting-text: #fcd34d;
+  --status-connecting-border: rgba(245, 158, 11, 0.3);
+  --status-connecting-dot: #fbbf24;
+
+  --status-error-bg: rgba(225, 29, 72, 0.15);
+  --status-error-text: #fda4af;
+  --status-error-border: rgba(225, 29, 72, 0.3);
+  --status-error-dot: #f43f5e;
+
+  /* Skeleton Shimmer */
+  --skeleton-bg: #1e293b;
+  --skeleton-shimmer: #334155;
+
+  /* Input States */
+  --input-bg: #111827;
+  --input-border: #334155;
+  --input-text: #f8fafc;
+  --input-placeholder: #64748b;
+
+  /* Card Shadows */
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --card-shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+}
